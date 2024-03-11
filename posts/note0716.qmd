@@ -1,0 +1,115 @@
+---
+title: Note0716 (mediation analysis with pymc)
+author: Tsai JW
+date: '2023-07-16'
+format: html
+jupyter: python3
+---
+
+```{python}
+import pymc as pm
+import numpy as np
+import pandas as pd
+import arviz as az
+import matplotlib.pyplot as plt
+```
+
+```{python}
+#dat = pd.read_csv('data1463_fin3.csv')
+```
+
+為了之後還可以跑這個模型，根據原本的資料重新模擬一筆資料。
+
+~~(但這邊沒考慮到原本數值之間的相關情形)~~ 已考慮進去！！用多元常態分配模擬了。
+
+-   acd1eap $\sim N(2.8510193121856177e-05, 0.8921482479092293)$
+-   scleap $\sim N(1.9250494837216173e-06, 0.7154395945457549)$
+-   c1 $\sim Ber(1,0.19822282980177716)$
+-   c2 $\sim Ber(1,0.11483253588516747)$
+-   c3 $\sim Ber(1,0.11551606288448393)$
+
+```{python}
+'''
+[dat.acd1_eap.mean(), dat.scl_eap.mean(),dat.c1.mean(),dat.c2.mean(),dat.c3.mean()]
+np.cov([dat.acd1_eap, dat.scl_eap, dat.c1, dat.c2, dat.c3])
+'''
+```
+
+```{python}
+dat_mn = np.array(
+    [2.8510193121856177e-05,
+     1.9250494837216173e-06,
+     0.19822282980177716,
+     0.11483253588516747,
+     0.11551606288448393]
+)
+dat_cov = np.array([
+    [ 0.7959285 ,  0.16304568, -0.01541732, -0.01689872, -0.02973076],
+    [ 0.16304568,  0.51185381, -0.05390401, -0.00531492, -0.02327021],
+    [-0.01541732, -0.05390401,  0.15903925, -0.022778  , -0.02291358],
+    [-0.01689872, -0.00531492, -0.022778  ,  0.10171555, -0.01327408],
+    [-0.02973076, -0.02327021, -0.02291358, -0.01327408,  0.10224199]
+])
+dat = np.random.multivariate_normal(dat_mn, dat_cov, 1000)
+dat = pd.DataFrame(dat, columns=['acd1_eap', 'scl_eap', 'c1', 'c2', 'c3'])
+dat['c1'] = dat['c1'] > 0.5
+dat['c2'] = dat['c2'] > 0.5
+dat['c3'] = dat['c3'] > 0.5
+```
+
+```{python}
+dat
+```
+
+```{python}
+'''
+dat_dict = {
+    'acd1_eap': np.random.normal(loc=2.8510193121856177e-05, scale=0.8921482479092293, size=1000),
+    'scl_eap': np.random.normal(loc=1.9250494837216173e-06, scale=0.7154395945457549, size=1000),
+    'c1': np.random.binomial(n=1, p=0.19822282980177716, size=1000),
+    'c2': np.random.binomial(n=1, p=0.11483253588516747, size=1000),
+    'c3': np.random.binomial(n=1, p=0.11551606288448393, size=1000),    
+}
+dat = pd.DataFrame(dat_dict)
+'''
+```
+
+```{python}
+with pm.Model() as model:
+    acd1eap = pm.ConstantData('acd1eap', dat.acd1_eap)
+    scleap = pm.ConstantData('scleap', dat.scl_eap)
+    c1 = pm.ConstantData('c1', dat.c1)
+    c2 = pm.ConstantData('c2', dat.c2)
+    c3 = pm.ConstantData('c3', dat.c3)
+
+    # intercept
+    acd1eap_Intercept = pm.Normal('acd1eap_Intercept', mu=0, sigma=100)
+    scleap_Intercept = pm.Normal('scleap_Intercept', mu=0, sigma=100)
+    
+    # noise
+    acd1eap_Sigma = pm.HalfCauchy("acd1eap_Sigma", 1)
+    scleap_Sigma = pm.HalfCauchy("scleap_Sigma", 1)
+
+    # slope
+    acd1eap_scleap = pm.Normal('acd1eap_scleap', mu=0, sigma=100)
+    acd1eap_c1 = pm.Normal('acd1eap_c1', mu=0, sigma=100)
+    acd1eap_c2 = pm.Normal('acd1eap_c2', mu=0, sigma=100)
+    acd1eap_c3 = pm.Normal('acd1eap_c3', mu=0, sigma=100)
+    scleap_c1 = pm.Normal('scleap_c1', mu=0, sigma=100)
+    scleap_c2 = pm.Normal('scleap_c2', mu=0, sigma=100)
+    scleap_c3 = pm.Normal('scleap_c3', mu=0, sigma=100)
+
+    # likelihood
+    pm.Normal("y_likelihood", mu=acd1eap_Intercept + acd1eap_scleap * scleap  + acd1eap_c1 * c1 + acd1eap_c2 * c2 + acd1eap_c3 * c3, sigma =  acd1eap_Sigma, observed = acd1eap  )
+    pm.Normal('m_likelihood', mu=scleap_Intercept + scleap_c1 * c1 + scleap_c2 * c2 + scleap_c3 * c3, sigma = scleap_Sigma, observed = scleap)
+    
+    trace_med = pm.sample(2000, chains=4, cores=4)
+```
+
+```{python}
+pm.model_to_graphviz(model)
+```
+
+```{python}
+az.summary(trace_med)
+```
