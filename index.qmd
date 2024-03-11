@@ -1,5 +1,5 @@
 ---
-title: "jw tsai"
+title: "Tsai.jw"
 listing:
   contents: posts
   sort: "date desc"
@@ -9,6 +9,7 @@ listing:
   filter-ui: true
 page-layout: article
 title-block-banner: true
+citation: false
 execute:
   freeze: auto
 ---
