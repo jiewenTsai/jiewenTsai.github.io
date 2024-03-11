@@ -4,6 +4,8 @@ project:
 
 website:
   title: "jw tsai"
+  page-footer:
+    center: © jw tsai 2024- . All rights reserved.
   navbar:
     right:
       - about.qmd
@@ -22,6 +24,9 @@ format:
       light: flatly
       dark: darkly
     css: styles.css
-
+    code-fold: true
+    toc: true
+    citation: true
+    csl: theapa7.csl
 editor: visual
 

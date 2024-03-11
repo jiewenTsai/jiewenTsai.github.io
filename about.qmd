@@ -1,6 +1,6 @@
 ---
 title: "jw tsai"
-image: profile.jpg
+#image: profile.jpg
 about:
   template: solana
   links:
@@ -10,4 +10,3 @@ about:
 ---
 
 About this *jw tsai*.
-

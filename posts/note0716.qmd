@@ -1,8 +1,10 @@
 ---
 title: Note0716 (mediation analysis with pymc)
-author: Tsai JW
+author: Jiewen Tsai
 date: '2023-07-16'
 format: html
+citation: true
+csl: theapa7.csl
 jupyter: python3
 ---
 
