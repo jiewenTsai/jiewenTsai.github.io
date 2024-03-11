@@ -14,6 +14,8 @@ website:
   search: 
     location: navbar
     type: overlay
+
+    
 format:
   html:
     theme: 
