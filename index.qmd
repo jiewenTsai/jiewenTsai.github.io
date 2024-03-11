@@ -1,15 +1,4 @@
 ---
-title: "jw tsai"
-listing:
-  contents: posts
-  sort: "date desc"
-  type: grid
-  categories: true
-  sort-ui: true
-  filter-ui: true
-page-layout: article
-title-block-banner: true
+title: "Hello, I'm Jie-Wen Tsai."
 citation: false
-execute:
-  freeze: auto
 ---

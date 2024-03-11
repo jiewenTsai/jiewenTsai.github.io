@@ -1,6 +1,7 @@
 project:
   type: website
   output-dir: docs
+  
 
 website:
   title: "jw tsai"
@@ -8,11 +9,13 @@ website:
     center: © jw tsai 2024- . All rights reserved.
   navbar:
     right:
-      - about.qmd
+      - text: About
+        href: about.qmd
+      - text: Notes
+        href: notes.qmd
       - icon: github
         href: https://github.com/
-      - icon: twitter
-        href: https://twitter.com
+
   search: 
     location: navbar
     type: overlay

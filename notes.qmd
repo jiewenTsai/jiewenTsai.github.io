@@ -1,0 +1,18 @@
+---
+title: "Notes"
+listing:
+  contents: posts
+  sort: "date desc"
+  type: grid
+  categories: true
+  sort-ui: true
+  filter-ui: true
+page-layout: article
+title-block-banner: true
+citation: false
+execute:
+  freeze: auto
+---
+
+::: {#posts}
+:::
