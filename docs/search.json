@@ -2,9 +2,9 @@
   {
     "objectID": "index.html",
     "href": "index.html",
-    "title": "Hello, I’m JW Tsai.",
+    "title": "Hello, I’m Jie-Wen Tsai. 蔡介文",
     "section": "",
-    "text": "CitationBibTeX citation:@online{untitled,\n  author = {},\n  title = {Hello, {I’m} {JW} {Tsai.}},\n  langid = {en}\n}\nFor attribution, please cite this work as:\nHello, I’m JW Tsai. (n.d.)."
+    "text": "民主進步黨。"
   },
   {
     "objectID": "posts/Lorem Ipsum.html",
@@ -74,6 +74,6 @@
     "href": "notes.html",
     "title": "Notes",
     "section": "",
-    "text": "Order By\n       Default\n         \n          Title\n        \n         \n          Date - Oldest\n        \n         \n          Date - Newest\n        \n         \n          Author\n        \n     \n  \n    \n      \n      \n    \n\n\n\n\n\n\n\n\nLorem Ipsum\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nPost With Code\n\n\n\nnews\n\n\ncode\n\n\nanalysis\n\n\n\n\n\n\n\nHarlow Malloc\n\n\nMar 11, 2024\n\n\n\n\n\n\n\n\n\n\n\n\nWelcome To My Blog\n\n\n\nnews\n\n\n\n\n\n\n\nTristan O’Malley\n\n\nMar 8, 2024\n\n\n\n\n\n\n\n\n\n\n\n\nNote0716 (mediation analysis with pymc)\n\n\n\n中文\n\n\n\n\n\n\n\nJW Tsai\n\n\nJul 16, 2023\n\n\n\n\n\n\n\n\nNo matching items"
+    "text": "Order By\n       Default\n         \n          Date - Oldest\n        \n         \n          Date - Newest\n        \n         \n          Title\n        \n     \n  \n    \n      \n      \n    \n\n\n\n\n\n\n\nDate\n\n\nTitle\n\n\nReading Time\n\n\n\n\n\n\n\n\n\n \n\n\nLorem Ipsum\n\n\n3 min\n\n\n\n\n\n\n\nMar 11, 2024\n\n\nPost With Code\n\n\n1 min\n\n\n\n\n\n\n\nMar 8, 2024\n\n\nWelcome To My Blog\n\n\n1 min\n\n\n\n\n\n\n\nJul 16, 2023\n\n\nNote0716 (mediation analysis with pymc)\n\n\n3 min\n\n\n\n\n\nNo matching items"
   }
 ]

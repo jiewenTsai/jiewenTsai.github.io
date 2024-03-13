@@ -79,9 +79,9 @@ ul.task-list li input[type="checkbox"] {
     }
 
     const options = {
-      valueNames: ['listing-title','listing-author','listing-date','listing-image','listing-description','listing-categories',{ data: ['index'] },{ data: ['categories'] },{ data: ['listing-date-sort'] },{ data: ['listing-file-modified-sort'] }],
+      valueNames: ['listing-image','listing-date','listing-title','listing-reading-time',{ data: ['index'] },{ data: ['categories'] },{ data: ['listing-date-sort'] },{ data: ['listing-title-sort'] }],
       
-      searchColumns: ["listing-title","listing-author","listing-date","listing-image","listing-description","listing-categories"],
+      searchColumns: ["listing-date","listing-title","listing-author"],
     };
 
     window['quarto-listings'] = window['quarto-listings'] || {};
@@ -207,24 +207,21 @@ window.Quarto = {
 
 
 
-<div class="quarto-listing quarto-listing-container-grid" id="listing-listing">
+<div class="quarto-listing quarto-listing-container-table" id="listing-listing">
 <div class="listing-actions-group">
    <div class="input-group input-group-sm quarto-listing-sort">
      <span class="input-group-text"><i class="bi bi-sort-down"></i></span>
      <select id="listing-listing-sort" class="form-select" aria-label="Order By" onchange="window['quarto-listings']['listing-listing'].sort(this.options[this.selectedIndex].value, { order: this.options[this.selectedIndex].getAttribute('data-direction')})">
        <option value="" disabled="" selected="" hidden="">Order By</option>
        <option value="index" data-direction="asc">Default</option>
-         <option value="listing-title" data-direction="asc">
-          Title
-        </option>
          <option value="listing-date-sort" data-direction="asc">
           Date - Oldest
         </option>
          <option value="listing-date-sort" data-direction="desc">
           Date - Newest
         </option>
-         <option value="listing-author" data-direction="asc">
-          Author
+         <option value="listing-title-sort" data-direction="asc">
+          Title
         </option>
      </select>
   </div>
@@ -233,120 +230,81 @@ window.Quarto = {
       <input type="text" class="search form-control" placeholder="Filter">
     </div>
 </div>
-<div class="list grid quarto-listing-cols-3">
-<div class="g-col-1" data-index="0" data-listing-file-modified-sort="1710145935745" data-listing-reading-time-sort="3" data-listing-word-count-sort="503">
-<a href="./posts/Lorem Ipsum.html" class="quarto-grid-link">
-<div class="quarto-grid-item card h-100 card-left">
-<div class="listing-item-img-placeholder card-img-top" style="height: 150px;">&nbsp;</div>
-<div class="card-body post-contents">
-<h5 class="no-anchor card-title listing-title">
-Lorem Ipsum
-</h5>
-<div class="card-text listing-description">
-<strong>Lorem Ipsum</strong> is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry’s standard dummy text ever since the 1500s, when an unknown…
-</div>
-<div class="card-attribution card-text-small start">
-<div class="listing-author">
-
-</div>
-</div>
-</div>
-</div>
-</a>
-</div>
-<div class="g-col-1" data-index="1" data-categories="news,code,analysis" data-listing-date-sort="1710086400000" data-listing-file-modified-sort="1710144481722" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="1" data-listing-word-count-sort="9">
-<a href="./posts/post-with-code/index.html" class="quarto-grid-link">
-<div class="quarto-grid-item card h-100 card-left">
-<p class="card-img-top">
-<img src="./posts/post-with-code/image.jpg" class="thumbnail-image card-img" style="height: 150px;">
-</p>
-<div class="card-body post-contents">
-<h5 class="no-anchor card-title listing-title">
-Post With Code
-</h5>
-<div class="listing-categories">
-<div class="listing-category" onclick="window.quartoListingCategory('news'); return false;">
-news
-</div>
-<div class="listing-category" onclick="window.quartoListingCategory('code'); return false;">
-code
-</div>
-<div class="listing-category" onclick="window.quartoListingCategory('analysis'); return false;">
-analysis
-</div>
-</div>
-<div class="card-text listing-description">
-This is a post with executable code.
-</div>
-<div class="card-attribution card-text-small justify">
-<div class="listing-author">
-Harlow Malloc
-</div>
-<div class="listing-date">
-Mar 11, 2024
-</div>
-</div>
-</div>
-</div>
-</a>
-</div>
-<div class="g-col-1" data-index="2" data-categories="news" data-listing-date-sort="1709827200000" data-listing-file-modified-sort="1710144481721" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="1" data-listing-word-count-sort="32">
-<a href="./posts/welcome/index.html" class="quarto-grid-link">
-<div class="quarto-grid-item card h-100 card-left">
-<p class="card-img-top"><img src="posts/welcome/thumbnail.jpg" style="height: 150px;"  class="thumbnail-image card-img"/></p>
-<div class="card-body post-contents">
-<h5 class="no-anchor card-title listing-title">
-Welcome To My Blog
-</h5>
-<div class="listing-categories">
-<div class="listing-category" onclick="window.quartoListingCategory('news'); return false;">
-news
-</div>
-</div>
-<div class="card-text listing-description">
-This is the first post in a Quarto blog. Welcome!
-</div>
-<div class="card-attribution card-text-small justify">
-<div class="listing-author">
-Tristan O’Malley
-</div>
-<div class="listing-date">
-Mar 8, 2024
-</div>
-</div>
-</div>
-</div>
-</a>
-</div>
-<div class="g-col-1" data-index="3" data-categories="中文" data-listing-date-sort="1689436800000" data-listing-file-modified-sort="1710193309298" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="3" data-listing-word-count-sort="411">
-<a href="./posts/note0716.html" class="quarto-grid-link">
-<div class="quarto-grid-item card h-100 card-left">
-<div class="listing-item-img-placeholder card-img-top" style="height: 150px;">&nbsp;</div>
-<div class="card-body post-contents">
-<h5 class="no-anchor card-title listing-title">
-Note0716 (mediation analysis with pymc)
-</h5>
-<div class="listing-categories">
-<div class="listing-category" onclick="window.quartoListingCategory('中文'); return false;">
-中文
-</div>
-</div>
-<div class="card-text listing-description">
-為了之後還可以跑這個模型，根據原本的資料重新模擬一筆資料。
-</div>
-<div class="card-attribution card-text-small justify">
-<div class="listing-author">
-JW Tsai
-</div>
-<div class="listing-date">
-Jul 16, 2023
-</div>
-</div>
-</div>
-</div>
-</a>
-</div>
-</div>
+<table class="quarto-listing-table table">
+<thead>
+<tr>
+<th>
+</th>
+<th>
+<a class="sort" data-sort="listing-date-sort" onclick="if (this.classList.contains('sort-asc')) { this.classList.add('sort-desc'); this.classList.remove('sort-asc') } else { this.classList.add('sort-asc'); this.classList.remove('sort-desc')} return false;">Date</a>
+</th>
+<th>
+<a class="sort" data-sort="listing-title-sort" onclick="if (this.classList.contains('sort-asc')) { this.classList.add('sort-desc'); this.classList.remove('sort-asc') } else { this.classList.add('sort-asc'); this.classList.remove('sort-desc')} return false;">Title</a>
+</th>
+<th>
+Reading Time
+</th>
+</tr>
+</thead>
+<tbody class="list">
+<tr data-index="0" data-listing-file-modified-sort="1710145935745" data-listing-reading-time-sort="3" data-listing-word-count-sort="503" data-listing-title-sort="Lorem Ipsum" data-listing-filename-sort="Lorem Ipsum.qmd">
+<td>
+<span class="listing-image"><div class="listing-item-img-placeholder card-img-top" style="height: 40px;">&nbsp;</div></span>
+</td>
+<td>
+<span class="listing-date">&nbsp;</span>
+</td>
+<td>
+<a href="./posts/Lorem Ipsum.html" class="title listing-title">Lorem Ipsum</a>
+</td>
+<td>
+<span class="listing-reading-time">3 min</span>
+</td>
+</tr>
+<tr data-index="1" data-categories="news,code,analysis" data-listing-date-sort="1710086400000" data-listing-file-modified-sort="1710144481722" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="1" data-listing-word-count-sort="9" data-listing-title-sort="Post With Code" data-listing-filename-sort="index.qmd">
+<td>
+<span class="listing-image"><img src="./posts/post-with-code/image.jpg" style="height: 40px;"></span>
+</td>
+<td>
+<span class="listing-date">Mar 11, 2024</span>
+</td>
+<td>
+<a href="./posts/post-with-code/index.html" class="title listing-title">Post With Code</a>
+</td>
+<td>
+<span class="listing-reading-time">1 min</span>
+</td>
+</tr>
+<tr data-index="2" data-categories="news" data-listing-date-sort="1709827200000" data-listing-file-modified-sort="1710144481721" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="1" data-listing-word-count-sort="32" data-listing-title-sort="Welcome To My Blog" data-listing-filename-sort="index.qmd">
+<td>
+<span class="listing-image"><p class="card-img-top"><img src="posts/welcome/thumbnail.jpg" style="height: 40px;"  class="thumbnail-image card-img"/></p></span>
+</td>
+<td>
+<span class="listing-date">Mar 8, 2024</span>
+</td>
+<td>
+<a href="./posts/welcome/index.html" class="title listing-title">Welcome To My Blog</a>
+</td>
+<td>
+<span class="listing-reading-time">1 min</span>
+</td>
+</tr>
+<tr data-index="3" data-categories="中文" data-listing-date-sort="1689436800000" data-listing-file-modified-sort="1710193309298" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="3" data-listing-word-count-sort="411" data-listing-title-sort="Note0716 (mediation analysis with pymc)" data-listing-filename-sort="note0716.qmd">
+<td>
+<span class="listing-image"><div class="listing-item-img-placeholder card-img-top" style="height: 40px;">&nbsp;</div></span>
+</td>
+<td>
+<span class="listing-date">Jul 16, 2023</span>
+</td>
+<td>
+<a href="./posts/note0716.html" class="title listing-title">Note0716 (mediation analysis with pymc)</a>
+</td>
+<td>
+<span class="listing-reading-time">3 min</span>
+</td>
+</tr>
+</tbody>
+</table>
 <div class="listing-no-matching d-none">
 No matching items
 </div>

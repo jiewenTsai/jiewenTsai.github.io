@@ -3,7 +3,13 @@ title: "Notes"
 listing:
   contents: posts
   sort: "date desc"
-  type: grid
+  type: table
+  fields: 
+    - image 
+    - date
+    - title
+    #- author
+    - reading-time
   categories: true
   sort-ui: true
   filter-ui: true
