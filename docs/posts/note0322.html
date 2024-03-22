@@ -7,6 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 <meta name="author" content="JW Tsai">
+<meta name="dcterms.date" content="2024-03-22">
 
 <title>jw tsai - How to conduct simple slope analysis and make plot with brms</title>
 <style>
@@ -103,6 +104,35 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   }
 }</script>
 
+  <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
+
+<script type="text/javascript">
+const typesetMath = (el) => {
+  if (window.MathJax) {
+    // MathJax Typeset
+    window.MathJax.typeset([el]);
+  } else if (window.katex) {
+    // KaTeX Render
+    var mathElements = el.getElementsByClassName("math");
+    var macros = [];
+    for (var i = 0; i < mathElements.length; i++) {
+      var texText = mathElements[i].firstChild;
+      if (mathElements[i].tagName == "SPAN") {
+        window.katex.render(texText.data, mathElements[i], {
+          displayMode: mathElements[i].classList.contains('display'),
+          throwOnError: false,
+          macros: macros,
+          fleqn: false
+        });
+      }
+    }
+  }
+}
+window.Quarto = {
+  typesetMath
+};
+</script>
 
 <link rel="stylesheet" href="../styles.css">
 </head>
@@ -167,6 +197,12 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
             </div>
     </div>
       
+      <div>
+      <div class="quarto-title-meta-heading">Published</div>
+      <div class="quarto-title-meta-contents">
+        <p class="date">March 22, 2024</p>
+      </div>
+    </div>
     
       
     </div>
@@ -200,69 +236,282 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <div class="cell">
 <details class="code-fold">
 <summary>Code</summary>
-<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(brms)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(brms)</span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(bayestestR)</span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(rstan)</span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(mvtnorm)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+</div>
+<p>Now we have to make a data set including 4 variables: Y, X, M, and W.</p>
+<p>Suppose these four variables follow a multivariate-normal distribution as follows,</p>
+<p>Let X is a treatment (binary data), and M is a response time data (lognormal).</p>
+<p><span class="math display">\[\begin{equation}
+\begin{bmatrix}
+Y \\ X \\M \\W
+\end{bmatrix}
+= \text{MVN}\left(
+\begin{bmatrix}
+0 \\0 \\ 0\\ 0
+\end{bmatrix},
+\begin{bmatrix}
+1 &amp; 0.1 &amp; -0.8 &amp; 0.8  \\
+0.1 &amp; 1 &amp; -0.6 &amp; 0\\
+-0.8 &amp; -0.6 &amp; 1 &amp; 0.6\\
+0.8 &amp; 0.6 &amp; 0 &amp; 1
+\end{bmatrix}
+\right)
+\end{equation}\]</span></p>
+<div class="cell">
+<details class="code-fold">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">12345</span>)</span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>real_sigma <span class="ot">&lt;-</span> <span class="fu">matrix</span>(<span class="fu">c</span>(<span class="dv">1</span>, <span class="fl">0.1</span>, <span class="sc">-</span><span class="fl">0.8</span>, <span class="fl">0.8</span>,</span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>                      <span class="fl">0.1</span>, <span class="dv">1</span>, <span class="sc">-</span><span class="fl">0.6</span>, <span class="dv">0</span>,</span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a>                      <span class="sc">-</span><span class="fl">0.8</span>, <span class="sc">-</span><span class="fl">0.6</span>, <span class="dv">1</span>, <span class="fl">0.6</span>,</span>
+<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a>                      <span class="fl">0.8</span>, <span class="dv">0</span>, <span class="fl">0.6</span>, <span class="dv">1</span>), <span class="at">nrow =</span> <span class="dv">4</span>)</span>
+<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a>real_mean <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">0</span>,<span class="dv">0</span>,<span class="dv">0</span>,<span class="dv">0</span>)</span>
+<span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-8"><a href="#cb2-8" aria-hidden="true" tabindex="-1"></a>real_data <span class="ot">&lt;-</span> <span class="fu">rmvnorm</span>(<span class="at">n =</span> <span class="dv">1000</span>, <span class="at">mean =</span> real_mean, <span class="at">sigma =</span> real_sigma)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-output cell-output-stderr">
-<pre><code>Loading required package: Rcpp</code></pre>
-</div>
-<div class="cell-output cell-output-stderr">
-<pre><code>Loading 'brms' package (version 2.20.4). Useful instructions
-can be found by typing help('brms'). A more detailed introduction
-to the package is available through vignette('brms_overview').</code></pre>
-</div>
-<div class="cell-output cell-output-stderr">
-<pre><code>
-Attaching package: 'brms'</code></pre>
-</div>
-<div class="cell-output cell-output-stderr">
-<pre><code>The following object is masked from 'package:stats':
-
-    ar</code></pre>
+<pre><code>Warning in rmvnorm(n = 1000, mean = real_mean, sigma = real_sigma): sigma is
+numerically not positive semidefinite</code></pre>
 </div>
 <details class="code-fold">
 <summary>Code</summary>
-<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(bayestestR)</span>
-<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(rstan)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>dat <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(</span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>  <span class="at">ID =</span> <span class="fu">paste0</span>(<span class="st">'s'</span>, <span class="fu">str_pad</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">1000</span>, <span class="at">width =</span> <span class="dv">4</span>, <span class="at">side =</span> <span class="st">'left'</span>, <span class="at">pad =</span> <span class="dv">0</span>)),</span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a>  <span class="at">Y =</span> real_data[,<span class="dv">1</span>],</span>
+<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a>  <span class="at">X =</span> real_data[,<span class="dv">2</span>] <span class="sc">&gt;</span> <span class="fu">mean</span>(real_data[,<span class="dv">2</span>]),</span>
+<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a>  <span class="at">M =</span> <span class="fu">exp</span>(real_data[,<span class="dv">3</span>]),</span>
+<span id="cb4-6"><a href="#cb4-6" aria-hidden="true" tabindex="-1"></a>  <span class="at">W =</span> real_data[,<span class="dv">4</span>]</span>
+<span id="cb4-7"><a href="#cb4-7" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb4-8"><a href="#cb4-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-9"><a href="#cb4-9" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(dat)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
-<div class="cell-output cell-output-stderr">
-<pre><code>Loading required package: StanHeaders</code></pre>
-</div>
-<div class="cell-output cell-output-stderr">
-<pre><code>
-rstan version 2.32.6 (Stan version 2.32.2)</code></pre>
-</div>
-<div class="cell-output cell-output-stderr">
-<pre><code>For execution on a local, multicore CPU with excess RAM we recommend calling
-options(mc.cores = parallel::detectCores()).
-To avoid recompilation of unchanged Stan programs, we recommend calling
-rstan_options(auto_write = TRUE)
-For within-chain threading using `reduce_sum()` or `map_rect()` Stan functions,
-change `threads_per_chain` option:
-rstan_options(threads_per_chain = 1)</code></pre>
+<div class="cell-output cell-output-stdout">
+<pre><code>     ID          Y     X         M          W
+1 s0001  0.3617174  TRUE 0.4790760 -0.1639895
+2 s0002  0.1110080 FALSE 2.0490296  0.2046531
+3 s0003  0.6187169 FALSE 2.6247616  1.4401394
+4 s0004  1.0347476  TRUE 0.5084054  0.6434533
+5 s0005 -1.1477318 FALSE 4.8633851  0.2686688
+6 s0006  0.2802449  TRUE 0.1476185 -1.2412565</code></pre>
 </div>
 </div>
 </section>
 <section id="fit-bayesian-model-in-brms" class="level2">
 <h2 class="anchored" data-anchor-id="fit-bayesian-model-in-brms">Fit Bayesian model in <code>brms</code></h2>
+<p>Now we specify the formula as follows (in Bayesian).</p>
+<span class="math display">\[\begin{align}
+\text{Likelihood.}\\
+Y &amp;\sim N(\mu_y, \sigma_y^2) \\
+M &amp;\sim \log N(\mu_m, \sigma_m^2) \\
+
+\mu_y &amp;= \beta_{01} + \beta_x X + \beta_m M + \beta_w W + \beta _{mw}M \cdot W \\
+\mu_m &amp;= \beta_{02} + \beta_x X \\ \\
+
+\text{Priors.}\\
+
+\sigma_y^2, \sigma_m^2 &amp; \sim \text{Exp}(1) \\
+\beta_{01}, ..., \beta _{x} &amp;\sim N(0,5)
+\end{align}\]</span>
+<div class="cell">
+<details class="code-fold">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>bf1 <span class="ot">&lt;-</span> <span class="fu">bf</span>(Y<span class="sc">~</span>X<span class="sc">+</span>M<span class="sc">+</span>W<span class="sc">+</span>M<span class="sc">*</span>W, <span class="at">family =</span> <span class="fu">gaussian</span>())</span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>bf2 <span class="ot">&lt;-</span> <span class="fu">bf</span>(M<span class="sc">~</span>X, <span class="at">family =</span> <span class="fu">lognormal</span>())</span>
+<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a>priors <span class="ot">&lt;-</span> <span class="fu">prior</span>(<span class="fu">normal</span>(<span class="dv">0</span>,<span class="dv">5</span>), <span class="at">class =</span> b, <span class="at">resp =</span> Y) <span class="sc">+</span> </span>
+<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">prior</span>(<span class="fu">normal</span>(<span class="dv">0</span>,<span class="dv">5</span>), <span class="at">class =</span> b, <span class="at">resp =</span> M) <span class="sc">+</span> </span>
+<span id="cb6-5"><a href="#cb6-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">prior</span>(<span class="fu">exponential</span>(<span class="dv">1</span>), <span class="at">class =</span> sigma, <span class="at">resp =</span> Y) <span class="sc">+</span></span>
+<span id="cb6-6"><a href="#cb6-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">prior</span>(<span class="fu">exponential</span>(<span class="dv">1</span>), <span class="at">class =</span> sigma, <span class="at">resp =</span> M) </span>
+<span id="cb6-7"><a href="#cb6-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-8"><a href="#cb6-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-9"><a href="#cb6-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-10"><a href="#cb6-10" aria-hidden="true" tabindex="-1"></a>fit <span class="ot">&lt;-</span> <span class="fu">brm</span>(</span>
+<span id="cb6-11"><a href="#cb6-11" aria-hidden="true" tabindex="-1"></a>  bf1<span class="sc">+</span>bf2<span class="sc">+</span><span class="fu">set_rescor</span>(<span class="cn">FALSE</span>), </span>
+<span id="cb6-12"><a href="#cb6-12" aria-hidden="true" tabindex="-1"></a>  <span class="at">data =</span> dat,</span>
+<span id="cb6-13"><a href="#cb6-13" aria-hidden="true" tabindex="-1"></a>  <span class="at">cores =</span> <span class="dv">4</span></span>
+<span id="cb6-14"><a href="#cb6-14" aria-hidden="true" tabindex="-1"></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-stderr">
+<pre><code>Compiling Stan program...</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Start sampling</code></pre>
+</div>
+</div>
+<div class="cell">
+<details class="code-fold">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(fit, <span class="at">digits =</span> <span class="dv">3</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-stdout">
+<pre><code> Family: MV(gaussian, lognormal) 
+  Links: mu = identity; sigma = identity
+         mu = identity; sigma = identity 
+Formula: Y ~ X + M + W + M * W 
+         M ~ X 
+   Data: dat (Number of observations: 1000) 
+  Draws: 4 chains, each with iter = 2000; warmup = 1000; thin = 1;
+         total post-warmup draws = 4000
+
+Population-Level Effects: 
+            Estimate Est.Error l-95% CI u-95% CI  Rhat Bulk_ESS Tail_ESS
+Y_Intercept    0.647     0.035    0.579    0.713 1.001     3627     3025
+M_Intercept    0.490     0.043    0.405    0.575 1.002     4437     2572
+Y_XTRUE       -0.164     0.039   -0.241   -0.089 1.000     4362     2630
+Y_M           -0.366     0.011   -0.387   -0.345 1.000     3287     3126
+Y_W            0.604     0.020    0.566    0.644 1.001     3859     3037
+Y_M:W          0.100     0.006    0.087    0.112 1.001     3043     2718
+M_XTRUE       -0.856     0.062   -0.983   -0.737 1.001     4578     2425
+
+Family Specific Parameters: 
+        Estimate Est.Error l-95% CI u-95% CI  Rhat Bulk_ESS Tail_ESS
+sigma_Y    0.570     0.013    0.545    0.595 1.001     5210     3214
+sigma_M    0.962     0.021    0.921    1.006 1.001     5212     3041
+
+Draws were sampled using sampling(NUTS). For each parameter, Bulk_ESS
+and Tail_ESS are effective sample size measures, and Rhat is the potential
+scale reduction factor on split chains (at convergence, Rhat = 1).</code></pre>
+</div>
+</div>
 </section>
 <section id="bayesian-testing" class="level2">
 <h2 class="anchored" data-anchor-id="bayesian-testing">Bayesian testing</h2>
+<div class="cell">
+<details class="code-fold">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a>fit <span class="sc">|&gt;</span> </span>
+<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">describe_posterior</span>(</span>
+<span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a>    <span class="at">effects =</span> <span class="st">"all"</span>,</span>
+<span id="cb11-4"><a href="#cb11-4" aria-hidden="true" tabindex="-1"></a>    <span class="at">component =</span> <span class="st">"all"</span>,</span>
+<span id="cb11-5"><a href="#cb11-5" aria-hidden="true" tabindex="-1"></a>    <span class="co">#test = c("p_direction", "p_significance"),</span></span>
+<span id="cb11-6"><a href="#cb11-6" aria-hidden="true" tabindex="-1"></a>    <span class="at">centrality =</span> <span class="st">"all"</span></span>
+<span id="cb11-7"><a href="#cb11-7" aria-hidden="true" tabindex="-1"></a>  )</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning: Multivariate response models are not yet supported for tests `rope` and
+  `p_rope`.</code></pre>
+</div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Summary of Posterior Distribution M
+
+Parameter   | Response | Median |  Mean |   MAP |         95% CI |   pd |  Rhat |     ESS
+-----------------------------------------------------------------------------------------
+(Intercept) |        M |   0.49 |  0.49 |  0.48 | [ 0.40,  0.57] | 100% | 1.000 | 4416.00
+XTRUE       |        M |  -0.86 | -0.86 | -0.85 | [-0.98, -0.74] | 100% | 1.000 | 4528.00
+
+# Fixed effects sigma M
+
+Parameter | Response | Median | Mean |  MAP |         95% CI |   pd |  Rhat |     ESS
+-------------------------------------------------------------------------------------
+sigma     |        M |   0.96 | 0.96 | 0.96 | [ 0.92,  1.01] | 100% | 0.999 | 5070.00
+
+# Fixed effects Y
+
+Parameter   | Response | Median |  Mean |   MAP |         95% CI |   pd |  Rhat |     ESS
+-----------------------------------------------------------------------------------------
+(Intercept) |        Y |   0.65 |  0.65 |  0.66 | [ 0.58,  0.71] | 100% | 1.000 | 3579.00
+XTRUE       |        Y |  -0.16 | -0.16 | -0.16 | [-0.24, -0.09] | 100% | 1.000 | 4349.00
+M           |        Y |  -0.37 | -0.37 | -0.36 | [-0.39, -0.34] | 100% | 1.000 | 3257.00
+W           |        Y |   0.60 |  0.60 |  0.60 | [ 0.57,  0.64] | 100% | 1.000 | 3847.00
+M:W         |        Y |   0.10 |  0.10 |  0.10 | [ 0.09,  0.11] | 100% | 1.000 | 3018.00
+
+# Fixed effects sigma Y
+
+Parameter | Response | Median | Mean |  MAP |         95% CI |   pd |  Rhat |     ESS
+-------------------------------------------------------------------------------------
+sigma     |        Y |   0.57 | 0.57 | 0.57 | [ 0.55,  0.60] | 100% | 1.001 | 5065.00</code></pre>
+</div>
+</div>
+<p>The function <code>hypothesis()</code> can be used to test specific parameter.</p>
+<div class="cell">
+<details class="code-fold">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb14"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a>fit_hypo <span class="ot">&lt;-</span> <span class="fu">hypothesis</span>(</span>
+<span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a>  fit, </span>
+<span id="cb14-3"><a href="#cb14-3" aria-hidden="true" tabindex="-1"></a>  <span class="at">class =</span> <span class="st">'b'</span>,</span>
+<span id="cb14-4"><a href="#cb14-4" aria-hidden="true" tabindex="-1"></a>  <span class="at">alpha =</span> .<span class="dv">05</span>,</span>
+<span id="cb14-5"><a href="#cb14-5" aria-hidden="true" tabindex="-1"></a>  <span class="at">hypothesis =</span> </span>
+<span id="cb14-6"><a href="#cb14-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">c</span>(</span>
+<span id="cb14-7"><a href="#cb14-7" aria-hidden="true" tabindex="-1"></a>    <span class="at">Low =</span> <span class="st">"Y_M - Y_M:W = 0"</span>,</span>
+<span id="cb14-8"><a href="#cb14-8" aria-hidden="true" tabindex="-1"></a>    <span class="at">Medium =</span> <span class="st">"Y_M = 0"</span>,</span>
+<span id="cb14-9"><a href="#cb14-9" aria-hidden="true" tabindex="-1"></a>    <span class="at">High =</span> <span class="st">"Y_M + Y_M:W = 0"</span>)</span>
+<span id="cb14-10"><a href="#cb14-10" aria-hidden="true" tabindex="-1"></a>  ) </span>
+<span id="cb14-11"><a href="#cb14-11" aria-hidden="true" tabindex="-1"></a>fit_hypo</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-stdout">
+<pre><code>Hypothesis Tests for class b:
+  Hypothesis Estimate Est.Error CI.Lower CI.Upper Evid.Ratio Post.Prob Star
+1        Low    -0.47      0.02    -0.50    -0.44         NA        NA    *
+2     Medium    -0.37      0.01    -0.39    -0.34         NA        NA    *
+3       High    -0.27      0.01    -0.28    -0.25         NA        NA    *
+---
+'CI': 90%-CI for one-sided and 95%-CI for two-sided hypotheses.
+'*': For one-sided hypotheses, the posterior probability exceeds 95%;
+for two-sided hypotheses, the value tested against lies outside the 95%-CI.
+Posterior probabilities of point hypotheses assume equal prior probabilities.</code></pre>
+</div>
+</div>
 </section>
 <section id="make-plots" class="level2">
 <h2 class="anchored" data-anchor-id="make-plots">Make plots</h2>
+<div class="cell">
+<details class="code-fold">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb16"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="do">## plotting ----</span></span>
+<span id="cb16-2"><a href="#cb16-2" aria-hidden="true" tabindex="-1"></a>cond_plot <span class="ot">&lt;-</span> <span class="fu">conditional_effects</span>(fit)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+</div>
+<div class="cell">
+<details class="code-fold">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb17"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a>cond_plot<span class="sc">$</span><span class="st">`</span><span class="at">Y.Y_M:W</span><span class="st">`</span> <span class="sc">|&gt;</span></span>
+<span id="cb17-2"><a href="#cb17-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> M, <span class="at">y =</span> Y), ) <span class="sc">+</span></span>
+<span id="cb17-3"><a href="#cb17-3" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb17-4"><a href="#cb17-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_ribbon</span>(<span class="fu">aes</span>(<span class="at">x =</span> effect1__, <span class="at">y =</span> estimate__, <span class="at">linetype =</span> effect2__,</span>
+<span id="cb17-5"><a href="#cb17-5" aria-hidden="true" tabindex="-1"></a>                  <span class="at">ymin =</span> lower__, <span class="at">ymax =</span> upper__, <span class="at">fill =</span> <span class="fu">factor</span>(effect2__)), <span class="at">alpha =</span> <span class="fl">0.5</span>) <span class="sc">+</span></span>
+<span id="cb17-6"><a href="#cb17-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_line</span>(<span class="fu">aes</span>(<span class="at">x =</span> effect1__, <span class="at">y =</span> estimate__, <span class="at">linetype =</span> effect2__)) <span class="sc">+</span></span>
+<span id="cb17-7"><a href="#cb17-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_fill_manual</span>(<span class="at">name =</span> <span class="st">'W effects'</span>,</span>
+<span id="cb17-8"><a href="#cb17-8" aria-hidden="true" tabindex="-1"></a>                    <span class="at">values =</span> <span class="fu">c</span>(<span class="st">"coral4"</span>, <span class="st">"coral3"</span>, <span class="st">"coral2"</span>),</span>
+<span id="cb17-9"><a href="#cb17-9" aria-hidden="true" tabindex="-1"></a>                    <span class="at">labels =</span> <span class="fu">c</span>(<span class="st">"High </span><span class="sc">\n</span><span class="st">(Mean+1SD)"</span>, <span class="st">"Average </span><span class="sc">\n</span><span class="st">(Mean)"</span>, <span class="st">"Low </span><span class="sc">\n</span><span class="st">(Mean-1SD)"</span>),</span>
+<span id="cb17-10"><a href="#cb17-10" aria-hidden="true" tabindex="-1"></a>                    ) <span class="sc">+</span></span>
+<span id="cb17-11"><a href="#cb17-11" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_linetype_manual</span>(<span class="at">name =</span> <span class="st">'W effects'</span>,</span>
+<span id="cb17-12"><a href="#cb17-12" aria-hidden="true" tabindex="-1"></a>                        <span class="at">values =</span> <span class="fu">c</span>(<span class="st">"solid"</span>, <span class="st">"dotted"</span>, <span class="st">"dashed"</span>),</span>
+<span id="cb17-13"><a href="#cb17-13" aria-hidden="true" tabindex="-1"></a>                        <span class="at">labels =</span> <span class="fu">c</span>(<span class="st">"High </span><span class="sc">\n</span><span class="st">(Mean+1SD)"</span>, <span class="st">"Average </span><span class="sc">\n</span><span class="st">(Mean)"</span>, <span class="st">"Low </span><span class="sc">\n</span><span class="st">(Mean-1SD)"</span>)) <span class="sc">+</span></span>
+<span id="cb17-14"><a href="#cb17-14" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">x =</span> <span class="st">"the M"</span>, </span>
+<span id="cb17-15"><a href="#cb17-15" aria-hidden="true" tabindex="-1"></a>       <span class="at">y =</span> <span class="st">"the Y"</span>) <span class="sc">+</span></span>
+<span id="cb17-16"><a href="#cb17-16" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggtitle</span>(<span class="st">'M * W'</span>) <span class="sc">+</span></span>
+<span id="cb17-17"><a href="#cb17-17" aria-hidden="true" tabindex="-1"></a>  <span class="fu">annotate</span>(<span class="st">"text"</span>, <span class="at">x=</span><span class="dv">10</span>, <span class="at">y=</span><span class="sc">-</span><span class="dv">8</span>, <span class="at">label=</span> <span class="st">"Low </span><span class="sc">\n</span><span class="st"> b=-0.47, [-0.49, -0.44]"</span>) <span class="sc">+</span></span>
+<span id="cb17-18"><a href="#cb17-18" aria-hidden="true" tabindex="-1"></a>  <span class="fu">annotate</span>(<span class="st">"text"</span>, <span class="at">x=</span><span class="dv">25</span>, <span class="at">y=</span><span class="sc">-</span><span class="dv">7</span>, <span class="at">label=</span> <span class="st">"Average </span><span class="sc">\n</span><span class="st"> b=-0.37, [-0.38, -0.35]"</span>) <span class="sc">+</span></span>
+<span id="cb17-19"><a href="#cb17-19" aria-hidden="true" tabindex="-1"></a>  <span class="fu">annotate</span>(<span class="st">"text"</span>, <span class="at">x=</span><span class="dv">20</span>, <span class="at">y=</span><span class="dv">0</span>, <span class="at">label=</span> <span class="st">"High </span><span class="sc">\n</span><span class="st"> b=-0.27, [-0.28, -0.25]"</span>) <span class="sc">+</span></span>
+<span id="cb17-20"><a href="#cb17-20" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb17-21"><a href="#cb17-21" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_minimal</span>(<span class="at">base_size =</span> <span class="dv">16</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="note0322_files/figure-html/unnamed-chunk-8-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
 
 
 </section>
 
-<div id="quarto-appendix" class="default"><section class="quarto-appendix-contents" id="quarto-citation"><h2 class="anchored quarto-appendix-heading">Citation</h2><div><div class="quarto-appendix-secondary-label">BibTeX citation:</div><pre class="sourceCode code-with-copy quarto-appendix-bibtex"><code class="sourceCode bibtex">@online{tsai,
+<div id="quarto-appendix" class="default"><section class="quarto-appendix-contents" id="quarto-citation"><h2 class="anchored quarto-appendix-heading">Citation</h2><div><div class="quarto-appendix-secondary-label">BibTeX citation:</div><pre class="sourceCode code-with-copy quarto-appendix-bibtex"><code class="sourceCode bibtex">@online{tsai2024,
   author = {Tsai, JW},
   title = {How to Conduct Simple Slope Analysis and Make Plot with
     `Brms`},
+  date = {2024-03-22},
   langid = {en}
 }
-</code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre><div class="quarto-appendix-secondary-label">For attribution, please cite this work as:</div><div id="ref-tsai" class="csl-entry quarto-appendix-citeas" role="listitem">
-Tsai, J. (n.d.). <em>How to conduct simple slope analysis and make plot
-with `brms`</em>.
+</code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre><div class="quarto-appendix-secondary-label">For attribution, please cite this work as:</div><div id="ref-tsai2024" class="csl-entry quarto-appendix-citeas" role="listitem">
+Tsai, J. (2024, March 22). <em>How to conduct simple slope analysis and
+make plot with `brms`</em>.
 </div></div></section></div></main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
 window.document.addEventListener("DOMContentLoaded", function (event) {

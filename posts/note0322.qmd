@@ -1,26 +1,173 @@
 ---
 title: "How to conduct simple slope analysis and make plot with `brms`"
 author: 'JW Tsai'
+date: 2024-03-22
 categories: 
   - brms
   - Bayesian
 ---
 
-**Goal.** In this note, we will demonstrate how to use the output from `brms` to make (simple slope) testings and plots.  
+**Goal.** In this note, we will demonstrate how to use the output from `brms` to make (simple slope) testings and plots.
 
 ## Make data
 
-```{r}
+```{r, message=FALSE}
+library(tidyverse)
 library(brms)
 library(bayestestR)
 library(rstan)
+library(mvtnorm)
+```
+
+Now we have to make a data set including 4 variables: Y, X, M, and W.
+
+Suppose these four variables follow a multivariate-normal distribution as follows,
+
+Let X is a treatment (binary data), and M is a response time data (lognormal).
+
+\begin{equation}
+\begin{bmatrix}
+Y \\ X \\M \\W 
+\end{bmatrix}
+= \text{MVN}\left(
+\begin{bmatrix}
+0 \\0 \\ 0\\ 0
+\end{bmatrix},
+\begin{bmatrix}
+1 & 0.1 & -0.8 & 0.8  \\
+0.1 & 1 & -0.6 & 0\\ 
+-0.8 & -0.6 & 1 & 0.6\\
+0.8 & 0.6 & 0 & 1
+\end{bmatrix}
+\right)
+\end{equation}
+
+```{r}
+set.seed(12345)
+real_sigma <- matrix(c(1, 0.1, -0.8, 0.8,
+                      0.1, 1, -0.6, 0,
+                      -0.8, -0.6, 1, 0.6,
+                      0.8, 0, 0.6, 1), nrow = 4)
+real_mean <- c(0,0,0,0)
+
+real_data <- rmvnorm(n = 1000, mean = real_mean, sigma = real_sigma)
+
+dat <- data.frame(
+  ID = paste0('s', str_pad(1:1000, width = 4, side = 'left', pad = 0)),
+  Y = real_data[,1],
+  X = real_data[,2] > mean(real_data[,2]),
+  M = exp(real_data[,3]),
+  W = real_data[,4]
+)
+
+head(dat)
 ```
 
 ## Fit Bayesian model in `brms`
 
+Now we specify the formula as follows (in Bayesian).
 
-## Bayesian testing 
+```{=tex}
+\begin{align}
+\text{Likelihood.}\\
+Y &\sim N(\mu_y, \sigma_y^2) \\
+M &\sim \log N(\mu_m, \sigma_m^2) \\
+
+\mu_y &= \beta_{01} + \beta_x X + \beta_m M + \beta_w W + \beta _{mw}M \cdot W \\
+\mu_m &= \beta_{02} + \beta_x X \\ \\
+
+\text{Priors.}\\
+
+\sigma_y^2, \sigma_m^2 & \sim \text{Exp}(1) \\
+\beta_{01}, ..., \beta _{x} &\sim N(0,5) 
+\end{align}
+```
+
+
+```{r}
+bf1 <- bf(Y~X+M+W+M*W, family = gaussian())
+bf2 <- bf(M~X, family = lognormal())
+priors <- prior(normal(0,5), class = b, resp = Y) + 
+  prior(normal(0,5), class = b, resp = M) + 
+  prior(exponential(1), class = sigma, resp = Y) +
+  prior(exponential(1), class = sigma, resp = M) 
+
+
+
+fit <- brm(
+  bf1+bf2+set_rescor(FALSE), 
+  data = dat,
+  cores = 4
+)
+
+```
+
+```{r}
+print(fit, digits = 3)
+
+```
+
+## Bayesian testing
+
+```{r}
+fit |> 
+  describe_posterior(
+    effects = "all",
+    component = "all",
+    #test = c("p_direction", "p_significance"),
+    centrality = "all"
+  )
+
+```
+
+The function `hypothesis()` can be used to test specific parameter.
+
+```{r}
+fit_hypo <- hypothesis(
+  fit, 
+  class = 'b',
+  alpha = .05,
+  hypothesis = 
+  c(
+    Low = "Y_M - Y_M:W = 0",
+    Medium = "Y_M = 0",
+    High = "Y_M + Y_M:W = 0")
+  ) 
+fit_hypo
+```
+
 
 
 ## Make plots
 
+
+
+```{r}
+## plotting ----
+cond_plot <- conditional_effects(fit)
+```
+
+```{r}
+cond_plot$`Y.Y_M:W` |>
+  ggplot(aes(x = M, y = Y), ) +
+  
+  geom_ribbon(aes(x = effect1__, y = estimate__, linetype = effect2__,
+                  ymin = lower__, ymax = upper__, fill = factor(effect2__)), alpha = 0.5) +
+  geom_line(aes(x = effect1__, y = estimate__, linetype = effect2__)) +
+  scale_fill_manual(name = 'W effects',
+                    values = c("coral4", "coral3", "coral2"),
+                    labels = c("High \n(Mean+1SD)", "Average \n(Mean)", "Low \n(Mean-1SD)"),
+                    ) +
+  scale_linetype_manual(name = 'W effects',
+                        values = c("solid", "dotted", "dashed"),
+                        labels = c("High \n(Mean+1SD)", "Average \n(Mean)", "Low \n(Mean-1SD)")) +
+  labs(x = "the M", 
+       y = "the Y") +
+  ggtitle('M * W') +
+  annotate("text", x=10, y=-8, label= "Low \n b=-0.47, [-0.49, -0.44]") +
+  annotate("text", x=25, y=-7, label= "Average \n b=-0.37, [-0.38, -0.35]") +
+  annotate("text", x=20, y=0, label= "High \n b=-0.27, [-0.28, -0.25]") +
+  
+  theme_minimal(base_size = 16)
+
+```

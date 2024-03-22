@@ -1,7 +1,10 @@
 ---
 title: |
   | Hello, 
-  | This is Jie-Wen Tsai's blog.
+  | Jie-Wen Tsai's blog.
 citation: false
 comments: false
 ---
+
+-   Psychometrics
+-   Bayesian data analysis
