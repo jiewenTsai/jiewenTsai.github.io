@@ -258,7 +258,7 @@ Y \\ X \\M \\W
 1 &amp; 0.1 &amp; -0.8 &amp; 0.8  \\
 0.1 &amp; 1 &amp; -0.6 &amp; 0\\
 -0.8 &amp; -0.6 &amp; 1 &amp; 0.6\\
-0.8 &amp; 0.6 &amp; 0 &amp; 1
+0.8 &amp; 0 &amp; 0.6 &amp; 1
 \end{bmatrix}
 \right)
 \end{equation}\]</span></p>
@@ -359,18 +359,18 @@ Formula: Y ~ X + M + W + M * W
 
 Population-Level Effects: 
             Estimate Est.Error l-95% CI u-95% CI  Rhat Bulk_ESS Tail_ESS
-Y_Intercept    0.647     0.035    0.579    0.713 1.001     3627     3025
-M_Intercept    0.490     0.043    0.405    0.575 1.002     4437     2572
-Y_XTRUE       -0.164     0.039   -0.241   -0.089 1.000     4362     2630
-Y_M           -0.366     0.011   -0.387   -0.345 1.000     3287     3126
-Y_W            0.604     0.020    0.566    0.644 1.001     3859     3037
-Y_M:W          0.100     0.006    0.087    0.112 1.001     3043     2718
-M_XTRUE       -0.856     0.062   -0.983   -0.737 1.001     4578     2425
+Y_Intercept    0.648     0.034    0.580    0.714 1.001     3884     3206
+M_Intercept    0.489     0.043    0.405    0.576 1.000     4405     2509
+Y_XTRUE       -0.164     0.037   -0.237   -0.089 1.000     4565     3114
+Y_M           -0.366     0.010   -0.385   -0.345 1.002     3451     3006
+Y_W            0.605     0.019    0.567    0.642 1.001     4067     2995
+Y_M:W          0.100     0.006    0.088    0.112 1.002     3095     3208
+M_XTRUE       -0.857     0.061   -0.978   -0.734 1.000     4898     2554
 
 Family Specific Parameters: 
         Estimate Est.Error l-95% CI u-95% CI  Rhat Bulk_ESS Tail_ESS
-sigma_Y    0.570     0.013    0.545    0.595 1.001     5210     3214
-sigma_M    0.962     0.021    0.921    1.006 1.001     5212     3041
+sigma_Y    0.570     0.013    0.545    0.595 1.000     6063     3219
+sigma_M    0.962     0.021    0.921    1.005 1.000     6107     3212
 
 Draws were sampled using sampling(NUTS). For each parameter, Bulk_ESS
 and Tail_ESS are effective sample size measures, and Rhat is the potential
@@ -400,30 +400,30 @@ scale reduction factor on split chains (at convergence, Rhat = 1).</code></pre>
 
 Parameter   | Response | Median |  Mean |   MAP |         95% CI |   pd |  Rhat |     ESS
 -----------------------------------------------------------------------------------------
-(Intercept) |        M |   0.49 |  0.49 |  0.48 | [ 0.40,  0.57] | 100% | 1.000 | 4416.00
-XTRUE       |        M |  -0.86 | -0.86 | -0.85 | [-0.98, -0.74] | 100% | 1.000 | 4528.00
+(Intercept) |        M |   0.49 |  0.49 |  0.49 | [ 0.41,  0.58] | 100% | 1.000 | 4369.00
+XTRUE       |        M |  -0.86 | -0.86 | -0.87 | [-0.98, -0.73] | 100% | 1.000 | 4838.00
 
 # Fixed effects sigma M
 
 Parameter | Response | Median | Mean |  MAP |         95% CI |   pd |  Rhat |     ESS
 -------------------------------------------------------------------------------------
-sigma     |        M |   0.96 | 0.96 | 0.96 | [ 0.92,  1.01] | 100% | 0.999 | 5070.00
+sigma     |        M |   0.96 | 0.96 | 0.96 | [ 0.92,  1.00] | 100% | 1.000 | 6057.00
 
 # Fixed effects Y
 
 Parameter   | Response | Median |  Mean |   MAP |         95% CI |   pd |  Rhat |     ESS
 -----------------------------------------------------------------------------------------
-(Intercept) |        Y |   0.65 |  0.65 |  0.66 | [ 0.58,  0.71] | 100% | 1.000 | 3579.00
-XTRUE       |        Y |  -0.16 | -0.16 | -0.16 | [-0.24, -0.09] | 100% | 1.000 | 4349.00
-M           |        Y |  -0.37 | -0.37 | -0.36 | [-0.39, -0.34] | 100% | 1.000 | 3257.00
-W           |        Y |   0.60 |  0.60 |  0.60 | [ 0.57,  0.64] | 100% | 1.000 | 3847.00
-M:W         |        Y |   0.10 |  0.10 |  0.10 | [ 0.09,  0.11] | 100% | 1.000 | 3018.00
+(Intercept) |        Y |   0.65 |  0.65 |  0.65 | [ 0.58,  0.71] | 100% | 1.001 | 3824.00
+XTRUE       |        Y |  -0.16 | -0.16 | -0.16 | [-0.24, -0.09] | 100% | 1.000 | 4552.00
+M           |        Y |  -0.37 | -0.37 | -0.37 | [-0.39, -0.35] | 100% | 1.000 | 3427.00
+W           |        Y |   0.60 |  0.60 |  0.60 | [ 0.57,  0.64] | 100% | 1.000 | 4040.00
+M:W         |        Y |   0.10 |  0.10 |  0.10 | [ 0.09,  0.11] | 100% | 0.999 | 3072.00
 
 # Fixed effects sigma Y
 
 Parameter | Response | Median | Mean |  MAP |         95% CI |   pd |  Rhat |     ESS
 -------------------------------------------------------------------------------------
-sigma     |        Y |   0.57 | 0.57 | 0.57 | [ 0.55,  0.60] | 100% | 1.001 | 5065.00</code></pre>
+sigma     |        Y |   0.57 | 0.57 | 0.57 | [ 0.55,  0.60] | 100% | 1.000 | 5961.00</code></pre>
 </div>
 </div>
 <p>The function <code>hypothesis()</code> can be used to test specific parameter.</p>
@@ -445,8 +445,8 @@ sigma     |        Y |   0.57 | 0.57 | 0.57 | [ 0.55,  0.60] | 100% | 1.001 | 50
 <div class="cell-output cell-output-stdout">
 <pre><code>Hypothesis Tests for class b:
   Hypothesis Estimate Est.Error CI.Lower CI.Upper Evid.Ratio Post.Prob Star
-1        Low    -0.47      0.02    -0.50    -0.44         NA        NA    *
-2     Medium    -0.37      0.01    -0.39    -0.34         NA        NA    *
+1        Low    -0.47      0.01    -0.49    -0.44         NA        NA    *
+2     Medium    -0.37      0.01    -0.39    -0.35         NA        NA    *
 3       High    -0.27      0.01    -0.28    -0.25         NA        NA    *
 ---
 'CI': 90%-CI for one-sided and 95%-CI for two-sided hypotheses.
