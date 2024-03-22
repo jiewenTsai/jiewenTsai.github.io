@@ -16,6 +16,7 @@ listing:
 page-layout: article
 title-block-banner: true
 citation: false
+comments: false
 execute:
   freeze: auto
 ---
