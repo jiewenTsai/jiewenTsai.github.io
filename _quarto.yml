@@ -4,17 +4,17 @@ project:
   
 
 website:
-  title: "jw tsai"
+  title: "𝙅𝙒 𝙏𝙎𝘼𝙄"
   page-footer:
-    center: © 2024- jw tsai. All rights reserved.
+    center: © 2024- 𝙅𝙒 𝙏𝙎𝘼𝙄. All rights reserved.
   navbar:
     right:
       - text: About
-        href: about.qmd
+        href: index.qmd
       - text: Notes
         href: notes.qmd
       - icon: github
-        href: https://github.com/
+        href: https://github.com/jiewenTsai
 
   search: 
     location: navbar

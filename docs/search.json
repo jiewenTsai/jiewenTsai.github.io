@@ -2,7 +2,7 @@
   {
     "objectID": "index.html",
     "href": "index.html",
-    "title": "Hello,\nJie-Wen Tsai’s blog.",
+    "title": "Hi,\nI’m Jie-Wen Tsai.",
     "section": "",
     "text": "Psychometrics\nBayesian data analysis"
   },
@@ -110,5 +110,12 @@
     "title": "How to conduct simple slope analysis and make plot with brms",
     "section": "Make plots",
     "text": "Make plots\n\n\nCode\n## plotting ----\ncond_plot &lt;- conditional_effects(fit)\n\n\n\n\nCode\ncond_plot$`Y.Y_M:W` |&gt;\n  ggplot(aes(x = M, y = Y), ) +\n  \n  geom_ribbon(aes(x = effect1__, y = estimate__, linetype = effect2__,\n                  ymin = lower__, ymax = upper__, fill = factor(effect2__)), alpha = 0.5) +\n  geom_line(aes(x = effect1__, y = estimate__, linetype = effect2__)) +\n  scale_fill_manual(name = 'W effects',\n                    values = c(\"coral4\", \"coral3\", \"coral2\"),\n                    labels = c(\"High \\n(Mean+1SD)\", \"Average \\n(Mean)\", \"Low \\n(Mean-1SD)\"),\n                    ) +\n  scale_linetype_manual(name = 'W effects',\n                        values = c(\"solid\", \"dotted\", \"dashed\"),\n                        labels = c(\"High \\n(Mean+1SD)\", \"Average \\n(Mean)\", \"Low \\n(Mean-1SD)\")) +\n  labs(x = \"the M\", \n       y = \"the Y\") +\n  ggtitle('M * W') +\n  annotate(\"text\", x=10, y=-8, label= \"Low \\n b=-0.47, [-0.49, -0.44]\") +\n  annotate(\"text\", x=25, y=-7, label= \"Average \\n b=-0.37, [-0.38, -0.35]\") +\n  annotate(\"text\", x=20, y=0, label= \"High \\n b=-0.27, [-0.28, -0.25]\") +\n  \n  theme_minimal(base_size = 16)"
+  },
+  {
+    "objectID": "index.html#interesting.",
+    "href": "index.html#interesting.",
+    "title": "Hi,\nI’m Jie-Wen Tsai.",
+    "section": "Interesting.",
+    "text": "Interesting.\n\nPsychometrics\nBayesian data analysis"
   }
 ]
