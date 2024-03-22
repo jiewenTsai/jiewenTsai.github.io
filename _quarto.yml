@@ -32,5 +32,10 @@ format:
     toc: true
     citation: true
     csl: theapa7.csl
+    
+    
+comments:
+  utterances:
+    repo: jiewenTsai/jiewenTsai.github.io
 editor: visual
 

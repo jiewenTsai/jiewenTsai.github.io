@@ -74,6 +74,41 @@
     "href": "notes.html",
     "title": "Notes",
     "section": "",
-    "text": "Order By\n       Default\n         \n          Date - Oldest\n        \n         \n          Date - Newest\n        \n         \n          Title\n        \n     \n  \n    \n      \n      \n    \n\n\n\n\n\n\n\nDate\n\n\nTitle\n\n\nReading Time\n\n\n\n\n\n\n\n\n\n \n\n\nLorem Ipsum\n\n\n3 min\n\n\n\n\n\n\n\nMar 11, 2024\n\n\nPost With Code\n\n\n1 min\n\n\n\n\n\n\n\nMar 8, 2024\n\n\nWelcome To My Blog\n\n\n1 min\n\n\n\n\n\n\n\nJul 16, 2023\n\n\nNote0716 (mediation analysis with pymc)\n\n\n3 min\n\n\n\n\n\nNo matching items"
+    "text": "Order By\n       Default\n         \n          Date - Oldest\n        \n         \n          Date - Newest\n        \n         \n          Title\n        \n     \n  \n    \n      \n      \n    \n\n\n\n\n\n\n\nDate\n\n\nTitle\n\n\nReading Time\n\n\n\n\n\n\n\n\n\n \n\n\nHow to conduct simple slope analysis and make plot with brms\n\n\n1 min\n\n\n\n\n\n\n\n \n\n\nLorem Ipsum\n\n\n3 min\n\n\n\n\n\n\n\nMar 11, 2024\n\n\nPost With Code\n\n\n1 min\n\n\n\n\n\n\n\nMar 8, 2024\n\n\nWelcome To My Blog\n\n\n1 min\n\n\n\n\n\n\n\nJul 16, 2023\n\n\nNote0716 (mediation analysis with pymc)\n\n\n3 min\n\n\n\n\n\nNo matching items"
+  },
+  {
+    "objectID": "posts/note0322.html",
+    "href": "posts/note0322.html",
+    "title": "How to conduct simple slope analysis and make plot with brms",
+    "section": "",
+    "text": "Goal. In this note, we will demonstrate how to use the output from brms to make (simple slope) testings and plots."
+  },
+  {
+    "objectID": "posts/note0322.html#make-data",
+    "href": "posts/note0322.html#make-data",
+    "title": "How to conduct simple slope analysis and make plot with brms",
+    "section": "Make data",
+    "text": "Make data\n\n\nCode\nlibrary(brms)\n\n\nLoading required package: Rcpp\n\n\nLoading 'brms' package (version 2.20.4). Useful instructions\ncan be found by typing help('brms'). A more detailed introduction\nto the package is available through vignette('brms_overview').\n\n\n\nAttaching package: 'brms'\n\n\nThe following object is masked from 'package:stats':\n\n    ar\n\n\nCode\nlibrary(bayestestR)\nlibrary(rstan)\n\n\nLoading required package: StanHeaders\n\n\n\nrstan version 2.32.6 (Stan version 2.32.2)\n\n\nFor execution on a local, multicore CPU with excess RAM we recommend calling\noptions(mc.cores = parallel::detectCores()).\nTo avoid recompilation of unchanged Stan programs, we recommend calling\nrstan_options(auto_write = TRUE)\nFor within-chain threading using `reduce_sum()` or `map_rect()` Stan functions,\nchange `threads_per_chain` option:\nrstan_options(threads_per_chain = 1)"
+  },
+  {
+    "objectID": "posts/note0322.html#fit-bayesian-model-in-brms",
+    "href": "posts/note0322.html#fit-bayesian-model-in-brms",
+    "title": "How to conduct simple slope analysis and make plot with brms",
+    "section": "Fit Bayesian model in brms",
+    "text": "Fit Bayesian model in brms"
+  },
+  {
+    "objectID": "posts/note0322.html#bayesian-testing",
+    "href": "posts/note0322.html#bayesian-testing",
+    "title": "How to conduct simple slope analysis and make plot with brms",
+    "section": "Bayesian testing",
+    "text": "Bayesian testing"
+  },
+  {
+    "objectID": "posts/note0322.html#make-plots",
+    "href": "posts/note0322.html#make-plots",
+    "title": "How to conduct simple slope analysis and make plot with brms",
+    "section": "Make plots",
+    "text": "Make plots"
   }
 ]

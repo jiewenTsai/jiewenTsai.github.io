@@ -1,0 +1,26 @@
+---
+title: "How to conduct simple slope analysis and make plot with `brms`"
+author: 'JW Tsai'
+categories: 
+  - brms
+  - Bayesian
+---
+
+**Goal.** In this note, we will demonstrate how to use the output from `brms` to make (simple slope) testings and plots.  
+
+## Make data
+
+```{r}
+library(brms)
+library(bayestestR)
+library(rstan)
+```
+
+## Fit Bayesian model in `brms`
+
+
+## Bayesian testing 
+
+
+## Make plots
+

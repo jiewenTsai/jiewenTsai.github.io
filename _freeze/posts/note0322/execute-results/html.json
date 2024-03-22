@@ -1,0 +1,15 @@
+{
+  "hash": "e5088d244b53ef75545f90b52dae9bb3",
+  "result": {
+    "engine": "knitr",
+    "markdown": "---\ntitle: \"How to conduct simple slope analysis and make plot with `brms`\"\nauthor: 'JW Tsai'\ncategories: \n  - brms\n  - Bayesian\n---\n\n\n**Goal.** In this note, we will demonstrate how to use the output from `brms` to make (simple slope) testings and plots.  \n\n## Make data\n\n\n::: {.cell}\n\n```{.r .cell-code}\nlibrary(brms)\n```\n\n::: {.cell-output .cell-output-stderr}\n\n```\nLoading required package: Rcpp\n```\n\n\n:::\n\n::: {.cell-output .cell-output-stderr}\n\n```\nLoading 'brms' package (version 2.20.4). Useful instructions\ncan be found by typing help('brms'). A more detailed introduction\nto the package is available through vignette('brms_overview').\n```\n\n\n:::\n\n::: {.cell-output .cell-output-stderr}\n\n```\n\nAttaching package: 'brms'\n```\n\n\n:::\n\n::: {.cell-output .cell-output-stderr}\n\n```\nThe following object is masked from 'package:stats':\n\n    ar\n```\n\n\n:::\n\n```{.r .cell-code}\nlibrary(bayestestR)\nlibrary(rstan)\n```\n\n::: {.cell-output .cell-output-stderr}\n\n```\nLoading required package: StanHeaders\n```\n\n\n:::\n\n::: {.cell-output .cell-output-stderr}\n\n```\n\nrstan version 2.32.6 (Stan version 2.32.2)\n```\n\n\n:::\n\n::: {.cell-output .cell-output-stderr}\n\n```\nFor execution on a local, multicore CPU with excess RAM we recommend calling\noptions(mc.cores = parallel::detectCores()).\nTo avoid recompilation of unchanged Stan programs, we recommend calling\nrstan_options(auto_write = TRUE)\nFor within-chain threading using `reduce_sum()` or `map_rect()` Stan functions,\nchange `threads_per_chain` option:\nrstan_options(threads_per_chain = 1)\n```\n\n\n:::\n:::\n\n\n## Fit Bayesian model in `brms`\n\n\n## Bayesian testing \n\n\n## Make plots\n\n",
+    "supporting": [],
+    "filters": [
+      "rmarkdown/pagebreak.lua"
+    ],
+    "includes": {},
+    "engineDependencies": {},
+    "preserve": {},
+    "postProcess": true
+  }
+}
