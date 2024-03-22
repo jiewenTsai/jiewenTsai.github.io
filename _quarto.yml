@@ -6,7 +6,7 @@ project:
 website:
   title: "jw tsai"
   page-footer:
-    center: © jw tsai 2024- . All rights reserved.
+    center: © 2024- jw tsai. All rights reserved.
   navbar:
     right:
       - text: About
@@ -24,8 +24,9 @@ website:
 format:
   html:
     theme: 
-      light: flatly
       dark: darkly
+      light: flatly
+      
     css: styles.css
     code-fold: true
     toc: true
