@@ -8,6 +8,7 @@ about:
       text: Github
       href: https://github.com
 citation: false
+comments: false
 ---
 
 About this *jw tsai*.
