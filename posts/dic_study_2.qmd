@@ -1,0 +1,254 @@
+---
+title: Understand DIC
+author: JW Tsai
+date: '2024-03-27'
+jupyter: python3
+---
+
+This mini-study aims to understand how the *DIC* (deviance information criterion) index works.
+
+The common idea of an information criterion is $D + 2pD$. The $D$ (deviance) can also be presented as $-2$ log-likelihood. Besides, a version of `pD` (effective number of parameters) of DIC (as same as `JAGS` program) is defined as the variance of log-likelihood.
+
+```{python}
+import numpy as np
+import pymc as pm
+import arviz as az
+import pandas as pd
+import matplotlib.pyplot as plt
+
+# loading iris data set.
+from sklearn.datasets import load_iris
+iris = load_iris()
+```
+
+## Goals.
+
+這個研究就簡單拿 `iris` 資料集來測試。 我們知道 iris 有 4 個 features: 花萼長度 (Sepal.Length), 花萼寬度 (Sepal.Width), 花瓣長度 (Petal.Length), 花瓣寬度 (Petal.Width)。
+
+我們今天就簡單用 `Sepal.Length ~ Sepal.Width` 這個模式來看看 DIC 怎麼算 此外，為了增加一點參數，我們再使用 3 個 `target`，建立階層線性模式。
+
+因此，模式如下：
+
+$$
+\begin{align}
+\text{Likelihood:} \\
+\text{Length} &\sim N(\mu _w, \sigma^2) \\
+\mu _w &= \beta _0 + \beta _{1i} \text{Width} \\
+\\
+\text{Priors:} \\
+\beta _0, \beta _{1i} &\sim N(0,5) \\
+\sigma &\sim \text{Exp}(1)
+\end{align}
+$$
+
+這邊的 $\beta _{1i}$ 是每一個 level 對應的參數。所以應該會有 3 個。
+
+## jags
+
+Let's see how to run this model in `jags`.
+
+Firstly, we call the `iris` data set (from R default `{datasets}`)
+
+```         
+data(iris)
+```
+
+Secondly, we define the data list and model string in the `{R2jags}` package. The `{R2jags}` allows users to write a jags model just like an R function.
+
+-   The data list.
+
+```         
+dat_list = list(
+  sepal_length = iris$Sepal.Length,
+  sepal_width = iris$Sepal.Width,
+  species = iris$Species,
+  n = 150
+)
+```
+
+-   The model string.
+
+```         
+mod_string <- \(){
+  ## priors
+  beta0 ~ dnorm(0,1/5^2)
+  sigma ~ dexp(1)
+  for (j in 1:3){
+    beta1[j] ~ dnorm(0,1/5^2)
+  }
+  
+  ## likelihood
+  for (i in 1:n){
+    mu_w[i] <- beta0 + beta1[species[i]] * sepal_width[i]
+    sepal_length[i] ~ dnorm(mu_w[i], 1/sigma^2) 
+  }
+}
+```
+
+Finally, we run this model through the `jags` function.
+
+```         
+fit <- jags(data = dat_list, 
+     parameters.to.save = c('beta0','beta1','sigma'),
+     model.file = (mod_string)
+     )
+```
+
+Then, the output of this `jags` model is shown as follows:
+
+```         
+> print(fit, digits = 3)
+Inference for Bugs model at "/var/folders/1f/8r50hwmn6m5dwrngfgysq4p40000gn/T//Rtmpbvfmga/modelab6b34cc72fd.txt", fit using jags,
+ 3 chains, each with 2000 iterations (first 1000 discarded)
+ n.sims = 3000 iterations saved
+         mu.vect sd.vect    2.5%     25%     50%     75%   97.5%  Rhat n.eff
+beta0      3.338   0.333   2.680   3.117   3.336   3.559   3.981 1.001  2400
+beta1[1]   0.488   0.098   0.298   0.424   0.490   0.552   0.685 1.002  1700
+beta1[2]   0.938   0.120   0.700   0.856   0.938   1.019   1.175 1.001  2400
+beta1[3]   1.091   0.113   0.870   1.015   1.091   1.168   1.310 1.002  1900
+sigma      0.444   0.026   0.397   0.426   0.444   0.461   0.496 1.002  1600
+deviance 180.851   3.199 176.629 178.531 180.100 182.442 188.810 1.002  1400
+
+For each parameter, n.eff is a crude measure of effective sample size,
+and Rhat is the potential scale reduction factor (at convergence, Rhat=1).
+
+DIC info (using the rule, pD = var(deviance)/2)
+pD = 5.1 and DIC = 186.0
+DIC is an estimate of expected predictive error (lower deviance is better).
+```
+
+## pymc
+
+Now, we use the `sync` to replicate these results. We are interested in two things,
+
+-   RQ1. to compare the parameters of `beta0`, `beta1`, and `sigma`.
+-   RQ2. to compute the (expected) `deviance`, `pD`, and `DIC`.
+
+```{python}
+iris_data = pd.DataFrame(iris['data'])
+iris_data.columns = iris['feature_names']
+iris_data
+```
+
+```{python}
+#seed=1234
+
+target_index, target = pd.Series(iris['target']).factorize()
+#width_index, width = iris_data[1].factorize()
+
+
+dict = {
+    'target': iris['target_names'], 
+    'target_index': target_index,
+    #'width_index': width_index
+}
+dict
+```
+
+### RQ1.
+
+```{python}
+
+with pm.Model(coords=dict) as iris_model:   
+    ## data
+    sepal_length = pm.Data('sepal_length', iris_data['sepal length (cm)'])
+    sepal_width = pm.Data('sepal_width', iris_data['sepal width (cm)'])
+    
+
+    ## priors
+    beta0 = pm.Normal('β0', 0,5)
+    beta1 = pm.Normal('β1', 0,5, shape=3)
+    sigma = pm.Exponential('σ',1)
+
+    ## likelihood
+    mu_w = beta0 + beta1[target_index] * sepal_width
+    Length = pm.Normal('length', mu_w, sigma, observed=sepal_length)
+
+    ## sampling
+    iris_post = pm.sample( draws=3000, chains=4, cores=4) 
+    pm.compute_log_likelihood(iris_post)
+    #ra_4pl_predict = pm.sample_posterior_predictive(ra_4pl_post)
+    
+```
+
+```{python}
+az.summary(iris_post)
+```
+
+**Concluding remarks.** For the RQ1, the outputs from `jags` and `pymc` show no significant differences.
+
+### RQ2. Computing DIC.
+
+Firstly, let's see the data structure of `log_likelihood` from the `pm.compute_log_likelihood()` function. It's a three-way dimensions tensor. The first dim is for (4) chains, the second for (3000) draws, and the third for length of data (150).
+
+```{python}
+iris_post.log_likelihood
+```
+
+Secondly, let's try to compute the expected deviance (`D`) from this tensor. Due to the output from `jags`, we know the correct answer will be close to 180.851.
+
+Now, we need to compute the `D` (-2ll) for each point (there are a total of 150 points in this study
+
+**Tips.** To sum up the dim we are interested in. In this case, we sum up the dim of `length_dim_0` (`axis=2`). Then we can get 4\*3000 draws for each points.
+
+```{python}
+y_ll = iris_post.log_likelihood['length'].sum(axis=2)
+y_deviance = -2*y_ll
+y_deviance
+```
+
+Then get the posterior mean of it. It is 180.85.
+
+```{python}
+y_deviance.mean()
+```
+
+Thirdly, we need to compute the `pD`. We konw the `pD` will be close to 5.1.
+
+```{python}
+y_deviance.var()/2
+```
+
+Finally, we can compute the `DIC`. It will be close to 186.0. There are two kind of mthods to compute it,
+
+-   Using `log-likelihood`. `-2*y_ll.mean() + 2*y_ll.var()`
+-   Using `deviance`. `y_deviance.mean() + y_deviance.var()/2`
+
+```{python}
+DIC = y_deviance.mean() + y_deviance.var()/2
+DIC
+```
+
+Yes!! Bingo!!
+
+## The easy function.
+
+Furthermore, we write a function to output the strings like the `jags` program.
+
+It will look like,
+
+```         
+DIC info (using the rule, pD = var(deviance)/2)
+deviance = 180.85, pD = 5.1 and DIC = 186.0
+DIC is an estimate of expected predictive error (lower deviance is better).
+```
+
+```{python}
+def get_dic(posterior_tensor, var_names):
+    y_ll = posterior_tensor.log_likelihood[var_names].sum(axis=2).to_numpy()
+    y_deviance = -2*y_ll.mean()
+    y_pd = 2*y_ll.var()
+    y_dic = y_deviance + y_pd
+
+    y_print =   'DIC info (using the rule, pD = var(deviance)/2) \n' +\
+                'mean deviance = {:.3f}, pD = {:.3f} and DIC = {:.3f} \n'.format(y_deviance, y_pd, y_dic) +\
+                'DIC is an estimate of expected predictive error (lower deviance is better).'
+            
+    return print(y_print)
+    
+    
+```
+
+```{python}
+get_dic(iris_post, var_names='length')
+```
