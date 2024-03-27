@@ -2,6 +2,9 @@
 title: Understand DIC
 author: JW Tsai
 date: '2024-03-27'
+categories:
+  - Bayesian
+  - 中文
 jupyter: python3
 ---
 
@@ -145,7 +148,7 @@ dict = {
 dict
 ```
 
-### RQ1.
+### RQ1. Compare `jags` and `pymc`
 
 ```{python}
 
