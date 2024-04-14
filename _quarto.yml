@@ -4,9 +4,9 @@ project:
   
 
 website:
-  title: "𝙅𝙒 𝙏𝙎𝘼𝙄"
+  title: "ᴶᵂ ᵀˢᴬᴵ"
   page-footer:
-    center: © 2024- 𝙅𝙒 𝙏𝙎𝘼𝙄. All rights reserved.
+    center: © 2024- ᴶᵂ ᵀˢᴬᴵ. All rights reserved.
   navbar:
     right:
       - text: About

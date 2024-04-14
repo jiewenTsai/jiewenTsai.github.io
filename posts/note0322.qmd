@@ -25,6 +25,7 @@ Suppose these four variables follow a multivariate-normal distribution as follow
 
 Let X is a treatment (binary data), and M is a response time data (lognormal).
 
+```{=tex}
 \begin{equation}
 \begin{bmatrix}
 Y \\ X \\M \\W 
@@ -41,7 +42,7 @@ Y \\ X \\M \\W
 \end{bmatrix}
 \right)
 \end{equation}
-
+```
 ```{r}
 set.seed(12345)
 real_sigma <- matrix(c(1, 0.1, -0.8, 0.8,
@@ -82,8 +83,6 @@ M &\sim \log N(\mu_m, \sigma_m^2) \\
 \beta_{01}, ..., \beta _{x} &\sim N(0,5) 
 \end{align}
 ```
-
-
 ```{r}
 bf1 <- bf(Y~X+M+W+M*W, family = gaussian())
 bf2 <- bf(M~X, family = lognormal())
@@ -136,11 +135,7 @@ fit_hypo <- hypothesis(
 fit_hypo
 ```
 
-
-
 ## Make plots
-
-
 
 ```{r}
 ## plotting ----
