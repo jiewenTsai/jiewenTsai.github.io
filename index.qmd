@@ -17,8 +17,9 @@ comments: false
 
 ## Education.
 
+- Education, National Chengchi University, Taiwan.
 
 ## Interesting.
 
--   Psychometrics
--   Bayesian data analysis
+-   Psychometrics. [CRAN Task View: Psychometric Models and Methods](https://CRAN.R-project.org/view=Psychometrics).
+-   Bayesian data analysis. [CRAN Task View: Bayesian Inference](	https://CRAN.R-project.org/view=Bayesian).

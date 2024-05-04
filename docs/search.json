@@ -126,10 +126,24 @@
     "text": "The easy function.\nFurthermore, we write a function to output the strings like the jags program.\nIt will look like,\nDIC info (using the rule, pD = var(deviance)/2)\ndeviance = 180.85, pD = 5.1 and DIC = 186.0\nDIC is an estimate of expected predictive error (lower deviance is better).\n\n\nCode\ndef get_dic(posterior_tensor, var_names):\n    y_ll = posterior_tensor.log_likelihood[var_names].sum(axis=2).to_numpy()\n    y_deviance = -2*y_ll.mean()\n    y_pd = 2*y_ll.var()\n    y_dic = y_deviance + y_pd\n\n    y_print =   'DIC info (using the rule, pD = var(deviance)/2) \\n' +\\\n                'mean deviance = {:.3f}, pD = {:.3f} and DIC = {:.3f} \\n'.format(y_deviance, y_pd, y_dic) +\\\n                'DIC is an estimate of expected predictive error (lower deviance is better).'\n            \n    return print(y_print)\n\n\n\n\nCode\nget_dic(iris_post, var_names='length')\n\n\nDIC info (using the rule, pD = var(deviance)/2) \nmean deviance = 180.838, pD = 5.377 and DIC = 186.215 \nDIC is an estimate of expected predictive error (lower deviance is better)."
   },
   {
+    "objectID": "index.html",
+    "href": "index.html",
+    "title": "Hi,\nI’m Jie-Wen Tsai.",
+    "section": "",
+    "text": "Education, National Chengchi University, Taiwan."
+  },
+  {
+    "objectID": "index.html#education.",
+    "href": "index.html#education.",
+    "title": "Hi,\nI’m Jie-Wen Tsai.",
+    "section": "",
+    "text": "Education, National Chengchi University, Taiwan."
+  },
+  {
     "objectID": "index.html#interesting.",
     "href": "index.html#interesting.",
     "title": "Hi,\nI’m Jie-Wen Tsai.",
     "section": "Interesting.",
-    "text": "Interesting.\n\nPsychometrics\nBayesian data analysis"
+    "text": "Interesting.\n\nPsychometrics. CRAN Task View: Psychometric Models and Methods.\nBayesian data analysis. CRAN Task View: Bayesian Inference."
   }
 ]
