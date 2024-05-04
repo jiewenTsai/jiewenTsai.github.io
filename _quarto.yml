@@ -23,9 +23,9 @@ website:
     
 format:
   html:
-    theme: 
-      dark: darkly
-      light: flatly
+    theme: litera
+      #dark: darkly
+      #light: flatly
       
     css: styles.css
     code-fold: true
