@@ -4,7 +4,7 @@ project:
   
 
 website:
-  title: "JW TSAI +"
+  title: "𝕁𝕋+"
   page-footer:
     center: © 2024- JW TSAI. All rights reserved.
   navbar:
@@ -13,6 +13,8 @@ website:
         href: index.qmd
       - text: Notes
         href: notes.qmd
+      - text: 中文
+        href: notesZh.qmd
       - icon: github
         href: https://github.com/jiewenTsai
 
