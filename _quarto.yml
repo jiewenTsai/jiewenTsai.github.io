@@ -25,7 +25,10 @@ website:
     
 format:
   html:
-    theme: litera
+    theme: 
+      dark: darkly
+      light: flatly
+      
     css: styles.css
     code-fold: true
     toc: true
