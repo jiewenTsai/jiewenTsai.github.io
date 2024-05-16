@@ -1,5 +1,5 @@
 ---
-title: "notesZh"
+title: "中文記事"
 listing:
   contents: posts_zh
   sort: "date desc"
