@@ -3,7 +3,7 @@ title: "notesZh"
 listing:
   contents: posts_zh
   sort: "date desc"
-  type: grid
+  type: table
   fields: 
     - image 
     - date

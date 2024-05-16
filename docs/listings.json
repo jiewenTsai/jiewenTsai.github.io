@@ -1,17 +1,18 @@
 [
   {
+    "listing": "/notesZh.html",
+    "items": [
+      "/posts_zh/bayes.html",
+      "/posts_zh/journal_mbr.html"
+    ]
+  },
+  {
     "listing": "/notes.html",
     "items": [
       "/posts/Lorem Ipsum.html",
       "/posts/dic_study_2.html",
       "/posts/note0322.html",
       "/posts/note0716.html"
-    ]
-  },
-  {
-    "listing": "/notesZh.html",
-    "items": [
-      "/posts_zh/bayes.html"
     ]
   }
 ]

@@ -3,7 +3,7 @@ title: "Notes"
 listing:
   contents: posts
   sort: "date desc"
-  type: grid
+  type: table
   fields: 
     - image 
     - date
