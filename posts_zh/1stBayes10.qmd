@@ -1,0 +1,88 @@
+---
+title: Chapter 10
+date: '2024-05-29'
+author: jw
+format: html
+jupyter:
+  kernelspec:
+    display_name: Julia 1.10.3
+    language: julia
+    name: julia-1.10
+---
+
+## 10.2 The Metropolis algorithm
+
+```{julia}
+using Random, Distributions, Plots
+```
+
+
+這邊可以注意幾件事關於 julia。
+
+- 如果是要生成一個 scaler，那寫 `rand(Normal())` 就可以了。寫 `rand(Normal(),1)` 會產生一個向量 vector，導致後面的函數無法接受。
+- `logpdf.(Normal(___, ___)), y)` 由於後面的 y 是一個向量，所以需要寫成 `logpdf.` 做廣播計算，否則計算會出問題。
+- `Θ = Float64[]` 和 `push!(Θ, theta)` 的搭配。我不知道這樣做跟 `Array{Float64}(undef, S)` 誰的效能比較好？可能是後者吧。但因為沒有體感差別，所以不確定。
+
+
+```{julia}
+#-------
+
+# 初始化接受计数器
+"""
+(s2, t2, mu, y, delta2, S)
+這幾個引數，可寫可不寫。
+"""
+
+y = [9.31, 10.18, 9.16, 11.60, 10.33]
+
+function mh_sampler(y, delta2)
+    s2 = 1
+    t2 = 10
+    mu = 5
+    theta = 0
+    #delta2 = 0.5 # 調整這個參數，可改變接受率。
+    S = 10_000
+    theta = 0.0
+    Θ = Float64[]  # 用于存储 theta 的数组
+    accept_count = 0  # 初始化接受计数器
+    for s in 1:S
+        theta_star = theta + rand(Normal(0, sqrt(delta2)))
+
+        log_r = (sum(logpdf.(Normal(theta_star, sqrt(s2)), y)) + 
+        logpdf(Normal(mu, sqrt(t2)), theta_star) - 
+        sum(logpdf.(Normal(theta, sqrt(s2)), y)) - 
+        logpdf(Normal(mu, sqrt(t2)), theta))
+
+        if log(rand(Uniform())) < log_r
+            theta = theta_star
+            accept_count += 1 # 增加接受计数器
+        end
+
+        push!(Θ, theta)
+    end
+
+    accept_rate = accept_count/S
+    return Θ, accept_rate
+end
+
+
+# 调用函数
+Θ, acceptance_rate = mh_sampler(y, 0.1)
+acceptance_rate
+```
+
+- 如果 δ2 = 0.1，接受率大約在 0.70 左右。
+- 如果 δ2 = 1.0，接受率大約在 0.50 - 0.60。
+- 如果 δ2 = 2.0，接受率大約在 0.3 左右。
+
+調高一點，
+
+來畫點圖。
+這樣沒錯，跟書上的是一樣的。
+
+```{julia}
+plot(Θ)
+
+```
+
+

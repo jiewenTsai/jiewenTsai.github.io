@@ -7,6 +7,20 @@
     "text": "About this jw tsai."
   },
   {
+    "objectID": "posts_zh/1stBayes10.html",
+    "href": "posts_zh/1stBayes10.html",
+    "title": "Chapter 10",
+    "section": "",
+    "text": "Code\nusing Random, Distributions, Plots\n\n\n這邊可以注意幾件事關於 julia。\n\n如果是要生成一個 scaler，那寫 rand(Normal()) 就可以了。寫 rand(Normal(),1) 會產生一個向量 vector，導致後面的函數無法接受。\nlogpdf.(Normal(___, ___)), y) 由於後面的 y 是一個向量，所以需要寫成 logpdf. 做廣播計算，否則計算會出問題。\nΘ = Float64[] 和 push!(Θ, theta) 的搭配。我不知道這樣做跟 Array{Float64}(undef, S) 誰的效能比較好？可能是後者吧。但因為沒有體感差別，所以不確定。\n\n\n\nCode\n#-------\n\n# 初始化接受计数器\n\"\"\"\n(s2, t2, mu, y, delta2, S)\n這幾個引數，可寫可不寫。\n\"\"\"\n\ny = [9.31, 10.18, 9.16, 11.60, 10.33]\n\nfunction mh_sampler(y, delta2)\n    s2 = 1\n    t2 = 10\n    mu = 5\n    theta = 0\n    #delta2 = 0.5 # 調整這個參數，可改變接受率。\n    S = 10_000\n    theta = 0.0\n    Θ = Float64[]  # 用于存储 theta 的数组\n    accept_count = 0  # 初始化接受计数器\n    for s in 1:S\n        theta_star = theta + rand(Normal(0, sqrt(delta2)))\n\n        log_r = (sum(logpdf.(Normal(theta_star, sqrt(s2)), y)) + \n        logpdf(Normal(mu, sqrt(t2)), theta_star) - \n        sum(logpdf.(Normal(theta, sqrt(s2)), y)) - \n        logpdf(Normal(mu, sqrt(t2)), theta))\n\n        if log(rand(Uniform())) &lt; log_r\n            theta = theta_star\n            accept_count += 1 # 增加接受计数器\n        end\n\n        push!(Θ, theta)\n    end\n\n    accept_rate = accept_count/S\n    return Θ, accept_rate\nend\n\n\n# 调用函数\nΘ, acceptance_rate = mh_sampler(y, 0.1)\nacceptance_rate\n\n\n0.7805\n\n\n\n如果 δ2 = 0.1，接受率大約在 0.70 左右。\n如果 δ2 = 1.0，接受率大約在 0.50 - 0.60。\n如果 δ2 = 2.0，接受率大約在 0.3 左右。\n\n調高一點，\n來畫點圖。 這樣沒錯，跟書上的是一樣的。\n\n\nCode\nplot(Θ)"
+  },
+  {
+    "objectID": "posts_zh/1stBayes10.html#the-metropolis-algorithm",
+    "href": "posts_zh/1stBayes10.html#the-metropolis-algorithm",
+    "title": "Chapter 10",
+    "section": "",
+    "text": "Code\nusing Random, Distributions, Plots\n\n\n這邊可以注意幾件事關於 julia。\n\n如果是要生成一個 scaler，那寫 rand(Normal()) 就可以了。寫 rand(Normal(),1) 會產生一個向量 vector，導致後面的函數無法接受。\nlogpdf.(Normal(___, ___)), y) 由於後面的 y 是一個向量，所以需要寫成 logpdf. 做廣播計算，否則計算會出問題。\nΘ = Float64[] 和 push!(Θ, theta) 的搭配。我不知道這樣做跟 Array{Float64}(undef, S) 誰的效能比較好？可能是後者吧。但因為沒有體感差別，所以不確定。\n\n\n\nCode\n#-------\n\n# 初始化接受计数器\n\"\"\"\n(s2, t2, mu, y, delta2, S)\n這幾個引數，可寫可不寫。\n\"\"\"\n\ny = [9.31, 10.18, 9.16, 11.60, 10.33]\n\nfunction mh_sampler(y, delta2)\n    s2 = 1\n    t2 = 10\n    mu = 5\n    theta = 0\n    #delta2 = 0.5 # 調整這個參數，可改變接受率。\n    S = 10_000\n    theta = 0.0\n    Θ = Float64[]  # 用于存储 theta 的数组\n    accept_count = 0  # 初始化接受计数器\n    for s in 1:S\n        theta_star = theta + rand(Normal(0, sqrt(delta2)))\n\n        log_r = (sum(logpdf.(Normal(theta_star, sqrt(s2)), y)) + \n        logpdf(Normal(mu, sqrt(t2)), theta_star) - \n        sum(logpdf.(Normal(theta, sqrt(s2)), y)) - \n        logpdf(Normal(mu, sqrt(t2)), theta))\n\n        if log(rand(Uniform())) &lt; log_r\n            theta = theta_star\n            accept_count += 1 # 增加接受计数器\n        end\n\n        push!(Θ, theta)\n    end\n\n    accept_rate = accept_count/S\n    return Θ, accept_rate\nend\n\n\n# 调用函数\nΘ, acceptance_rate = mh_sampler(y, 0.1)\nacceptance_rate\n\n\n0.7805\n\n\n\n如果 δ2 = 0.1，接受率大約在 0.70 左右。\n如果 δ2 = 1.0，接受率大約在 0.50 - 0.60。\n如果 δ2 = 2.0，接受率大約在 0.3 左右。\n\n調高一點，\n來畫點圖。 這樣沒錯，跟書上的是一樣的。\n\n\nCode\nplot(Θ)"
+  },
+  {
     "objectID": "posts_zh/journal_mbr.html",
     "href": "posts_zh/journal_mbr.html",
     "title": "「多變量行為研究」期刊最有影響力的 20 篇文章（MultivariateBehavRes 2010-2023）",
@@ -109,7 +123,7 @@
     "href": "notesZh.html",
     "title": "中文記事",
     "section": "",
-    "text": "Order By\n       Default\n         \n          Date - Oldest\n        \n         \n          Date - Newest\n        \n         \n          Title\n        \n     \n  \n    \n      \n      \n    \n\n\n\n\n\n\n\nDate\n\n\nTitle\n\n\nReading Time\n\n\n\n\n\n\n\n\n\n \n\n\n貝氏學習資源推薦\n\n\n1 min\n\n\n\n\n\n\n\nMay 16, 2024\n\n\n「多變量行為研究」期刊最有影響力的 20 篇文章（MultivariateBehavRes 2010-2023）\n\n\n1 min\n\n\n\n\n\n\n\nMay 16, 2024\n\n\n「教育與行為統計學」期刊最有影響力的 20 篇文章（JEducBehavStat 2010-2023）\n\n\n1 min\n\n\n\n\n\nNo matching items"
+    "text": "Order By\n       Default\n         \n          Date - Oldest\n        \n         \n          Date - Newest\n        \n         \n          Title\n        \n     \n  \n    \n      \n      \n    \n\n\n\n\n\n\n\nDate\n\n\nTitle\n\n\nReading Time\n\n\n\n\n\n\n\n\n\n \n\n\n貝氏學習資源推薦\n\n\n1 min\n\n\n\n\n\n\n\nMay 29, 2024\n\n\nChapter 10\n\n\n2 min\n\n\n\n\n\n\n\nMay 16, 2024\n\n\n「多變量行為研究」期刊最有影響力的 20 篇文章（MultivariateBehavRes 2010-2023）\n\n\n1 min\n\n\n\n\n\n\n\nMay 16, 2024\n\n\n「教育與行為統計學」期刊最有影響力的 20 篇文章（JEducBehavStat 2010-2023）\n\n\n1 min\n\n\n\n\n\nNo matching items"
   },
   {
     "objectID": "notes.html",
@@ -161,27 +175,6 @@
     "text": "CitationBibTeX citation:@online{untitled,\n  author = {, JT},\n  title = {貝氏學習資源推薦},\n  langid = {en}\n}\nFor attribution, please cite this work as:\nJ. (n.d.). 貝氏學習資源推薦."
   },
   {
-    "objectID": "index.html",
-    "href": "index.html",
-    "title": "Hi,\nI’m Jie-Wen Tsai.",
-    "section": "",
-    "text": "Education, National Chengchi University, Taiwan."
-  },
-  {
-    "objectID": "index.html#education.",
-    "href": "index.html#education.",
-    "title": "Hi,\nI’m Jie-Wen Tsai.",
-    "section": "",
-    "text": "Education, National Chengchi University, Taiwan."
-  },
-  {
-    "objectID": "index.html#interesting.",
-    "href": "index.html#interesting.",
-    "title": "Hi,\nI’m Jie-Wen Tsai.",
-    "section": "Interesting.",
-    "text": "Interesting.\n\nPsychometrics. CRAN Task View: Psychometric Models and Methods.\nBayesian data analysis. CRAN Task View: Bayesian Inference."
-  },
-  {
     "objectID": "posts_zh/journal_jedubehstats.html",
     "href": "posts_zh/journal_jedubehstats.html",
     "title": "「教育與行為統計學」期刊最有影響力的 20 篇文章（JEducBehavStat 2010-2023）",
@@ -201,5 +194,26 @@
     "title": "「教育與行為統計學」期刊最有影響力的 20 篇文章（JEducBehavStat 2010-2023）",
     "section": "研究話題地圖",
     "text": "研究話題地圖\n\n「教育與行為統計學」期刊從 2010 年以來，最關鍵的 20+ 篇文章，大致呈現出 6 條主要的研究話題。以及許多單獨的重要文章。我們也提供文獻縮寫（和上圖對應），doi，以及中文翻譯名稱。文獻排序和圖上一樣，由上至下。有興趣的同學可以用 doi 去找到對應的文章。\n\n話題１ 缺失資料和潛在變項（紅色，比重 23.5%）\n\nCAI L, 2010, DOI 10.3102/1076998609353115 用於確認性項目因素分析的 Metropolis-hastings Robbins-monro 算法 🌟 最出圈文章！(GCS: 156)\nVON DAVIER M, 2010, DOI 10.3102/1076998609346970 潛在回歸項目反應模型的隨機逼近方法\nSI YJ, 2013, DOI 10.3102/1076998613480394 大規模評估調查中不完整分類變量的非參數貝葉斯多重估算\nDRECHSLER J, 2015, DOI 10.3102/1076998614563393 多層次缺失數據的多重估算–嚴謹性與簡便性的比較\n\n\n\n話題２ 試題反應理論（藍色，比重 11.7%）\n\nJOHNSON TR, 2010, DOI 10.3102/1076998609340529 使用因子分析多二項對數項目反應模型來考慮反應風格的個體差異\nTHISSEN-ROE A, 2013, DOI 10.3102/1076998613481500 對喜歡類型項目的反應的雙決定模型\n\n\n\n話題３ 反應時間模式（綠色，比重 11.7%）\n\nFAN ZW, 2012, DOI 10.3102/1076998611422912 利用反應時間分布進行貓的項目選擇\nWANG C, 2013, DOI 10.3102/1076998612461831 在計算機化測試中聯合分析反應時間和準確性的半參數模型\n\n\n\n話題４ 測驗分數應用（紫色，比重 29.4%）\n\nHO AD, 2012, DOI 10.3102/1076998611411918 從 “能力”等級報告的測驗分數中估計成績差距\nLOCKWOOD JR, 2014, DOI 10.3102/1076998613509405 在用於估計治療效果的 ancova 模型中糾正測驗分數測量誤差\nLECKIE G, 2014, DOI 10.3102/1076998614546494 為兩級模型中的異質方差-協方差成分建模\nREARDON SF, 2017, DOI 10.3102/1076998616666279 使用異方差有序 probit 模型從粗略數據中恢覆連續測驗分數分布的矩\nLOCKWOOD JR, 2018, DOI 10.3102/1076998618795124 利用靈活的貝葉斯模型從粗略的群體水平成績數據中進行推斷\n\n\n\n話題５ 貝氏相關技術（橘色，比重 11.7%）\n\nCULPEPPER SA, 2015, DOI 10.3102/1076998615595403 利用 Gibbs 抽樣對 Dina 模型進行貝葉斯估計 🌟 圈內人最愛！(LCS: 11)\nWANG SY, 2018, DOI 10.3102/1076998617719727 利用認知診斷模型跟蹤技能習得： 帶有協變量的高階隱馬爾可夫模型\n\n\n\n話題６ 一些檢驗方法（紅色，比重 11.7%）\n\nROMERO M, 2015, DOI 10.3102/1076998615595628 答案覆制指數的最優性： 理論與實踐\nSINHARAY S, 2017, DOI 10.3102/1076998616673872 利用似然比檢驗和分數檢驗檢測項目預知能力"
+  },
+  {
+    "objectID": "index.html",
+    "href": "index.html",
+    "title": "Hi,\nI’m Jie-Wen Tsai.",
+    "section": "",
+    "text": "Education, National Chengchi University, Taiwan."
+  },
+  {
+    "objectID": "index.html#education.",
+    "href": "index.html#education.",
+    "title": "Hi,\nI’m Jie-Wen Tsai.",
+    "section": "",
+    "text": "Education, National Chengchi University, Taiwan."
+  },
+  {
+    "objectID": "index.html#interesting.",
+    "href": "index.html#interesting.",
+    "title": "Hi,\nI’m Jie-Wen Tsai.",
+    "section": "Interesting.",
+    "text": "Interesting.\n\nPsychometrics. CRAN Task View: Psychometric Models and Methods.\nBayesian data analysis. CRAN Task View: Bayesian Inference."
   }
 ]
