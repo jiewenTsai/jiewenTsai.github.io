@@ -21,5 +21,8 @@ execute:
   freeze: auto
 ---
 
+希望以週記的形式記錄下重要的學習歷程。
+
+
 ::: {#posts_zh}
 :::
