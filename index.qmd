@@ -17,7 +17,7 @@ comments: false
 
 ## See Also.
 
--   [Ninja Notes](ninja.rtfd.io).
+-   [Ninja Notes](https://ninja.rtfd.io).
 
 ## Interesting.
 
