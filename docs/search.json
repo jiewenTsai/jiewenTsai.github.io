@@ -200,7 +200,7 @@
     "href": "index.html",
     "title": "Hi,\nI’m Jie-Wen Tsai.",
     "section": "",
-    "text": "Psychometrics. CRAN Task View: Psychometric Models and Methods.\nBayesian data analysis. CRAN Task View: Bayesian Inference."
+    "text": "Ninja Notes."
   },
   {
     "objectID": "index.html#education.",
@@ -213,7 +213,14 @@
     "objectID": "index.html#interesting.",
     "href": "index.html#interesting.",
     "title": "Hi,\nI’m Jie-Wen Tsai.",
+    "section": "Interesting.",
+    "text": "Interesting.\n\nPsychometrics. CRAN Task View: Psychometric Models and Methods.\nBayesian data analysis. CRAN Task View: Bayesian Inference."
+  },
+  {
+    "objectID": "index.html#see-also.",
+    "href": "index.html#see-also.",
+    "title": "Hi,\nI’m Jie-Wen Tsai.",
     "section": "",
-    "text": "Psychometrics. CRAN Task View: Psychometric Models and Methods.\nBayesian data analysis. CRAN Task View: Bayesian Inference."
+    "text": "Ninja Notes."
   }
 ]
