@@ -1,9 +1,9 @@
 ---
-title: "Cambridge 「新版數學心理學手冊」的內容"
+title: "「劍橋新版數學心理學手冊」與「牛津心理學量化方法手冊」的內容"
 author: jwTsai
 ---
 
-今日這篇文章 (New Handbook of Mathematical Psychology)，只是為了記錄「數學心理學」的內容。日後也許還要記下CRC press的「IRT手冊」。讀這些手冊，倒也有趣，能了解當今發展的主題，看看未來還有什麼可做的。
+今日這篇文章關於劍橋手冊 (Cambridge New Handbook of Mathematical Psychology)，只是為了記錄「數學心理學」的內容。日後也許還要記下CRC press的「IRT手冊」。讀這些手冊，倒也有趣，能了解當今發展的主題，看看未來還有什麼可做的。
 
 -   卷一，基礎與方法。 Foundations and Methodology, 2016.
 -   卷二，建模與測量。 Modeling and Measurement, 2018.
@@ -38,7 +38,7 @@ author: jwTsai
 
 1. 初始視覺編碼的原理和結果。 Principles and Consequences of the Initial Visual Encoding, pp 1-41 
 2. 再選定範式中測量多感官整合。 Measuring Multisensory Integration in Selected Paradigms, pp 42-79 
-3. 費希納尺度法：差異累積理論。 Fechnerian Scaling: Dissimilarity Cumulation Theory, pp 80-162 
+3. 費希納度量法：差異累積理論。 Fechnerian Scaling: Dissimilarity Cumulation Theory, pp 80-162 
 4. 人類學習的數學模式。 Mathematical Models of Human Learning, pp 163-217 
 5. 基於時變表達的記憶形式模式。 Formal Models of Memory Based on Temporally-Varying Representations, pp 218-264 
 6. 統計決策理論。 Statistical Decision Theory, pp 265-310 
@@ -46,3 +46,78 @@ author: jwTsai
 8. 近似貝氏計算。 Approximate Bayesian Computation, pp 357-384 
 9. 認知診斷模式。 Cognitive Diagnosis Models, pp 385-420 
 10. 神經影像學中的編碼模式。 Encoding Models in Neuroimaging, pp 421-472
+
+
+
+---
+
+除了數學心理學，統計心理學或這裡所說的量化心理學、計量心理學，或許才是更為常見的研究領域。我們這裡記錄的是牛津手冊 (The Oxford Handbook of Quantitative Methods in Psycholog) 中的內容。只是他年代稍微早一點，是 2013 年出版的。
+
+
+- 卷一，基礎。 Foundations, 2013.
+- 卷二，統計分析。 Statistical Analysis, 2013.
+
+## 卷一，基礎。
+
+
+1. 前言。 Introduction
+2. 量化方法的哲學。 The Philosophy of Quantitative Methods
+3. 量化方法的倫理。 Quantitative Methods and Ethics
+4. 特定群體。 Special Populations
+5. 理論建構、模式建立、模式選擇。 Theory Construction, Model Building, and Model Selection
+6. 量化心理學教學。 Teaching Quantitative Psychology
+7. 當代測驗理論。 Modern Test Theory
+8. IRT 傳統與其應用。 The IRT Tradition and its Applications
+9. 調查設計和測量發展。 Survey Design and Measure Development
+10. 高風險測驗的建構和使用。 High-Stakes Test Construction and Test Use
+11. 效果量和樣本數規劃。 Effect Size and Sample Size Planning
+12. 因果推論的實驗設計：臨床試驗和迴歸不連續設計。 Experimental Design for Causal Inference: Clinical Trials and Regression Discontinuity Designs
+13. 配對和傾向分數。 Matching and Propensity Scores
+14. 反應時間實驗設計與分析。 Designs for and Analyses of Response Time Experiments
+15. 觀察性方法。 Observational Methods
+16. 流行病學方法、概念與分析，心理學中的進階應用為例子。 A Primer of Epidemiologic Methods, Concepts, and Analysis With Examples and More Advanced Applications Within Psychology
+17. 方案評估：原理、程序與實踐。 Program Evaluation: Principles, Procedures, and Practices
+18. 統計估計方法概述。 Overview of Statistical Estimation Methods
+19. 穩健統計估計。 Robust Statistical Estimation
+20. 貝氏統計方法。 Bayesian Statistical Methods
+21. 數學建模。 Mathematical Modeling
+22. 學術研究中的蒙地卡羅分析。 Monte Carlo Analysis in Academic Research
+23. 網路分析：重要概念定義指南。 Network Analysis: A Definitional Guide to Important Concepts
+
+
+## 卷二，統計分析。
+
+1. 前言。 Introduction 
+2. 傳統、古典方法概述。 Overview of Traditional/Classical Statistical Approaches 
+3. 廣義線性模式。 Generalized Linear Models 
+4. 類別方法（類別資料分析）。 Categorical Methods 
+5. 配置頻次分析。 Configural Frequency Analysis 
+6. 非參數統計技術。 Nonparametric Statistical Techniques 
+7. 對應分析。 Correspondence Analysis 
+8. 空間分析。 Spatial Analysis 
+9. 影像資料分析。 Analysis of Imaging Data 
+10. 雙胞胎研究與行為遺傳學。 Twin Studies and Behavior Genetics 
+11. 基因量化分析。 Quantitative Analysis of Genes 
+12. 多元度量法。 Multidimensional Scaling 
+13. 潛在變項測量模式。 Latent Variable Measurement Models 
+14. 多層次迴歸和多層次結構方程式。 Multilevel Regression and Multilevel Structural Equation Modeling 
+15. 結構方程式。 Structural Equation Models 
+16. 中介分析的發展。 Developments in Mediation Analysis 
+17. 調節分析。 Moderation 
+18. 縱向資料分析（長期追蹤資料分析）。 Longitudinal Data Analysis 
+19. 動態系統和連續時間模式。 Dynamical Systems and Models of Continuous Time 
+20. 密集型追蹤資料。 Intensive Longitudinal Data 
+21. 動態因素分析：個人過程建模。 Dynamic Factor Analysis: Modeling Person-Specific Process
+22. 時間序列分析。 Time Series Analysis 
+23. 事件史資料分析。 Analyzing Event History Data 
+24. 聚類和分類。 Clustering and Classification 
+25. 潛在類別分析和有限混合模式。 Latent Class Analysis and Finite Mixture Modeling 
+26. 分類計量學。 Taxometrics 
+27. 遺漏值方法。 Missing Data Methods 
+28. 次級資料分析。 Secondary Data Analysis 
+29. 資料採礦。 Data Mining 
+30. 後設分析與量化研究綜述。 Meta-Analysis and Quantitative Research Synthesis 
+31. 量化方法中的常見謬誤。 Common Fallacies in Quantitative Research Methodology 
+
+
+

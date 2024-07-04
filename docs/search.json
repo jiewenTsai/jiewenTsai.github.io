@@ -123,7 +123,7 @@
     "href": "notesZh.html",
     "title": "中文記事",
     "section": "",
-    "text": "希望以週記的形式記錄下重要的學習歷程。\n\n\n\n\n\n\n\n\n\n   \n     \n     \n       Order By\n       Default\n         \n          Date - Oldest\n        \n         \n          Date - Newest\n        \n         \n          Title\n        \n     \n  \n    \n      \n      \n    \n\n\n\n\n\n\n\nDate\n\n\nTitle\n\n\nReading Time\n\n\n\n\n\n\n\n\n\n \n\n\nCambridge 「新版數學心理學手冊」的內容\n\n\n2 min\n\n\n\n\n\n\n\n \n\n\n貝氏學習資源推薦\n\n\n1 min\n\n\n\n\n\n\n\nMay 29, 2024\n\n\nChapter 10\n\n\n2 min\n\n\n\n\n\n\n\nMay 16, 2024\n\n\n「多變量行為研究」期刊最有影響力的 20 篇文章（MultivariateBehavRes 2010-2023）\n\n\n1 min\n\n\n\n\n\n\n\nMay 16, 2024\n\n\n「教育與行為統計學」期刊最有影響力的 20 篇文章（JEducBehavStat 2010-2023）\n\n\n1 min\n\n\n\n\n\nNo matching items"
+    "text": "希望以週記的形式記錄下重要的學習歷程。\n\n\n\n\n\n\n\n\n\n   \n     \n     \n       Order By\n       Default\n         \n          Date - Oldest\n        \n         \n          Date - Newest\n        \n         \n          Title\n        \n     \n  \n    \n      \n      \n    \n\n\n\n\n\n\n\nDate\n\n\nTitle\n\n\nReading Time\n\n\n\n\n\n\n\n\n\n \n\n\n「劍橋新版數學心理學手冊」與「牛津心理學量化方法手冊」的內容\n\n\n4 min\n\n\n\n\n\n\n\n \n\n\n貝氏學習資源推薦\n\n\n1 min\n\n\n\n\n\n\n\nMay 29, 2024\n\n\nChapter 10\n\n\n2 min\n\n\n\n\n\n\n\nMay 16, 2024\n\n\n「多變量行為研究」期刊最有影響力的 20 篇文章（MultivariateBehavRes 2010-2023）\n\n\n1 min\n\n\n\n\n\n\n\nMay 16, 2024\n\n\n「教育與行為統計學」期刊最有影響力的 20 篇文章（JEducBehavStat 2010-2023）\n\n\n1 min\n\n\n\n\n\nNo matching items"
   },
   {
     "objectID": "notes.html",
@@ -226,29 +226,43 @@
   {
     "objectID": "posts_zh/post0704.html",
     "href": "posts_zh/post0704.html",
-    "title": "Cambridge 「新版數學心理學手冊」的內容",
+    "title": "「劍橋新版數學心理學手冊」與「牛津心理學量化方法手冊」的內容",
     "section": "",
-    "text": "今日這篇文章 (New Handbook of Mathematical Psychology)，只是為了記錄「數學心理學」的內容。日後也許還要記下CRC press的「IRT手冊」。讀這些手冊，倒也有趣，能了解當今發展的主題，看看未來還有什麼可做的。"
+    "text": "今日這篇文章關於劍橋手冊 (Cambridge New Handbook of Mathematical Psychology)，只是為了記錄「數學心理學」的內容。日後也許還要記下CRC press的「IRT手冊」。讀這些手冊，倒也有趣，能了解當今發展的主題，看看未來還有什麼可做的。"
   },
   {
     "objectID": "posts_zh/post0704.html#卷一基礎與方法",
     "href": "posts_zh/post0704.html#卷一基礎與方法",
-    "title": "Cambridge 「新版數學心理學手冊」的內容",
+    "title": "「劍橋新版數學心理學手冊」與「牛津心理學量化方法手冊」的內容",
     "section": "卷一，基礎與方法。",
     "text": "卷一，基礎與方法。\n\n機率中的精選概念。 Selected concepts from probability, pp 1-84\n機率、隨機變數、選擇性。 Probability, random variables, and selectivity, pp 85-150\n函數方程式。 Functional equations, pp 151-193\n網路分析。 Network analysis, pp 194-273\n知識空間與學習空間。 Knowledge spaces and learning spaces, pp 274-321\n演化對局論（博弈論）。 Evolutionary game theory, pp 322-373\n選擇、偏好、效用：機率性和確定性表達。 Choice, preference, and utility: probabilistic and deterministic representations, pp 374-453\n認知的離散狀態模式。 Discrete state models of cognition, pp 454-503\n認知的貝氏階層模式。 Bayesian hierarchical models of cognition, pp 504-551\n模式評估和選擇。 Model evaluation and selection, pp 552-598"
   },
   {
     "objectID": "posts_zh/post0704.html#卷二建模與測量",
     "href": "posts_zh/post0704.html#卷二建模與測量",
-    "title": "Cambridge 「新版數學心理學手冊」的內容",
+    "title": "「劍橋新版數學心理學手冊」與「牛津心理學量化方法手冊」的內容",
     "section": "卷二，建模與測量。",
     "text": "卷二，建模與測量。\n\n決策建模的隨機方法。 Stochastic Methods for Modeling Decision-making, pp 1-70\n從理性觀點看加速選擇的擴散模式。 The Diffusion Model of Speeded Choice, from a Rational Perspective, pp 71-103\n基本心理架構的隨機基礎。 Stochastic Foundations of Elementary Mental Architectures, pp 104-127\n機率模式的可識別性，知識結構理論的例子。 Identifiability of Probabilistic Models, with Examples from Knowledge Structure Theory, pp 128-184\n認知與決策的量子模式。 Quantum Models of Cognition and Decision, pp 185-222\n計算認知神經科學。 Computational Cognitive Neuroscience, pp 223-270\n透過投票發現聚合屬性。 Discovering Aggregation Properties via Voting, pp 271-321\n基於相似性和特徵的分類：重現 RKBS 方法。 Categorization Based on Similarity and Features: The Reproducing Kernel Banach Space (RKBS) Approach, pp 322-373\n科學和幾何學中的意義公理。 The Axiom of Meaningfulness in Science and Geometry, pp 374-456"
   },
   {
     "objectID": "posts_zh/post0704.html#卷三知覺與認知過程",
     "href": "posts_zh/post0704.html#卷三知覺與認知過程",
-    "title": "Cambridge 「新版數學心理學手冊」的內容",
+    "title": "「劍橋新版數學心理學手冊」與「牛津心理學量化方法手冊」的內容",
     "section": "卷三，知覺與認知過程。",
-    "text": "卷三，知覺與認知過程。\n\n初始視覺編碼的原理和結果。 Principles and Consequences of the Initial Visual Encoding, pp 1-41\n再選定範式中測量多感官整合。 Measuring Multisensory Integration in Selected Paradigms, pp 42-79\n費希納尺度法：差異累積理論。 Fechnerian Scaling: Dissimilarity Cumulation Theory, pp 80-162\n人類學習的數學模式。 Mathematical Models of Human Learning, pp 163-217\n基於時變表達的記憶形式模式。 Formal Models of Memory Based on Temporally-Varying Representations, pp 218-264\n統計決策理論。 Statistical Decision Theory, pp 265-310\n停止信號任務中的反應抑制建模。 Modeling Response Inhibition in the Stop-Signal Task, pp 311-356\n近似貝氏計算。 Approximate Bayesian Computation, pp 357-384\n認知診斷模式。 Cognitive Diagnosis Models, pp 385-420\n神經影像學中的編碼模式。 Encoding Models in Neuroimaging, pp 421-472"
+    "text": "卷三，知覺與認知過程。\n\n初始視覺編碼的原理和結果。 Principles and Consequences of the Initial Visual Encoding, pp 1-41\n再選定範式中測量多感官整合。 Measuring Multisensory Integration in Selected Paradigms, pp 42-79\n費希納度量法：差異累積理論。 Fechnerian Scaling: Dissimilarity Cumulation Theory, pp 80-162\n人類學習的數學模式。 Mathematical Models of Human Learning, pp 163-217\n基於時變表達的記憶形式模式。 Formal Models of Memory Based on Temporally-Varying Representations, pp 218-264\n統計決策理論。 Statistical Decision Theory, pp 265-310\n停止信號任務中的反應抑制建模。 Modeling Response Inhibition in the Stop-Signal Task, pp 311-356\n近似貝氏計算。 Approximate Bayesian Computation, pp 357-384\n認知診斷模式。 Cognitive Diagnosis Models, pp 385-420\n神經影像學中的編碼模式。 Encoding Models in Neuroimaging, pp 421-472\n\n\n除了數學心理學，統計心理學或這裡所說的量化心理學、計量心理學，或許才是更為常見的研究領域。我們這裡記錄的是牛津手冊 (The Oxford Handbook of Quantitative Methods in Psycholog) 中的內容。只是他年代稍微早一點，是 2013 年出版的。\n\n卷一，基礎。 Foundations, 2013.\n卷二，統計分析。 Statistical Analysis, 2013."
+  },
+  {
+    "objectID": "posts_zh/post0704.html#卷一基礎",
+    "href": "posts_zh/post0704.html#卷一基礎",
+    "title": "「劍橋新版數學心理學手冊」與「牛津心理學量化方法手冊」的內容",
+    "section": "卷一，基礎。",
+    "text": "卷一，基礎。\n\n前言。 Introduction\n量化方法的哲學。 The Philosophy of Quantitative Methods\n量化方法的倫理。 Quantitative Methods and Ethics\n特定群體。 Special Populations\n理論建構、模式建立、模式選擇。 Theory Construction, Model Building, and Model Selection\n量化心理學教學。 Teaching Quantitative Psychology\n當代測驗理論。 Modern Test Theory\nIRT 傳統與其應用。 The IRT Tradition and its Applications\n調查設計和測量發展。 Survey Design and Measure Development\n高風險測驗的建構和使用。 High-Stakes Test Construction and Test Use\n效果量和樣本數規劃。 Effect Size and Sample Size Planning\n因果推論的實驗設計：臨床試驗和迴歸不連續設計。 Experimental Design for Causal Inference: Clinical Trials and Regression Discontinuity Designs\n配對和傾向分數。 Matching and Propensity Scores\n反應時間實驗設計與分析。 Designs for and Analyses of Response Time Experiments\n觀察性方法。 Observational Methods\n流行病學方法、概念與分析，心理學中的進階應用為例子。 A Primer of Epidemiologic Methods, Concepts, and Analysis With Examples and More Advanced Applications Within Psychology\n方案評估：原理、程序與實踐。 Program Evaluation: Principles, Procedures, and Practices\n統計估計方法概述。 Overview of Statistical Estimation Methods\n穩健統計估計。 Robust Statistical Estimation\n貝氏統計方法。 Bayesian Statistical Methods\n數學建模。 Mathematical Modeling\n學術研究中的蒙地卡羅分析。 Monte Carlo Analysis in Academic Research\n網路分析：重要概念定義指南。 Network Analysis: A Definitional Guide to Important Concepts"
+  },
+  {
+    "objectID": "posts_zh/post0704.html#卷二統計分析",
+    "href": "posts_zh/post0704.html#卷二統計分析",
+    "title": "「劍橋新版數學心理學手冊」與「牛津心理學量化方法手冊」的內容",
+    "section": "卷二，統計分析。",
+    "text": "卷二，統計分析。\n\n前言。 Introduction\n傳統、古典方法概述。 Overview of Traditional/Classical Statistical Approaches\n廣義線性模式。 Generalized Linear Models\n類別方法（類別資料分析）。 Categorical Methods\n配置頻次分析。 Configural Frequency Analysis\n非參數統計技術。 Nonparametric Statistical Techniques\n對應分析。 Correspondence Analysis\n空間分析。 Spatial Analysis\n影像資料分析。 Analysis of Imaging Data\n雙胞胎研究與行為遺傳學。 Twin Studies and Behavior Genetics\n基因量化分析。 Quantitative Analysis of Genes\n多元度量法。 Multidimensional Scaling\n潛在變項測量模式。 Latent Variable Measurement Models\n多層次迴歸和多層次結構方程式。 Multilevel Regression and Multilevel Structural Equation Modeling\n結構方程式。 Structural Equation Models\n中介分析的發展。 Developments in Mediation Analysis\n調節分析。 Moderation\n縱向資料分析（長期追蹤資料分析）。 Longitudinal Data Analysis\n動態系統和連續時間模式。 Dynamical Systems and Models of Continuous Time\n密集型追蹤資料。 Intensive Longitudinal Data\n動態因素分析：個人過程建模。 Dynamic Factor Analysis: Modeling Person-Specific Process\n時間序列分析。 Time Series Analysis\n事件史資料分析。 Analyzing Event History Data\n聚類和分類。 Clustering and Classification\n潛在類別分析和有限混合模式。 Latent Class Analysis and Finite Mixture Modeling\n分類計量學。 Taxometrics\n遺漏值方法。 Missing Data Methods\n次級資料分析。 Secondary Data Analysis\n資料採礦。 Data Mining\n後設分析與量化研究綜述。 Meta-Analysis and Quantitative Research Synthesis\n量化方法中的常見謬誤。 Common Fallacies in Quantitative Research Methodology"
   }
 ]
