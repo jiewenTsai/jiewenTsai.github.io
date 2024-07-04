@@ -1,0 +1,48 @@
+---
+title: "Cambridge 「新版數學心理學手冊」的內容"
+author: jwTsai
+---
+
+今日這篇文章 (New Handbook of Mathematical Psychology)，只是為了記錄「數學心理學」的內容。日後也許還要記下CRC press的「IRT手冊」。讀這些手冊，倒也有趣，能了解當今發展的主題，看看未來還有什麼可做的。
+
+-   卷一，基礎與方法。 Foundations and Methodology, 2016.
+-   卷二，建模與測量。 Modeling and Measurement, 2018.
+-   卷三，知覺與認知過程。 Perceptual and Cognitive Processes, 2023.
+
+## 卷一，基礎與方法。
+
+1. 機率中的精選概念。 Selected concepts from probability, pp 1-84 
+2. 機率、隨機變數、選擇性。 Probability, random variables, and selectivity, pp 85-150 
+3. 函數方程式。 Functional equations, pp 151-193 
+4. 網路分析。 Network analysis, pp 194-273 
+5. 知識空間與學習空間。 Knowledge spaces and learning spaces, pp 274-321 
+6. 演化對局論（博弈論）。 Evolutionary game theory, pp 322-373 
+7. 選擇、偏好、效用：機率性和確定性表達。 Choice, preference, and utility: probabilistic and deterministic representations, pp 374-453 
+8. 認知的離散狀態模式。 Discrete state models of cognition, pp 454-503 
+9. 認知的貝氏階層模式。 Bayesian hierarchical models of cognition, pp 504-551 
+10. 模式評估和選擇。 Model evaluation and selection, pp 552-598
+
+## 卷二，建模與測量。
+
+1. 決策建模的隨機方法。 Stochastic Methods for Modeling Decision-making, pp 1-70 
+2. 從理性觀點看加速選擇的擴散模式。 The Diffusion Model of Speeded Choice, from a Rational Perspective, pp 71-103 
+3. 基本心理架構的隨機基礎。 Stochastic Foundations of Elementary Mental Architectures, pp 104-127 
+4. 機率模式的可識別性，知識結構理論的例子。 Identifiability of Probabilistic Models, with Examples from Knowledge Structure Theory, pp 128-184 
+5. 認知與決策的量子模式。 Quantum Models of Cognition and Decision, pp 185-222 
+6. 計算認知神經科學。 Computational Cognitive Neuroscience, pp 223-270 
+7. 透過投票發現聚合屬性。 Discovering Aggregation Properties via Voting, pp 271-321 
+8. 基於相似性和特徵的分類：重現 RKBS 方法。 Categorization Based on Similarity and Features: The Reproducing Kernel Banach Space (RKBS) Approach, pp 322-373 
+9. 科學和幾何學中的意義公理。 The Axiom of Meaningfulness in Science and Geometry, pp 374-456
+
+## 卷三，知覺與認知過程。
+
+1. 初始視覺編碼的原理和結果。 Principles and Consequences of the Initial Visual Encoding, pp 1-41 
+2. 再選定範式中測量多感官整合。 Measuring Multisensory Integration in Selected Paradigms, pp 42-79 
+3. 費希納尺度法：差異累積理論。 Fechnerian Scaling: Dissimilarity Cumulation Theory, pp 80-162 
+4. 人類學習的數學模式。 Mathematical Models of Human Learning, pp 163-217 
+5. 基於時變表達的記憶形式模式。 Formal Models of Memory Based on Temporally-Varying Representations, pp 218-264 
+6. 統計決策理論。 Statistical Decision Theory, pp 265-310 
+7. 停止信號任務中的反應抑制建模。 Modeling Response Inhibition in the Stop-Signal Task, pp 311-356 
+8. 近似貝氏計算。 Approximate Bayesian Computation, pp 357-384 
+9. 認知診斷模式。 Cognitive Diagnosis Models, pp 385-420 
+10. 神經影像學中的編碼模式。 Encoding Models in Neuroimaging, pp 421-472
