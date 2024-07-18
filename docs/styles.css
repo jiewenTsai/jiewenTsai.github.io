@@ -2,8 +2,9 @@
 
 @import url('https://fonts.googleapis.com/css2?family=Noto+Serif+TC:wght@200..900&display=swap');
 
+
 p,li { 
-  font-family: 'Georgia', 'Noto Serif TC', serif;
+  font-family: 'Georgia', 'Noto Serif CJK TC', serif;
   font-weight: 500;
   font-size: 110%;
 }
