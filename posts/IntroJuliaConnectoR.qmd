@@ -1,7 +1,9 @@
 ---
-title: "Introduction to `JuliaConnectoR`"
-author: "JT"
+title: "Introduction to `ExtendedRtIrtModeling.jl` through `JuliaConnectoR`"
+author: "JW Tsai"
 date: "2024-11-19"
+execute:
+  cache: true
 ---
 
 I've just updated my Julia package, `ExtendedRtIrtModeling.jl`, to version 0.2.0. There are a few new features in there that I'll run through in the next few sections.
@@ -14,13 +16,84 @@ See the Github page.
 
 ## Using in R
 
-All you have to do is to install and library the `JuliaConnectoR` as usual, and then you can use the `juliaImport` function to import any Julia package. The great thing is, it'll always download the newest version from Github, but not the stable one.
+All you have to do is to install and library the `JuliaConnectoR` as usual, and then you can use the `juliaImport` function to import any Julia package. It seems like the  package's version you get depends on which copy version you've had on your computer (**confirmed**). ~~The great thing is, it'll always download the newest version from Github, but not the stable one.~~
 
 ```{r}
+library(tidyverse)
 library(JuliaConnectoR)
+```
+
+I've got a toy data set to test, but I'll run through the demo anyway. As you can see from the data below, the data set includes 25 columns: one for ID, 10 for item responses, 10 for (log-)response time, and four for explanatory variables.
+
+```{r}
+demo <- read.csv('https://raw.githubusercontent.com/jiewenTsai/ExtendedRtIrtModeling.jl/refs/heads/main/data/demo.csv')
+head(demo)
+glimpse(demo)
+```
+
+Next, let's take a look at how accuracy and speed related to each other, barely using the raw data (mean of y and mean of t) to get a rough idea.
+
+```{r}
+
+tibble(
+  accuracy = rowMeans(demo[2:11]),
+  speed = -rowMeans(demo[12:21])
+) |>
+  ggplot(aes(x=accuracy, y=speed)) +
+  geom_point() +
+  geom_jitter() +
+  geom_smooth(method = "loess") 
+
+```
+
+## The modeling part.
+
+Let's follow the example from the Github readme post to show how a basic RT-IRT model works. This package is version 0.2.0.
+
+```{r}
+
 ## You have to give a name to the Julia Environment.
 ex <- juliaImport("ExtendedRtIrtModeling")
+juliaEval('Pkg.status("ExtendedRtIrtModeling")')
+```
+
+In the original Github post, the user doesn't have to fill in all five arguments of `InputData` because the values for $\kappa$ and *logT* are automatically calculated by *Y* and *T*. However, to get it working with R, I've come up with another struct called `InputData4R`, which is specifically for R users.
+
+
+
+```{r}
+## import your data set
+Cond = ex$setCond(
+  nChain=3, 
+  nIter=3000,
+  nSubj=300,
+  nItem=10,
+  nFeat=4
+  )
+Data = ex$InputData4R(
+    Y = as.matrix(demo[2:11]),
+    # you must write this line!
+    κ = as.matrix(demo[2:11]-0.5),
+    T = as.matrix(exp(demo[12:21])),
+    logT = as.matrix(demo[12:21]),
+    X = as.matrix(demo[22:25])
+)
+
+## build a model and sample it!
+MCMC = ex$GibbsRtIrt(Cond, Data=Data)
+## Notice the `` style for sample!
+ex$`sample!`(MCMC)
+
+ex$coef(MCMC)
+ex$precis(MCMC)
+
+```
+
+
+
+Lastly, let's check out this package.
+
+```{r}
 ## See the objects in ex.
 ls(ex)
-
 ```
