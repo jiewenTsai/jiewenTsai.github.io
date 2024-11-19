@@ -11,6 +11,8 @@ website:
     right:
       - text: About
         href: index.qmd
+      - text: Softwares
+        href: software.qmd
       - text: Notes
         href: notes.qmd
       - text: 中文記事

@@ -250,5 +250,40 @@
     "title": "Introduction to JuliaConnectoR",
     "section": "Using in R",
     "text": "Using in R\nAll you have to do is to install and library the JuliaConnectoR as usual, and then you can use the juliaImport function to import any Julia package. The great thing is, it’ll always download the newest version from Github, but not the stable one.\n\n\nCode\nlibrary(JuliaConnectoR)\n\n\nWarning: package 'JuliaConnectoR' was built under R version 4.4.1\n\n\nCode\n## You have to give a name to the Julia Environment.\nex &lt;- juliaImport(\"ExtendedRtIrtModeling\")\n\n\nStarting Julia ...\n\n\nCode\n## See the objects in ex.\nls(ex)\n\n\n [1] \"coef\"                          \"drawItemDifficulty\"           \n [3] \"drawItemDiscrimination\"        \"drawItemIntensity\"            \n [5] \"drawItemIntensityCross\"        \"drawItemIntensityCrossQr\"     \n [7] \"drawItemTimeResidual\"          \"drawItemTimeResidualCross\"    \n [9] \"drawItemTimeResidualCrossQr\"   \"drawQrWeightsCrossQr\"         \n[11] \"drawQrWeightsLatentQr\"         \"drawRaPgRandomVariable\"       \n[13] \"drawSubjAbility\"               \"drawSubjAbilityNull\"          \n[15] \"drawSubjCoefficients\"          \"drawSubjCorrCross\"            \n[17] \"drawSubjCorrCrossQr\"           \"drawSubjCovariance\"           \n[19] \"drawSubjCovariance2One\"        \"drawSubjCovarianceLatent\"     \n[21] \"drawSubjCovarianceLatentQr\"    \"drawSubjCovarianceNull\"       \n[23] \"drawSubjCovarianceNull2One\"    \"drawSubjSpeed\"                \n[25] \"drawSubjSpeedCross\"            \"drawSubjSpeedCrossQr\"         \n[27] \"drawSubjSpeedLatent\"           \"drawSubjSpeedLatentQr\"        \n[29] \"drawSubjSpeedNull\"             \"eval\"                         \n[31] \"evaluate\"                      \"getBias\"                      \n[33] \"getDic\"                        \"getLogLikelihoodMlIrt\"        \n[35] \"getLogLikelihoodRtIrt\"         \"getLogLikelihoodRtIrtCross\"   \n[37] \"getLogLikelihoodRtIrtCrossQr\"  \"getLogLikelihoodRtIrtLatent\"  \n[39] \"getLogLikelihoodRtIrtLatentQr\" \"getLogLikelihoodRtIrtNull\"    \n[41] \"getPrecisTable\"                \"getRmse\"                      \n[43] \"getSubjCoefficients\"           \"getSubjCoefficientsLatent\"    \n[45] \"getSubjCoefficientsLatentQr\"   \"getSubjCoefficientsMlIrt\"     \n[47] \"GibbsMlIrt\"                    \"GibbsRtIrt\"                   \n[49] \"GibbsRtIrt2\"                   \"GibbsRtIrtCross\"              \n[51] \"GibbsRtIrtCross2\"              \"GibbsRtIrtCrossQr\"            \n[53] \"GibbsRtIrtLatent\"              \"GibbsRtIrtLatent2\"            \n[55] \"GibbsRtIrtLatentQr\"            \"GibbsRtIrtNull\"               \n[57] \"include\"                       \"InputData\"                    \n[59] \"InputPara\"                     \"OutputDic\"                    \n[61] \"OutputPost\"                    \"OutputPostCross\"              \n[63] \"OutputPostCrossQr\"             \"OutputPostMlIrt\"              \n[65] \"OutputPostRtIrtLatent\"         \"OutputPostRtIrtLatentQr\"      \n[67] \"precis\"                        \"sample!\"                      \n[69] \"setCond\"                       \"setTrueParaRtIrt\"             \n[71] \"SimConditions\"                 \"SimEvaluation\""
+  },
+  {
+    "objectID": "software.html",
+    "href": "software.html",
+    "title": "Softwares",
+    "section": "",
+    "text": "ExtendedRtIrtModeling.jl"
+  },
+  {
+    "objectID": "software.html#julia",
+    "href": "software.html#julia",
+    "title": "Softwares",
+    "section": "",
+    "text": "ExtendedRtIrtModeling.jl"
+  },
+  {
+    "objectID": "software.html#quarto",
+    "href": "software.html#quarto",
+    "title": "Softwares",
+    "section": "Quarto",
+    "text": "Quarto\n\nquarto-revealjs-yangchou"
+  },
+  {
+    "objectID": "software.html#r",
+    "href": "software.html#r",
+    "title": "Softwares",
+    "section": "R",
+    "text": "R\n\nbibliometrixExtra"
+  },
+  {
+    "objectID": "software.html#typst",
+    "href": "software.html#typst",
+    "title": "Softwares",
+    "section": "Typst",
+    "text": "Typst\n\n(…)"
   }
 ]

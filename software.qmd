@@ -1,0 +1,21 @@
+---
+title: "Softwares"
+author: "JT"
+date-modified: today
+---
+
+## Julia
+
+- [ExtendedRtIrtModeling.jl](https://github.com/jiewenTsai/ExtendedRtIrtModeling.jl)
+
+## Quarto
+
+- [quarto-revealjs-yangchou](https://github.com/jiewenTsai/quarto-revealjs-yangchou)
+
+## R
+
+- [bibliometrixExtra](https://github.com/jiewenTsai/bibliometrixExtra)
+
+## Typst
+
+- (...)
