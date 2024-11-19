@@ -1,5 +1,14 @@
 [
   {
+    "listing": "/notes.html",
+    "items": [
+      "/posts/IntroJuliaConnectoR.html",
+      "/posts/dic_study_2.html",
+      "/posts/note0322.html",
+      "/posts/note0716.html"
+    ]
+  },
+  {
     "listing": "/notesZh.html",
     "items": [
       "/posts_zh/post0704.html",
@@ -7,15 +16,6 @@
       "/posts_zh/1stBayes10.html",
       "/posts_zh/journal_mbr.html",
       "/posts_zh/journal_jedubehstats.html"
-    ]
-  },
-  {
-    "listing": "/notes.html",
-    "items": [
-      "/posts/IntroJuliaConnectoR.html",
-      "/posts/dic_study_2.html",
-      "/posts/note0322.html",
-      "/posts/note0716.html"
     ]
   }
 ]
