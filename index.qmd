@@ -1,10 +1,8 @@
 ---
-title: |
-  | Hi, 
-  | I'm Jie-Wen Tsai.
+title: Jie-Wen Tsai.
 image: profile.jpg
 about:
-  template: solana
+  template: trestles
   image-shape: round
   image-width: 150px
   links:
@@ -14,6 +12,8 @@ about:
 citation: false
 comments: false
 ---
+
+A ninja of educational measurement.
 
 ## See Also.
 

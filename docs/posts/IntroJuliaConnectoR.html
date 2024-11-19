@@ -7,9 +7,9 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 <meta name="author" content="JT">
-<meta name="dcterms.date" content="2024-05-16">
+<meta name="dcterms.date" content="2024-11-19">
 
-<title>𝕁𝕋+ - 「多變量行為研究」期刊最有影響力的 20 篇文章（MultivariateBehavRes 2010-2023）</title>
+<title>𝕁𝕋+ - Introduction to JuliaConnectoR</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -21,6 +21,40 @@ ul.task-list li input[type="checkbox"] {
   width: 0.8em;
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
+}
+/* CSS for syntax highlighting */
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
 }
 </style>
 
@@ -77,7 +111,7 @@ ul.task-list li input[type="checkbox"] {
 <body class="nav-fixed">
 
 <div id="quarto-search-results"></div>
-  <header id="quarto-header" class="headroom fixed-top">
+  <header id="quarto-header" class="headroom fixed-top quarto-banner">
     <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
       <div class="navbar-container container-fluid">
       <div class="navbar-brand-container mx-auto">
@@ -117,7 +151,35 @@ ul.task-list li input[type="checkbox"] {
     </nav>
 </header>
 <!-- content -->
-<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
+<header id="title-block-header" class="quarto-title-block default page-columns page-full">
+  <div class="quarto-title-banner page-columns page-full">
+    <div class="quarto-title column-body">
+      <h1 class="title">Introduction to <code>JuliaConnectoR</code></h1>
+                      </div>
+  </div>
+    
+  
+  <div class="quarto-title-meta">
+
+      <div>
+      <div class="quarto-title-meta-heading">Author</div>
+      <div class="quarto-title-meta-contents">
+               <p>JT </p>
+            </div>
+    </div>
+      
+      <div>
+      <div class="quarto-title-meta-heading">Published</div>
+      <div class="quarto-title-meta-contents">
+        <p class="date">November 19, 2024</p>
+      </div>
+    </div>
+    
+      
+    </div>
+    
+  
+  </header><div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
 <!-- sidebar -->
 <!-- margin-sidebar -->
     <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
@@ -125,120 +187,99 @@ ul.task-list li input[type="checkbox"] {
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#主要資訊" id="toc-主要資訊" class="nav-link active" data-scroll-target="#主要資訊">主要資訊</a></li>
-  <li><a href="#研究話題地圖" id="toc-研究話題地圖" class="nav-link" data-scroll-target="#研究話題地圖">研究話題地圖</a>
-  <ul class="collapse">
-  <li><a href="#話題-1因素分析紅色比重-12.5" id="toc-話題-1因素分析紅色比重-12.5" class="nav-link" data-scroll-target="#話題-1因素分析紅色比重-12.5">話題 1：因素分析（紅色，比重 12.5%）</a></li>
-  <li><a href="#話題-2長期追蹤資料議題藍色比重-12.5" id="toc-話題-2長期追蹤資料議題藍色比重-12.5" class="nav-link" data-scroll-target="#話題-2長期追蹤資料議題藍色比重-12.5">話題 2：長期追蹤資料議題（藍色，比重 12.5%）</a></li>
-  <li><a href="#話題-3密集型追蹤資料動態結構方程式綠色比重-43.75" id="toc-話題-3密集型追蹤資料動態結構方程式綠色比重-43.75" class="nav-link" data-scroll-target="#話題-3密集型追蹤資料動態結構方程式綠色比重-43.75">話題 3：密集型追蹤資料、動態結構方程式（綠色，比重 43.75%）</a></li>
-  <li><a href="#話題-4貝氏資料分析議題紫色比重-18.75" id="toc-話題-4貝氏資料分析議題紫色比重-18.75" class="nav-link" data-scroll-target="#話題-4貝氏資料分析議題紫色比重-18.75">話題 4：貝氏資料分析議題（紫色，比重 18.75%）</a></li>
-  <li><a href="#話題-5機器學習議題橘色比重-12.5" id="toc-話題-5機器學習議題橘色比重-12.5" class="nav-link" data-scroll-target="#話題-5機器學習議題橘色比重-12.5">話題 5：機器學習議題（橘色，比重 12.5%）</a></li>
-  </ul></li>
+  <li><a href="#using-in-julia" id="toc-using-in-julia" class="nav-link active" data-scroll-target="#using-in-julia">Using in Julia</a></li>
+  <li><a href="#using-in-r" id="toc-using-in-r" class="nav-link" data-scroll-target="#using-in-r">Using in R</a></li>
   </ul>
 </nav>
     </div>
 <!-- main -->
-<main class="content" id="quarto-document-content">
-
-<header id="title-block-header" class="quarto-title-block default">
-<div class="quarto-title">
-<h1 class="title">「多變量行為研究」期刊最有影響力的 20 篇文章（MultivariateBehavRes 2010-2023）</h1>
-  <div class="quarto-categories">
-    <div class="quarto-category">🟣 魔法史</div>
-  </div>
-  </div>
+<main class="content quarto-banner-title-block" id="quarto-document-content">
 
 
 
-<div class="quarto-title-meta">
-
-    <div>
-    <div class="quarto-title-meta-heading">Author</div>
-    <div class="quarto-title-meta-contents">
-             <p>JT </p>
-          </div>
-  </div>
-    
-    <div>
-    <div class="quarto-title-meta-heading">Published</div>
-    <div class="quarto-title-meta-contents">
-      <p class="date">May 16, 2024</p>
-    </div>
-  </div>
-  
-    
-  </div>
-  
 
 
-</header>
-
-
-<p><a href="https://www.tandfonline.com/journals/hmbr20">Multivariate Behavioral Research 多變量行為研究</a>，是 Society of Multivariate Experimental Psychology (SMEP) 多變量實驗心理學會的期刊，由 Taylor &amp; Francis 出版。每年 6 期。</p>
-<section id="主要資訊" class="level2">
-<h2 class="anchored" data-anchor-id="主要資訊">主要資訊</h2>
-<p><img src="images/clipboard-2533196327.png" class="img-fluid"></p>
-<p>我們來看一下「多變量行為研究」期刊的一些有趣數據。在 2010-2023 年，這期刊共有 865 篇文章，其中合著作者平均 2.72 位。每年成長率 -6.48%，文章平均年齡 6.68 歲，每篇文章平均被引用 34.93 次。這些數字背後反映了這個領域的研究活力和影響力。</p>
+<p>I’ve just updated my Julia package, <code>ExtendedRtIrtModeling.jl</code>, to version 0.2.0. There are a few new features in there that I’ll run through in the next few sections.</p>
+<p>But that’s not all! If you’re an R user, I’ll introduce you to an R package called <code>JuliaConnectoR</code> that lets you run Julia programs in R. It’ll bridge the two languages seamlessly.</p>
+<section id="using-in-julia" class="level2">
+<h2 class="anchored" data-anchor-id="using-in-julia">Using in Julia</h2>
+<p>See the Github page.</p>
 </section>
-<section id="研究話題地圖" class="level2">
-<h2 class="anchored" data-anchor-id="研究話題地圖">研究話題地圖</h2>
-<p><img src="images/clipboard-1696102646.png" class="img-fluid"></p>
-<p>「多變量行為研究」期刊從 2010 年以來，最關鍵的 20+ 篇文章，大致呈現出 5 條主要的研究話題。以及許多單獨的重要文章。我們也提供文獻縮寫（和上圖對應），doi，以及中文翻譯名稱。文獻排序和圖上一樣，由上至下。有興趣的同學可以用 doi 去找到對應的文章。</p>
-<section id="話題-1因素分析紅色比重-12.5" class="level3">
-<h3 class="anchored" data-anchor-id="話題-1因素分析紅色比重-12.5">話題 1：因素分析（紅色，比重 12.5%）</h3>
-<ul>
-<li>SASS DA, 2010, DOI 10.1080/00273170903504810 探索性因素分析中旋轉標準的比較研究</li>
-<li>MOORE TM, 2015, DOI 10.1080/00273171.2014.973990 部分指定目標矩陣的叠代： 探索性和貝葉斯確證因子分析中的應用</li>
-</ul>
-</section>
-<section id="話題-2長期追蹤資料議題藍色比重-12.5" class="level3">
-<h3 class="anchored" data-anchor-id="話題-2長期追蹤資料議題藍色比重-12.5">話題 2：長期追蹤資料議題（藍色，比重 12.5%）</h3>
-<ul>
-<li><mark>MAXWELL SE, 2011, DOI 10.1080/00273171.2011.606716 縱向中介橫斷面分析中的偏差：自回歸模型下的部分中介和完全中介</mark> 🌟 最出圈文章！(GCS: 833) 🌟 圈內人最愛！(LCS: 15)</li>
-<li>REICHARDT CS, 2011, DOI 10.1080/00273171.2011.606740 評論：三波數據是否足以評估中介作用？</li>
-</ul>
-</section>
-<section id="話題-3密集型追蹤資料動態結構方程式綠色比重-43.75" class="level3">
-<h3 class="anchored" data-anchor-id="話題-3密集型追蹤資料動態結構方程式綠色比重-43.75">話題 3：密集型追蹤資料、動態結構方程式（綠色，比重 43.75%）</h3>
-<ul>
-<li>STEELE JS, 2011, DOI 10.1080/00273171.2011.625305 自我調節和核心調節情感過程的潛微分方程模型</li>
-<li>CHOW SM, 2011, DOI 10.1080/00273171.2011.563697 具有時變參數的動態因素分析模型</li>
-<li>FERRER E, 2012, DOI 10.1080/00273171.2012.640605 利用個體內部和個體之間的變異模式分析情感二元互動的動態性</li>
-<li>VOELKLE MC, 2014, DOI 10.1080/00273171.2014.889593 為研究人與人之間和人與人之間的結構建立統一的框架： 在兩種研究範式之間架起一座橋梁</li>
-<li>JONGERLING J, 2015, DOI 10.1080/00273171.2014.1003772 多層次 ar(1) 模型：考慮特質分數、慣性和創新變異的個體間差異</li>
-<li>HAMAKER EL, 2018, DOI 10.1080/00273171.2018.1446819 密集縱向數據建模的前沿：Cogito 研究中情感測量的動態結構方程模型</li>
-<li>BRINGMANN LF, 2018, DOI 10.1080/00273171.2018.1439722 使用時變向量自回歸模型建模二人組中的非平穩情緒動態</li>
-</ul>
-</section>
-<section id="話題-4貝氏資料分析議題紫色比重-18.75" class="level3">
-<h3 class="anchored" data-anchor-id="話題-4貝氏資料分析議題紫色比重-18.75">話題 4：貝氏資料分析議題（紫色，比重 18.75%）</h3>
-<ul>
-<li>SONG HR, 2012, DOI 10.1080/00273171.2012.640593 隨機系數動態因子模型的貝葉斯估計</li>
-<li>SCHUURMAN NK, 2016, DOI 10.1080/00273171.2015.1065398 多級自回歸模型中協方差矩陣的逆 Wishart 先驗規範比較</li>
-<li><mark>EPSKAMP S, 2018, DOI 10.1080/00273171.2018.1454823 橫截面和時間序列數據中的高斯圖形模型</mark> 🌟 圈內人最愛！(LCS: 15)</li>
-</ul>
-</section>
-<section id="話題-5機器學習議題橘色比重-12.5" class="level3">
-<h3 class="anchored" data-anchor-id="話題-5機器學習議題橘色比重-12.5">話題 5：機器學習議題（橘色，比重 12.5%）</h3>
-<ul>
-<li>MCNEISH DM, 2015, DOI 10.1080/00273171.2015.1036965 使用lasso進行預測因子選擇並緩解過度擬合： 行為科學中長期被忽視的方法</li>
-<li>WILLIAMS DR, 2019, DOI 10.1080/00273171.2019.1575716 關於心理網絡的非規則化估計</li>
-</ul>
+<section id="using-in-r" class="level2">
+<h2 class="anchored" data-anchor-id="using-in-r">Using in R</h2>
+<p>All you have to do is to install and library the <code>JuliaConnectoR</code> as usual, and then you can use the <code>juliaImport</code> function to import any Julia package. The great thing is, it’ll always download the newest version from Github, but not the stable one.</p>
+<div class="cell">
+<details class="code-fold">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(JuliaConnectoR)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning: package 'JuliaConnectoR' was built under R version 4.4.1</code></pre>
+</div>
+<details class="code-fold">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="do">## You have to give a name to the Julia Environment.</span></span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>ex <span class="ot">&lt;-</span> <span class="fu">juliaImport</span>(<span class="st">"ExtendedRtIrtModeling"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-stderr">
+<pre><code>Starting Julia ...</code></pre>
+</div>
+<details class="code-fold">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="do">## See the objects in ex.</span></span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a><span class="fu">ls</span>(ex)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-stdout">
+<pre><code> [1] "coef"                          "drawItemDifficulty"           
+ [3] "drawItemDiscrimination"        "drawItemIntensity"            
+ [5] "drawItemIntensityCross"        "drawItemIntensityCrossQr"     
+ [7] "drawItemTimeResidual"          "drawItemTimeResidualCross"    
+ [9] "drawItemTimeResidualCrossQr"   "drawQrWeightsCrossQr"         
+[11] "drawQrWeightsLatentQr"         "drawRaPgRandomVariable"       
+[13] "drawSubjAbility"               "drawSubjAbilityNull"          
+[15] "drawSubjCoefficients"          "drawSubjCorrCross"            
+[17] "drawSubjCorrCrossQr"           "drawSubjCovariance"           
+[19] "drawSubjCovariance2One"        "drawSubjCovarianceLatent"     
+[21] "drawSubjCovarianceLatentQr"    "drawSubjCovarianceNull"       
+[23] "drawSubjCovarianceNull2One"    "drawSubjSpeed"                
+[25] "drawSubjSpeedCross"            "drawSubjSpeedCrossQr"         
+[27] "drawSubjSpeedLatent"           "drawSubjSpeedLatentQr"        
+[29] "drawSubjSpeedNull"             "eval"                         
+[31] "evaluate"                      "getBias"                      
+[33] "getDic"                        "getLogLikelihoodMlIrt"        
+[35] "getLogLikelihoodRtIrt"         "getLogLikelihoodRtIrtCross"   
+[37] "getLogLikelihoodRtIrtCrossQr"  "getLogLikelihoodRtIrtLatent"  
+[39] "getLogLikelihoodRtIrtLatentQr" "getLogLikelihoodRtIrtNull"    
+[41] "getPrecisTable"                "getRmse"                      
+[43] "getSubjCoefficients"           "getSubjCoefficientsLatent"    
+[45] "getSubjCoefficientsLatentQr"   "getSubjCoefficientsMlIrt"     
+[47] "GibbsMlIrt"                    "GibbsRtIrt"                   
+[49] "GibbsRtIrt2"                   "GibbsRtIrtCross"              
+[51] "GibbsRtIrtCross2"              "GibbsRtIrtCrossQr"            
+[53] "GibbsRtIrtLatent"              "GibbsRtIrtLatent2"            
+[55] "GibbsRtIrtLatentQr"            "GibbsRtIrtNull"               
+[57] "include"                       "InputData"                    
+[59] "InputPara"                     "OutputDic"                    
+[61] "OutputPost"                    "OutputPostCross"              
+[63] "OutputPostCrossQr"             "OutputPostMlIrt"              
+[65] "OutputPostRtIrtLatent"         "OutputPostRtIrtLatentQr"      
+[67] "precis"                        "sample!"                      
+[69] "setCond"                       "setTrueParaRtIrt"             
+[71] "SimConditions"                 "SimEvaluation"                </code></pre>
+</div>
+</div>
 
 
-</section>
 </section>
 
 <div id="quarto-appendix" class="default"><section class="quarto-appendix-contents" id="quarto-citation"><h2 class="anchored quarto-appendix-heading">Citation</h2><div><div class="quarto-appendix-secondary-label">BibTeX citation:</div><pre class="sourceCode code-with-copy quarto-appendix-bibtex"><code class="sourceCode bibtex">@online{2024,
   author = {, JT},
-  title = {「多變量行為研究」期刊最有影響力的 20
-    {篇文章（MultivariateBehavRes} 2010-2023）},
-  date = {2024-05-16},
+  title = {Introduction to {`JuliaConnectoR`}},
+  date = {2024-11-19},
   langid = {en}
 }
 </code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre><div class="quarto-appendix-secondary-label">For attribution, please cite this work as:</div><div id="ref-2024" class="csl-entry quarto-appendix-citeas" role="listitem">
-J. (2024, May 16). <em>「多變量行為研究」期刊最有影響力的 20
-篇文章（MultivariateBehavRes 2010-2023）</em>.
+J. (2024, November 19). <em>Introduction to `JuliaConnectoR`</em>.
 </div></div></section></div></main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
 window.document.addEventListener("DOMContentLoaded", function (event) {
