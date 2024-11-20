@@ -4,14 +4,14 @@
     "href": "software.html",
     "title": "Softwares",
     "section": "",
-    "text": "ExtendedRtIrtModeling.jl"
+    "text": "ExtendedRtIrtModeling.jl.  Extended Response Time Item Response Models with Polya-Gamma Sampler and Bayesian Quantile Regression. See more: Introduction to ExtendedRtIrtModeling.jl through JuliaConnectoR"
   },
   {
     "objectID": "software.html#julia",
     "href": "software.html#julia",
     "title": "Softwares",
     "section": "",
-    "text": "ExtendedRtIrtModeling.jl"
+    "text": "ExtendedRtIrtModeling.jl.  Extended Response Time Item Response Models with Polya-Gamma Sampler and Bayesian Quantile Regression. See more: Introduction to ExtendedRtIrtModeling.jl through JuliaConnectoR"
   },
   {
     "objectID": "software.html#quarto",
@@ -25,7 +25,7 @@
     "href": "software.html#r",
     "title": "Softwares",
     "section": "R",
-    "text": "R\n\nbibliometrixExtra"
+    "text": "R\n\nbibliometrixExtra.  R for synonyms (Extended functions for bibliometrix)."
   },
   {
     "objectID": "software.html#typst",

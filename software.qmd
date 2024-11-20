@@ -1,21 +1,22 @@
 ---
 title: "Softwares"
-author: "JT"
+author: "JW Tsai"
+date: 2024-11-19
 date-modified: today
 ---
 
 ## Julia
 
-- [ExtendedRtIrtModeling.jl](https://github.com/jiewenTsai/ExtendedRtIrtModeling.jl)
+-   [ExtendedRtIrtModeling.jl](https://github.com/jiewenTsai/ExtendedRtIrtModeling.jl). <br> Extended Response Time Item Response Models with Polya-Gamma Sampler and Bayesian Quantile Regression. See more: [Introduction to `ExtendedRtIrtModeling.jl` through `JuliaConnectoR`](https://jiewentsai.github.io/docs/posts/IntroJuliaConnectoR.html)
 
 ## Quarto
 
-- [quarto-revealjs-yangchou](https://github.com/jiewenTsai/quarto-revealjs-yangchou)
+-   [quarto-revealjs-yangchou](https://github.com/jiewenTsai/quarto-revealjs-yangchou)
 
 ## R
 
-- [bibliometrixExtra](https://github.com/jiewenTsai/bibliometrixExtra)
+-   [bibliometrixExtra](https://github.com/jiewenTsai/bibliometrixExtra). <br> R for synonyms (Extended functions for bibliometrix).
 
 ## Typst
 
-- (...)
+-   (...)
