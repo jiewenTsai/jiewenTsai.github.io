@@ -3,7 +3,7 @@ title: "中文記事"
 listing:
   contents: posts_zh
   sort: "date desc"
-  type: table
+  type: grid
   fields: 
     - image 
     - date
@@ -20,8 +20,3 @@ comments: false
 execute:
   freeze: auto
 ---
-
-希望以週記的形式記錄下重要的學習歷程。
-
-::: {#posts_zh}
-:::

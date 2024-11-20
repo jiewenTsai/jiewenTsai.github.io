@@ -16,7 +16,7 @@ See the Github page.
 
 ## Using in R
 
-All you have to do is to install and library the `JuliaConnectoR` as usual, and then you can use the `juliaImport` function to import any Julia package. It seems like the  package's version you get depends on which copy version you've had on your computer (**confirmed**). ~~The great thing is, it'll always download the newest version from Github, but not the stable one.~~
+All you have to do is to install and library the `JuliaConnectoR` as usual, and then you can use the `juliaImport` function to import any Julia package. It seems like the package's version you get depends on which copy version you've had on your computer (**confirmed**). ~~The great thing is, it'll always download the newest version from Github, but not the stable one.~~
 
 ```{r}
 library(tidyverse)
@@ -59,8 +59,6 @@ juliaEval('Pkg.status("ExtendedRtIrtModeling")')
 
 In the original Github post, the user doesn't have to fill in all five arguments of `InputData` because the values for $\kappa$ and *logT* are automatically calculated by *Y* and *T*. However, to get it working with R, I've come up with another struct called `InputData4R`, which is specifically for R users.
 
-
-
 ```{r}
 ## import your data set
 Cond = ex$setCond(
@@ -88,8 +86,6 @@ ex$coef(MCMC)
 ex$precis(MCMC)
 
 ```
-
-
 
 Lastly, let's check out this package.
 

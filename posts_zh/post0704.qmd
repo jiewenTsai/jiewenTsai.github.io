@@ -1,6 +1,6 @@
 ---
 title: "「劍橋新版數學心理學手冊」與「牛津心理學量化方法手冊」的內容"
-author: jwTsai
+author: JW Tsai
 ---
 
 今日這篇文章關於劍橋手冊 (Cambridge New Handbook of Mathematical Psychology)，只是為了記錄「數學心理學」的內容。日後也許還要記下CRC press的「IRT手冊」。讀這些手冊，倒也有趣，能了解當今發展的主題，看看未來還有什麼可做的。
@@ -11,64 +11,60 @@ author: jwTsai
 
 ## 卷一，基礎與方法。
 
-1. 機率中的精選概念。 Selected concepts from probability, pp 1-84 
-2. 機率、隨機變數、選擇性。 Probability, random variables, and selectivity, pp 85-150 
-3. 函數方程式。 Functional equations, pp 151-193 
-4. 網路分析。 Network analysis, pp 194-273 
-5. 知識空間與學習空間。 Knowledge spaces and learning spaces, pp 274-321 
-6. 演化對局論（博弈論）。 Evolutionary game theory, pp 322-373 
-7. 選擇、偏好、效用：機率性和確定性表達。 Choice, preference, and utility: probabilistic and deterministic representations, pp 374-453 
-8. 認知的離散狀態模式。 Discrete state models of cognition, pp 454-503 
-9. 認知的貝氏階層模式。 Bayesian hierarchical models of cognition, pp 504-551 
+1.  機率中的精選概念。 Selected concepts from probability, pp 1-84
+2.  機率、隨機變數、選擇性。 Probability, random variables, and selectivity, pp 85-150
+3.  函數方程式。 Functional equations, pp 151-193
+4.  網路分析。 Network analysis, pp 194-273
+5.  知識空間與學習空間。 Knowledge spaces and learning spaces, pp 274-321
+6.  演化對局論（博弈論）。 Evolutionary game theory, pp 322-373
+7.  選擇、偏好、效用：機率性和確定性表達。 Choice, preference, and utility: probabilistic and deterministic representations, pp 374-453
+8.  認知的離散狀態模式。 Discrete state models of cognition, pp 454-503
+9.  認知的貝氏階層模式。 Bayesian hierarchical models of cognition, pp 504-551
 10. 模式評估和選擇。 Model evaluation and selection, pp 552-598
 
 ## 卷二，建模與測量。
 
-1. 決策建模的隨機方法。 Stochastic Methods for Modeling Decision-making, pp 1-70 
-2. 從理性觀點看加速選擇的擴散模式。 The Diffusion Model of Speeded Choice, from a Rational Perspective, pp 71-103 
-3. 基本心理架構的隨機基礎。 Stochastic Foundations of Elementary Mental Architectures, pp 104-127 
-4. 機率模式的可識別性，知識結構理論的例子。 Identifiability of Probabilistic Models, with Examples from Knowledge Structure Theory, pp 128-184 
-5. 認知與決策的量子模式。 Quantum Models of Cognition and Decision, pp 185-222 
-6. 計算認知神經科學。 Computational Cognitive Neuroscience, pp 223-270 
-7. 透過投票發現聚合屬性。 Discovering Aggregation Properties via Voting, pp 271-321 
-8. 基於相似性和特徵的分類：重現 RKBS 方法。 Categorization Based on Similarity and Features: The Reproducing Kernel Banach Space (RKBS) Approach, pp 322-373 
-9. 科學和幾何學中的意義公理。 The Axiom of Meaningfulness in Science and Geometry, pp 374-456
+1.  決策建模的隨機方法。 Stochastic Methods for Modeling Decision-making, pp 1-70
+2.  從理性觀點看加速選擇的擴散模式。 The Diffusion Model of Speeded Choice, from a Rational Perspective, pp 71-103
+3.  基本心理架構的隨機基礎。 Stochastic Foundations of Elementary Mental Architectures, pp 104-127
+4.  機率模式的可識別性，知識結構理論的例子。 Identifiability of Probabilistic Models, with Examples from Knowledge Structure Theory, pp 128-184
+5.  認知與決策的量子模式。 Quantum Models of Cognition and Decision, pp 185-222
+6.  計算認知神經科學。 Computational Cognitive Neuroscience, pp 223-270
+7.  透過投票發現聚合屬性。 Discovering Aggregation Properties via Voting, pp 271-321
+8.  基於相似性和特徵的分類：重現 RKBS 方法。 Categorization Based on Similarity and Features: The Reproducing Kernel Banach Space (RKBS) Approach, pp 322-373
+9.  科學和幾何學中的意義公理。 The Axiom of Meaningfulness in Science and Geometry, pp 374-456
 
 ## 卷三，知覺與認知過程。
 
-1. 初始視覺編碼的原理和結果。 Principles and Consequences of the Initial Visual Encoding, pp 1-41 
-2. 再選定範式中測量多感官整合。 Measuring Multisensory Integration in Selected Paradigms, pp 42-79 
-3. 費希納度量法：差異累積理論。 Fechnerian Scaling: Dissimilarity Cumulation Theory, pp 80-162 
-4. 人類學習的數學模式。 Mathematical Models of Human Learning, pp 163-217 
-5. 基於時變表達的記憶形式模式。 Formal Models of Memory Based on Temporally-Varying Representations, pp 218-264 
-6. 統計決策理論。 Statistical Decision Theory, pp 265-310 
-7. 停止信號任務中的反應抑制建模。 Modeling Response Inhibition in the Stop-Signal Task, pp 311-356 
-8. 近似貝氏計算。 Approximate Bayesian Computation, pp 357-384 
-9. 認知診斷模式。 Cognitive Diagnosis Models, pp 385-420 
+1.  初始視覺編碼的原理和結果。 Principles and Consequences of the Initial Visual Encoding, pp 1-41
+2.  再選定範式中測量多感官整合。 Measuring Multisensory Integration in Selected Paradigms, pp 42-79
+3.  費希納度量法：差異累積理論。 Fechnerian Scaling: Dissimilarity Cumulation Theory, pp 80-162
+4.  人類學習的數學模式。 Mathematical Models of Human Learning, pp 163-217
+5.  基於時變表達的記憶形式模式。 Formal Models of Memory Based on Temporally-Varying Representations, pp 218-264
+6.  統計決策理論。 Statistical Decision Theory, pp 265-310
+7.  停止信號任務中的反應抑制建模。 Modeling Response Inhibition in the Stop-Signal Task, pp 311-356
+8.  近似貝氏計算。 Approximate Bayesian Computation, pp 357-384
+9.  認知診斷模式。 Cognitive Diagnosis Models, pp 385-420
 10. 神經影像學中的編碼模式。 Encoding Models in Neuroimaging, pp 421-472
 
-
-
----
+------------------------------------------------------------------------
 
 除了數學心理學，統計心理學或這裡所說的量化心理學、計量心理學，或許才是更為常見的研究領域。我們這裡記錄的是牛津手冊 (The Oxford Handbook of Quantitative Methods in Psycholog) 中的內容。只是他年代稍微早一點，是 2013 年出版的。
 
-
-- 卷一，基礎。 Foundations, 2013.
-- 卷二，統計分析。 Statistical Analysis, 2013.
+-   卷一，基礎。 Foundations, 2013.
+-   卷二，統計分析。 Statistical Analysis, 2013.
 
 ## 卷一，基礎。
 
-
-1. 前言。 Introduction
-2. 量化方法的哲學。 The Philosophy of Quantitative Methods
-3. 量化方法的倫理。 Quantitative Methods and Ethics
-4. 特定群體。 Special Populations
-5. 理論建構、模式建立、模式選擇。 Theory Construction, Model Building, and Model Selection
-6. 量化心理學教學。 Teaching Quantitative Psychology
-7. 當代測驗理論。 Modern Test Theory
-8. IRT 傳統與其應用。 The IRT Tradition and its Applications
-9. 調查設計和測量發展。 Survey Design and Measure Development
+1.  前言。 Introduction
+2.  量化方法的哲學。 The Philosophy of Quantitative Methods
+3.  量化方法的倫理。 Quantitative Methods and Ethics
+4.  特定群體。 Special Populations
+5.  理論建構、模式建立、模式選擇。 Theory Construction, Model Building, and Model Selection
+6.  量化心理學教學。 Teaching Quantitative Psychology
+7.  當代測驗理論。 Modern Test Theory
+8.  IRT 傳統與其應用。 The IRT Tradition and its Applications
+9.  調查設計和測量發展。 Survey Design and Measure Development
 10. 高風險測驗的建構和使用。 High-Stakes Test Construction and Test Use
 11. 效果量和樣本數規劃。 Effect Size and Sample Size Planning
 12. 因果推論的實驗設計：臨床試驗和迴歸不連續設計。 Experimental Design for Causal Inference: Clinical Trials and Regression Discontinuity Designs
@@ -84,40 +80,36 @@ author: jwTsai
 22. 學術研究中的蒙地卡羅分析。 Monte Carlo Analysis in Academic Research
 23. 網路分析：重要概念定義指南。 Network Analysis: A Definitional Guide to Important Concepts
 
-
 ## 卷二，統計分析。
 
-1. 前言。 Introduction 
-2. 傳統、古典方法概述。 Overview of Traditional/Classical Statistical Approaches 
-3. 廣義線性模式。 Generalized Linear Models 
-4. 類別方法（類別資料分析）。 Categorical Methods 
-5. 配置頻次分析。 Configural Frequency Analysis 
-6. 非參數統計技術。 Nonparametric Statistical Techniques 
-7. 對應分析。 Correspondence Analysis 
-8. 空間分析。 Spatial Analysis 
-9. 影像資料分析。 Analysis of Imaging Data 
-10. 雙胞胎研究與行為遺傳學。 Twin Studies and Behavior Genetics 
-11. 基因量化分析。 Quantitative Analysis of Genes 
-12. 多元度量法。 Multidimensional Scaling 
-13. 潛在變項測量模式。 Latent Variable Measurement Models 
-14. 多層次迴歸和多層次結構方程式。 Multilevel Regression and Multilevel Structural Equation Modeling 
-15. 結構方程式。 Structural Equation Models 
-16. 中介分析的發展。 Developments in Mediation Analysis 
-17. 調節分析。 Moderation 
-18. 縱向資料分析（長期追蹤資料分析）。 Longitudinal Data Analysis 
-19. 動態系統和連續時間模式。 Dynamical Systems and Models of Continuous Time 
-20. 密集型追蹤資料。 Intensive Longitudinal Data 
+1.  前言。 Introduction
+2.  傳統、古典方法概述。 Overview of Traditional/Classical Statistical Approaches
+3.  廣義線性模式。 Generalized Linear Models
+4.  類別方法（類別資料分析）。 Categorical Methods
+5.  配置頻次分析。 Configural Frequency Analysis
+6.  非參數統計技術。 Nonparametric Statistical Techniques
+7.  對應分析。 Correspondence Analysis
+8.  空間分析。 Spatial Analysis
+9.  影像資料分析。 Analysis of Imaging Data
+10. 雙胞胎研究與行為遺傳學。 Twin Studies and Behavior Genetics
+11. 基因量化分析。 Quantitative Analysis of Genes
+12. 多元度量法。 Multidimensional Scaling
+13. 潛在變項測量模式。 Latent Variable Measurement Models
+14. 多層次迴歸和多層次結構方程式。 Multilevel Regression and Multilevel Structural Equation Modeling
+15. 結構方程式。 Structural Equation Models
+16. 中介分析的發展。 Developments in Mediation Analysis
+17. 調節分析。 Moderation
+18. 縱向資料分析（長期追蹤資料分析）。 Longitudinal Data Analysis
+19. 動態系統和連續時間模式。 Dynamical Systems and Models of Continuous Time
+20. 密集型追蹤資料。 Intensive Longitudinal Data
 21. 動態因素分析：個人過程建模。 Dynamic Factor Analysis: Modeling Person-Specific Process
-22. 時間序列分析。 Time Series Analysis 
-23. 事件史資料分析。 Analyzing Event History Data 
-24. 聚類和分類。 Clustering and Classification 
-25. 潛在類別分析和有限混合模式。 Latent Class Analysis and Finite Mixture Modeling 
-26. 分類計量學。 Taxometrics 
-27. 遺漏值方法。 Missing Data Methods 
-28. 次級資料分析。 Secondary Data Analysis 
-29. 資料採礦。 Data Mining 
-30. 後設分析與量化研究綜述。 Meta-Analysis and Quantitative Research Synthesis 
-31. 量化方法中的常見謬誤。 Common Fallacies in Quantitative Research Methodology 
-
-
-
+22. 時間序列分析。 Time Series Analysis
+23. 事件史資料分析。 Analyzing Event History Data
+24. 聚類和分類。 Clustering and Classification
+25. 潛在類別分析和有限混合模式。 Latent Class Analysis and Finite Mixture Modeling
+26. 分類計量學。 Taxometrics
+27. 遺漏值方法。 Missing Data Methods
+28. 次級資料分析。 Secondary Data Analysis
+29. 資料採礦。 Data Mining
+30. 後設分析與量化研究綜述。 Meta-Analysis and Quantitative Research Synthesis
+31. 量化方法中的常見謬誤。 Common Fallacies in Quantitative Research Methodology

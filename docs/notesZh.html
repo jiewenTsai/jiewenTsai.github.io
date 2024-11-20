@@ -79,9 +79,9 @@ ul.task-list li input[type="checkbox"] {
     }
 
     const options = {
-      valueNames: ['listing-image','listing-date','listing-title','listing-reading-time',{ data: ['index'] },{ data: ['categories'] },{ data: ['listing-date-sort'] },{ data: ['listing-title-sort'] }],
+      valueNames: ['listing-image','listing-date','listing-title','listing-reading-time',{ data: ['index'] },{ data: ['categories'] },{ data: ['listing-date-sort'] },{ data: ['listing-file-modified-sort'] }],
       
-      searchColumns: ["listing-date","listing-title","listing-author"],
+      searchColumns: ["listing-title","listing-author","listing-date","listing-image","listing-description","listing-categories"],
     };
 
     window['quarto-listings'] = window['quarto-listings'] || {};
@@ -208,29 +208,25 @@ window.Quarto = {
 
 
 
-<p>希望以週記的形式記錄下重要的學習歷程。</p>
-<div id="posts_zh">
-
-</div>
 
 
 
 
-<div class="quarto-listing quarto-listing-container-table" id="listing-listing">
+<div class="quarto-listing quarto-listing-container-grid" id="listing-listing">
 <div class="listing-actions-group">
    <div class="input-group input-group-sm quarto-listing-sort">
      <span class="input-group-text"><i class="bi bi-sort-down"></i></span>
      <select id="listing-listing-sort" class="form-select" aria-label="Order By" onchange="window['quarto-listings']['listing-listing'].sort(this.options[this.selectedIndex].value, { order: this.options[this.selectedIndex].getAttribute('data-direction')})">
        <option value="" disabled="" selected="" hidden="">Order By</option>
        <option value="index" data-direction="asc">Default</option>
+         <option value="listing-title" data-direction="asc">
+          Title
+        </option>
          <option value="listing-date-sort" data-direction="asc">
           Date - Oldest
         </option>
          <option value="listing-date-sort" data-direction="desc">
           Date - Newest
-        </option>
-         <option value="listing-title-sort" data-direction="asc">
-          Title
         </option>
      </select>
   </div>
@@ -239,95 +235,98 @@ window.Quarto = {
       <input type="text" class="search form-control" placeholder="Filter">
     </div>
 </div>
-<table class="quarto-listing-table table">
-<thead>
-<tr>
-<th>
-</th>
-<th>
-<a class="sort" data-sort="listing-date-sort" onclick="if (this.classList.contains('sort-asc')) { this.classList.add('sort-desc'); this.classList.remove('sort-asc') } else { this.classList.add('sort-asc'); this.classList.remove('sort-desc')} return false;">Date</a>
-</th>
-<th>
-<a class="sort" data-sort="listing-title-sort" onclick="if (this.classList.contains('sort-asc')) { this.classList.add('sort-desc'); this.classList.remove('sort-asc') } else { this.classList.add('sort-asc'); this.classList.remove('sort-desc')} return false;">Title</a>
-</th>
-<th>
-Reading Time
-</th>
-</tr>
-</thead>
-<tbody class="list">
-<tr data-index="0" data-listing-file-modified-sort="1720084575367" data-listing-reading-time-sort="4" data-listing-word-count-sort="646" data-listing-title-sort="「劍橋新版數學心理學手冊」與「牛津心理學量化方法手冊」的內容" data-listing-filename-sort="post0704.qmd">
-<td>
-<span class="listing-image"><div class="listing-item-img-placeholder card-img-top" style="height: 40px;">&nbsp;</div></span>
-</td>
-<td>
-<span class="listing-date">&nbsp;</span>
-</td>
-<td>
-<a href="./posts_zh/post0704.html" class="title listing-title">「劍橋新版數學心理學手冊」與「牛津心理學量化方法手冊」的內容</a>
-</td>
-<td>
-<span class="listing-reading-time">4 min</span>
-</td>
-</tr>
-<tr data-index="1" data-listing-file-modified-sort="1715800182301" data-listing-reading-time-sort="1" data-listing-word-count-sort="1" data-listing-title-sort="貝氏學習資源推薦" data-listing-filename-sort="bayes.qmd">
-<td>
-<span class="listing-image"><div class="listing-item-img-placeholder card-img-top" style="height: 40px;">&nbsp;</div></span>
-</td>
-<td>
-<span class="listing-date">&nbsp;</span>
-</td>
-<td>
-<a href="./posts_zh/bayes.html" class="title listing-title">貝氏學習資源推薦</a>
-</td>
-<td>
-<span class="listing-reading-time">1 min</span>
-</td>
-</tr>
-<tr data-index="2" data-listing-date-sort="1716912000000" data-listing-file-modified-sort="1716997384977" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="2" data-listing-word-count-sort="274" data-listing-title-sort="Chapter 10" data-listing-filename-sort="1stBayes10.qmd">
-<td>
-<span class="listing-image"><div class="listing-item-img-placeholder card-img-top" style="height: 40px;">&nbsp;</div></span>
-</td>
-<td>
-<span class="listing-date">May 29, 2024</span>
-</td>
-<td>
-<a href="./posts_zh/1stBayes10.html" class="title listing-title">Chapter 10</a>
-</td>
-<td>
-<span class="listing-reading-time">2 min</span>
-</td>
-</tr>
-<tr data-index="3" data-categories="🟣 魔法史" data-listing-date-sort="1715788800000" data-listing-file-modified-sort="1715851723051" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="1" data-listing-word-count-sort="197" data-listing-title-sort="「多變量行為研究」期刊最有影響力的 20 篇文章（MultivariateBehavRes 2010-2023）" data-listing-filename-sort="journal_mbr.qmd">
-<td>
-<span class="listing-image"><p class="card-img-top"><img src="posts_zh/images/clipboard-2533196327.png" style="height: 40px;"  class="thumbnail-image card-img"/></p></span>
-</td>
-<td>
-<span class="listing-date">May 16, 2024</span>
-</td>
-<td>
-<a href="./posts_zh/journal_mbr.html" class="title listing-title">「多變量行為研究」期刊最有影響力的 20 篇文章（MultivariateBehavRes 2010-2023）</a>
-</td>
-<td>
-<span class="listing-reading-time">1 min</span>
-</td>
-</tr>
-<tr data-index="4" data-categories="🟣 魔法史" data-listing-date-sort="1715788800000" data-listing-file-modified-sort="1715862988025" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="1" data-listing-word-count-sort="180" data-listing-title-sort="「教育與行為統計學」期刊最有影響力的 20 篇文章（JEducBehavStat 2010-2023）" data-listing-filename-sort="journal_jedubehstats.qmd">
-<td>
-<span class="listing-image"><p class="card-img-top"><img src="posts_zh/images/clipboard-3602238245.png" style="height: 40px;"  class="thumbnail-image card-img"/></p></span>
-</td>
-<td>
-<span class="listing-date">May 16, 2024</span>
-</td>
-<td>
-<a href="./posts_zh/journal_jedubehstats.html" class="title listing-title">「教育與行為統計學」期刊最有影響力的 20 篇文章（JEducBehavStat 2010-2023）</a>
-</td>
-<td>
-<span class="listing-reading-time">1 min</span>
-</td>
-</tr>
-</tbody>
-</table>
+<div class="list grid quarto-listing-cols-3">
+<div class="g-col-1" data-index="0" data-listing-file-modified-sort="1732062617202" data-listing-reading-time-sort="4" data-listing-word-count-sort="639">
+<a href="./posts_zh/post0704.html" class="quarto-grid-link">
+<div class="quarto-grid-item card h-100 card-left">
+<div class="listing-item-img-placeholder card-img-top" style="height: 150px;">&nbsp;</div>
+<div class="card-body post-contents">
+<h5 class="no-anchor card-title listing-title">
+「劍橋新版數學心理學手冊」與「牛津心理學量化方法手冊」的內容
+</h5>
+<div class="listing-reading-time card-text text-muted">
+4 min
+</div>
+</div>
+</div>
+</a>
+</div>
+<div class="g-col-1" data-index="1" data-listing-file-modified-sort="1732062573798" data-listing-reading-time-sort="1" data-listing-word-count-sort="1">
+<a href="./posts_zh/bayes.html" class="quarto-grid-link">
+<div class="quarto-grid-item card h-100 card-left">
+<div class="listing-item-img-placeholder card-img-top" style="height: 150px;">&nbsp;</div>
+<div class="card-body post-contents">
+<h5 class="no-anchor card-title listing-title">
+貝氏學習資源推薦
+</h5>
+<div class="listing-reading-time card-text text-muted">
+1 min
+</div>
+</div>
+</div>
+</a>
+</div>
+<div class="g-col-1" data-index="2" data-listing-date-sort="1716912000000" data-listing-file-modified-sort="1732062700783" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="2" data-listing-word-count-sort="287">
+<a href="./posts_zh/1stBayes10.html" class="quarto-grid-link">
+<div class="quarto-grid-item card h-100 card-left">
+<div class="listing-item-img-placeholder card-img-top" style="height: 150px;">&nbsp;</div>
+<div class="card-body post-contents">
+<h5 class="no-anchor card-title listing-title">
+Chapter 10
+</h5>
+<div class="listing-reading-time card-text text-muted">
+2 min
+</div>
+<div class="card-attribution card-text-small end">
+<div class="listing-date">
+May 29, 2024
+</div>
+</div>
+</div>
+</div>
+</a>
+</div>
+<div class="g-col-1" data-index="3" data-categories="🟣 魔法史" data-listing-date-sort="1715788800000" data-listing-file-modified-sort="1715851723051" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="1" data-listing-word-count-sort="197">
+<a href="./posts_zh/journal_mbr.html" class="quarto-grid-link">
+<div class="quarto-grid-item card h-100 card-left">
+<p class="card-img-top"><img src="posts_zh/images/clipboard-2533196327.png" style="height: 150px;"  class="thumbnail-image card-img"/></p>
+<div class="card-body post-contents">
+<h5 class="no-anchor card-title listing-title">
+「多變量行為研究」期刊最有影響力的 20 篇文章（MultivariateBehavRes 2010-2023）
+</h5>
+<div class="listing-reading-time card-text text-muted">
+1 min
+</div>
+<div class="card-attribution card-text-small end">
+<div class="listing-date">
+May 16, 2024
+</div>
+</div>
+</div>
+</div>
+</a>
+</div>
+<div class="g-col-1" data-index="4" data-categories="🟣 魔法史" data-listing-date-sort="1715788800000" data-listing-file-modified-sort="1715862988025" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="1" data-listing-word-count-sort="180">
+<a href="./posts_zh/journal_jedubehstats.html" class="quarto-grid-link">
+<div class="quarto-grid-item card h-100 card-left">
+<p class="card-img-top"><img src="posts_zh/images/clipboard-3602238245.png" style="height: 150px;"  class="thumbnail-image card-img"/></p>
+<div class="card-body post-contents">
+<h5 class="no-anchor card-title listing-title">
+「教育與行為統計學」期刊最有影響力的 20 篇文章（JEducBehavStat 2010-2023）
+</h5>
+<div class="listing-reading-time card-text text-muted">
+1 min
+</div>
+<div class="card-attribution card-text-small end">
+<div class="listing-date">
+May 16, 2024
+</div>
+</div>
+</div>
+</div>
+</a>
+</div>
+</div>
 <div class="listing-no-matching d-none">
 No matching items
 </div>
