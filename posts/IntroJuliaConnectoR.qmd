@@ -3,7 +3,7 @@ title: "Introduction to `ExtendedRtIrtModeling.jl` through `JuliaConnectoR`"
 author: "JW Tsai"
 date: "2024-11-19"
 execute:
-  cache: true
+  cache: false
 ---
 
 I've just updated my Julia package, `ExtendedRtIrtModeling.jl`, to version 0.2.0. There are a few new features in there that I'll run through in the next few sections.
@@ -84,6 +84,27 @@ ex$`sample!`(MCMC)
 
 ex$coef(MCMC)
 ex$precis(MCMC)
+
+```
+
+If you want to use the `MCMC` class data in R, you can use the `juliaGet` function to convert Julia's objects to R's. But it'll take a loooooot of time.
+
+```{r}
+time <- Sys.time()
+MCMC4R <- juliaGet(MCMC)
+Sys.time() - time
+
+ls(MCMC4R)
+ls(MCMC4R$Post$mean)
+```
+
+```{r}
+MCMC4R$Post$ra[,311,] |> 
+  as.data.frame() |>
+  pivot_longer(cols = everything(), names_to = "variable", values_to = "value") %>%
+  ggplot(aes(x = 1:nrow(.), y = value, color = variable, group = variable)) +
+  geom_line() +
+  labs(x = "Index", y = "Value", title = "b1 MCMC chains")
 
 ```
 
