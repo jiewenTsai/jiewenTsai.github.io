@@ -90,6 +90,7 @@ ex$precis(MCMC)
 If you want to use the `MCMC` class data in R, you can use the `juliaGet` function to convert Julia's objects to R's. But it'll take a loooooot of time.
 
 ```{r}
+#| cache: true
 time <- Sys.time()
 MCMC4R <- juliaGet(MCMC)
 Sys.time() - time
