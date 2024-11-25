@@ -1,5 +1,5 @@
 ---
-title: Jie-Wen Tsai.
+title: JIE-WEN TSAI.
 image: 44721885.png
 about:
   template: trestles
