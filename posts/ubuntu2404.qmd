@@ -20,6 +20,7 @@ Now, I'm going to give you a minimum viable proposal (*MVP*) for setting up your
     -   VS Code.
 4.  *Connections.*
     -   Dropbox,
+    -   Github Desktop.
 5.  *Writing.*
     -   OnlyOffice or LibreOffice
     -   Simplenote, and Logseq
