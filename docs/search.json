@@ -53,7 +53,7 @@
     "href": "index.html#interesting.",
     "title": "JIE-WEN TSAI.",
     "section": "Interesting.",
-    "text": "Interesting.\n\nPsychometrics. CRAN Task View: Psychometric Models and Methods.\nBayesian data analysis. CRAN Task View: Bayesian Inference."
+    "text": "Interesting.\n\nPsychometrics. Read more.\nBayesian data analysis. Read more."
   },
   {
     "objectID": "index.html#education.",
@@ -130,7 +130,7 @@
     "href": "notes.html",
     "title": "Notes",
     "section": "",
-    "text": "Order By\n       Default\n         \n          Title\n        \n         \n          Date - Oldest\n        \n         \n          Date - Newest\n        \n     \n  \n    \n      \n      \n    \n\n\n\n\n\n\n\n\nIntroduction to ExtendedRtIrtModeling.jl through JuliaConnectoR\n\n\n3 min\n\n\n\nNov 19, 2024\n\n\n\n\n\n\n\n\n\n\n\n\nUnderstand DIC\n\n\n6 min\n\n\n\nMar 27, 2024\n\n\n\n\n\n\n\n\n\n\n\n\nHow to conduct simple slope analysis and make plot with brms\n\n\n4 min\n\n\n\nMar 22, 2024\n\n\n\n\n\n\n\n\n\n\n\n\nNote0716 (mediation analysis with pymc)\n\n\n3 min\n\n\n\nJul 16, 2023\n\n\n\n\n\n\n\n\nNo matching items"
+    "text": "Order By\n       Default\n         \n          Title\n        \n         \n          Date - Oldest\n        \n         \n          Date - Newest\n        \n     \n  \n    \n      \n      \n    \n\n\n\n\n\n\n\n\nBack to Ubuntu (24.04)\n\n\n2 min\n\n\n\nDec 6, 2024\n\n\n\n\n\n\n\n\n\n\n\n\nIntroduction to ExtendedRtIrtModeling.jl through JuliaConnectoR\n\n\n3 min\n\n\n\nNov 19, 2024\n\n\n\n\n\n\n\n\n\n\n\n\nUnderstand DIC\n\n\n6 min\n\n\n\nMar 27, 2024\n\n\n\n\n\n\n\n\n\n\n\n\nHow to conduct simple slope analysis and make plot with brms\n\n\n4 min\n\n\n\nMar 22, 2024\n\n\n\n\n\n\n\n\n\n\n\n\nNote0716 (mediation analysis with pymc)\n\n\n3 min\n\n\n\nJul 16, 2023\n\n\n\n\n\n\n\n\nNo matching items"
   },
   {
     "objectID": "notesZh.html",
@@ -277,14 +277,14 @@
     "href": "posts_zh/1stBayes10.html",
     "title": "Chapter 10",
     "section": "",
-    "text": "Code\nusing Random, Distributions, Plots\n\n\n這邊可以注意幾件事關於 julia。\n\n如果是要生成一個 scaler，那寫 rand(Normal()) 就可以了。寫 rand(Normal(),1) 會產生一個向量 vector，導致後面的函數無法接受。\nlogpdf.(Normal(___, ___)), y) 由於後面的 y 是一個向量，所以需要寫成 logpdf. 做廣播計算，否則計算會出問題。\nΘ = Float64[] 和 push!(Θ, theta) 的搭配。我不知道這樣做跟 Array{Float64}(undef, S) 誰的效能比較好？可能是後者吧。但因為沒有體感差別，所以不確定。\n\n\n\nCode\n#-------\n\n# 初始化接受计数器\n\"\"\"\n(s2, t2, mu, y, delta2, S)\n這幾個引數，可寫可不寫。\n\"\"\"\n\ny = [9.31, 10.18, 9.16, 11.60, 10.33]\n\nfunction mh_sampler(y, delta2)\n    s2 = 1\n    t2 = 10\n    mu = 5\n    theta = 0\n    #delta2 = 0.5 # 調整這個參數，可改變接受率。\n    S = 10_000\n    theta = 0.0\n    Θ = Float64[]  # 用于存储 theta 的数组\n    accept_count = 0  # 初始化接受计数器\n    for s in 1:S\n        theta_star = theta + rand(Normal(0, sqrt(delta2)))\n\n        log_r = (sum(logpdf.(Normal(theta_star, sqrt(s2)), y)) + \n        logpdf(Normal(mu, sqrt(t2)), theta_star) - \n        sum(logpdf.(Normal(theta, sqrt(s2)), y)) - \n        logpdf(Normal(mu, sqrt(t2)), theta))\n\n        if log(rand(Uniform())) &lt; log_r\n            theta = theta_star\n            accept_count += 1 # 增加接受计数器\n        end\n\n        push!(Θ, theta)\n    end\n\n    accept_rate = accept_count/S\n    return Θ, accept_rate\nend\n\n\n# 调用函数\nΘ, acceptance_rate = mh_sampler(y, 0.1)\nacceptance_rate\n\n\n0.7846\n\n\n\n如果 δ2 = 0.1，接受率大約在 0.70 左右。\n如果 δ2 = 1.0，接受率大約在 0.50 - 0.60。\n如果 δ2 = 2.0，接受率大約在 0.3 左右。\n\n調高一點，\n來畫點圖。 這樣沒錯，跟書上的是一樣的。\n\n\nCode\nplot(Θ)"
+    "text": "Code\nusing Random, Distributions, Plots\n\n\n這邊可以注意幾件事關於 julia。\n\n如果是要生成一個 scaler，那寫 rand(Normal()) 就可以了。寫 rand(Normal(),1) 會產生一個向量 vector，導致後面的函數無法接受。\nlogpdf.(Normal(___, ___)), y) 由於後面的 y 是一個向量，所以需要寫成 logpdf. 做廣播計算，否則計算會出問題。\nΘ = Float64[] 和 push!(Θ, theta) 的搭配。我不知道這樣做跟 Array{Float64}(undef, S) 誰的效能比較好？可能是後者吧。但因為沒有體感差別，所以不確定。\n\n\n\nCode\n#-------\n\n# 初始化接受计数器\n\"\"\"\n(s2, t2, mu, y, delta2, S)\n這幾個引數，可寫可不寫。\n\"\"\"\n\ny = [9.31, 10.18, 9.16, 11.60, 10.33]\n\nfunction mh_sampler(y, delta2)\n    s2 = 1\n    t2 = 10\n    mu = 5\n    theta = 0\n    #delta2 = 0.5 # 調整這個參數，可改變接受率。\n    S = 10_000\n    theta = 0.0\n    Θ = Float64[]  # 用于存储 theta 的数组\n    accept_count = 0  # 初始化接受计数器\n    for s in 1:S\n        theta_star = theta + rand(Normal(0, sqrt(delta2)))\n\n        log_r = (sum(logpdf.(Normal(theta_star, sqrt(s2)), y)) + \n        logpdf(Normal(mu, sqrt(t2)), theta_star) - \n        sum(logpdf.(Normal(theta, sqrt(s2)), y)) - \n        logpdf(Normal(mu, sqrt(t2)), theta))\n\n        if log(rand(Uniform())) &lt; log_r\n            theta = theta_star\n            accept_count += 1 # 增加接受计数器\n        end\n\n        push!(Θ, theta)\n    end\n\n    accept_rate = accept_count/S\n    return Θ, accept_rate\nend\n\n\n# 调用函数\nΘ, acceptance_rate = mh_sampler(y, 0.1)\nacceptance_rate\n\n\n0.7815\n\n\n\n如果 δ2 = 0.1，接受率大約在 0.70 左右。\n如果 δ2 = 1.0，接受率大約在 0.50 - 0.60。\n如果 δ2 = 2.0，接受率大約在 0.3 左右。\n\n調高一點，\n來畫點圖。 這樣沒錯，跟書上的是一樣的。\n\n\nCode\nplot(Θ)"
   },
   {
     "objectID": "posts_zh/1stBayes10.html#the-metropolis-algorithm",
     "href": "posts_zh/1stBayes10.html#the-metropolis-algorithm",
     "title": "Chapter 10",
     "section": "",
-    "text": "Code\nusing Random, Distributions, Plots\n\n\n這邊可以注意幾件事關於 julia。\n\n如果是要生成一個 scaler，那寫 rand(Normal()) 就可以了。寫 rand(Normal(),1) 會產生一個向量 vector，導致後面的函數無法接受。\nlogpdf.(Normal(___, ___)), y) 由於後面的 y 是一個向量，所以需要寫成 logpdf. 做廣播計算，否則計算會出問題。\nΘ = Float64[] 和 push!(Θ, theta) 的搭配。我不知道這樣做跟 Array{Float64}(undef, S) 誰的效能比較好？可能是後者吧。但因為沒有體感差別，所以不確定。\n\n\n\nCode\n#-------\n\n# 初始化接受计数器\n\"\"\"\n(s2, t2, mu, y, delta2, S)\n這幾個引數，可寫可不寫。\n\"\"\"\n\ny = [9.31, 10.18, 9.16, 11.60, 10.33]\n\nfunction mh_sampler(y, delta2)\n    s2 = 1\n    t2 = 10\n    mu = 5\n    theta = 0\n    #delta2 = 0.5 # 調整這個參數，可改變接受率。\n    S = 10_000\n    theta = 0.0\n    Θ = Float64[]  # 用于存储 theta 的数组\n    accept_count = 0  # 初始化接受计数器\n    for s in 1:S\n        theta_star = theta + rand(Normal(0, sqrt(delta2)))\n\n        log_r = (sum(logpdf.(Normal(theta_star, sqrt(s2)), y)) + \n        logpdf(Normal(mu, sqrt(t2)), theta_star) - \n        sum(logpdf.(Normal(theta, sqrt(s2)), y)) - \n        logpdf(Normal(mu, sqrt(t2)), theta))\n\n        if log(rand(Uniform())) &lt; log_r\n            theta = theta_star\n            accept_count += 1 # 增加接受计数器\n        end\n\n        push!(Θ, theta)\n    end\n\n    accept_rate = accept_count/S\n    return Θ, accept_rate\nend\n\n\n# 调用函数\nΘ, acceptance_rate = mh_sampler(y, 0.1)\nacceptance_rate\n\n\n0.7846\n\n\n\n如果 δ2 = 0.1，接受率大約在 0.70 左右。\n如果 δ2 = 1.0，接受率大約在 0.50 - 0.60。\n如果 δ2 = 2.0，接受率大約在 0.3 左右。\n\n調高一點，\n來畫點圖。 這樣沒錯，跟書上的是一樣的。\n\n\nCode\nplot(Θ)"
+    "text": "Code\nusing Random, Distributions, Plots\n\n\n這邊可以注意幾件事關於 julia。\n\n如果是要生成一個 scaler，那寫 rand(Normal()) 就可以了。寫 rand(Normal(),1) 會產生一個向量 vector，導致後面的函數無法接受。\nlogpdf.(Normal(___, ___)), y) 由於後面的 y 是一個向量，所以需要寫成 logpdf. 做廣播計算，否則計算會出問題。\nΘ = Float64[] 和 push!(Θ, theta) 的搭配。我不知道這樣做跟 Array{Float64}(undef, S) 誰的效能比較好？可能是後者吧。但因為沒有體感差別，所以不確定。\n\n\n\nCode\n#-------\n\n# 初始化接受计数器\n\"\"\"\n(s2, t2, mu, y, delta2, S)\n這幾個引數，可寫可不寫。\n\"\"\"\n\ny = [9.31, 10.18, 9.16, 11.60, 10.33]\n\nfunction mh_sampler(y, delta2)\n    s2 = 1\n    t2 = 10\n    mu = 5\n    theta = 0\n    #delta2 = 0.5 # 調整這個參數，可改變接受率。\n    S = 10_000\n    theta = 0.0\n    Θ = Float64[]  # 用于存储 theta 的数组\n    accept_count = 0  # 初始化接受计数器\n    for s in 1:S\n        theta_star = theta + rand(Normal(0, sqrt(delta2)))\n\n        log_r = (sum(logpdf.(Normal(theta_star, sqrt(s2)), y)) + \n        logpdf(Normal(mu, sqrt(t2)), theta_star) - \n        sum(logpdf.(Normal(theta, sqrt(s2)), y)) - \n        logpdf(Normal(mu, sqrt(t2)), theta))\n\n        if log(rand(Uniform())) &lt; log_r\n            theta = theta_star\n            accept_count += 1 # 增加接受计数器\n        end\n\n        push!(Θ, theta)\n    end\n\n    accept_rate = accept_count/S\n    return Θ, accept_rate\nend\n\n\n# 调用函数\nΘ, acceptance_rate = mh_sampler(y, 0.1)\nacceptance_rate\n\n\n0.7815\n\n\n\n如果 δ2 = 0.1，接受率大約在 0.70 左右。\n如果 δ2 = 1.0，接受率大約在 0.50 - 0.60。\n如果 δ2 = 2.0，接受率大約在 0.3 左右。\n\n調高一點，\n來畫點圖。 這樣沒錯，跟書上的是一樣的。\n\n\nCode\nplot(Θ)"
   },
   {
     "objectID": "about.html",
@@ -292,5 +292,19 @@
     "title": "jw tsai",
     "section": "",
     "text": "About this jw tsai."
+  },
+  {
+    "objectID": "posts/ubuntu2404.html",
+    "href": "posts/ubuntu2404.html",
+    "title": "Back to Ubuntu (24.04)",
+    "section": "",
+    "text": "I was running these statistical simulations that kept giving me headaches with timing issues. And I think I’ve figured out why my simulation studies are running so slowly. It’s probably because I’ve got too much redundancy after my computing, the Mac Mini have to save the RAM by sacrificing performance, leading to a very slow running speed for my simulation studies. So I thought, “Why not give Ubuntu another shot?” (I have used Ubuntu 22.04 before.) And guess what? The tests ran perfectly, barely using half of my 64GB RAM (for my Mac, they are actually too large).\nI have to say, Ubuntu 24.04 LTS is impressively smooth. It made me realize that this machine could be enough for a minimal setup.\nNow, I’m going to give you a minimum viable proposal (MVP) for setting up your Ubuntu camp!\n\nPrepared Ubuntu installation program.\n\nChoose minimal installing is OK.\n\n新酷音中文輸入法\nWorking.\n\nR and RStudio.\nJulia.\nVS Code.\n\nConnections.\n\nDropbox,\n\nWriting.\n\nOnlyOffice or LibreOffice\nSimplenote, and Logseq\n\n\n\n\n\nCitationBibTeX citation:@online{tsai2024,\n  author = {Tsai, JW},\n  title = {Back to {Ubuntu} (24.04)},\n  date = {2024-12-06},\n  langid = {en}\n}\nFor attribution, please cite this work as:\nTsai, J. (2024, December 6). Back to Ubuntu (24.04)."
+  },
+  {
+    "objectID": "index.html#school.",
+    "href": "index.html#school.",
+    "title": "JIE-WEN TSAI.",
+    "section": "School.",
+    "text": "School.\n\nEducation, National ChengChi University, Taiwan."
   }
 ]

@@ -1,0 +1,25 @@
+---
+title: "Back to Ubuntu (24.04)"
+author: JW Tsai
+date: 2024-12-06
+date-modified: today
+---
+
+I was running my statistical simulations that kept giving me headaches with timing issues. And I think I've figured out why my simulation studies are running so slowly. It's probably because I've got too much redundancy after my computing, the Mac Mini has to save the RAM by sacrificing performance, leading to a very slow running speed for my simulation studies. So I thought, "Why not give Ubuntu another shot?" (I have used Ubuntu 22.04 before.) And guess what? The tests ran perfectly, barely using half of my 64GB RAM (for my Mac, they are actually too large).
+
+I have to say, Ubuntu 24.04 LTS is impressively smooth. It made me realize that this machine could be enough for a minimal setup.
+
+Now, I'm going to give you a minimum viable proposal (*MVP*) for setting up your Ubuntu camp!
+
+1.  Prepared Ubuntu installation program.
+    -   Choose minimal installing is OK.
+2.  新酷音中文輸入法
+3.  *Working.*
+    -   R and RStudio.
+    -   Julia.
+    -   VS Code.
+4.  *Connections.*
+    -   Dropbox,
+5.  *Writing.*
+    -   OnlyOffice or LibreOffice
+    -   Simplenote, and Logseq
