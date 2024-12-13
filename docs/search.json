@@ -53,7 +53,7 @@
     "href": "index.html#interesting.",
     "title": "JIE-WEN TSAI.",
     "section": "Interesting.",
-    "text": "Interesting.\n\nPsychometrics. Read more.\nBayesian data analysis. Read more."
+    "text": "Interesting.\n\nPsychometrics. Read CRAN.\nBayesian data analysis. Read CRAN."
   },
   {
     "objectID": "index.html#education.",
@@ -137,7 +137,7 @@
     "href": "notesZh.html",
     "title": "中文記事",
     "section": "",
-    "text": "Order By\n       Default\n         \n          Title\n        \n         \n          Date - Oldest\n        \n         \n          Date - Newest\n        \n     \n  \n    \n      \n      \n    \n\n\n\n\n\n\n\n\n「劍橋新版數學心理學手冊」與「牛津心理學量化方法手冊」的內容\n\n\n4 min\n\n\n\n\n\n\n\n\n\n\n\n貝氏學習資源推薦\n\n\n1 min\n\n\n\n\n\n\n\n\n\n\n\n對於新手來說正確學習 R 的方式：Google Colab 的使用與設定\n\n\n4 min\n\n\n\nDec 13, 2024\n\n\n\n\n\n\n\n\n\n\n\n\nChapter 10\n\n\n2 min\n\n\n\nMay 29, 2024\n\n\n\n\n\n\n\n\n\n\n\n\n「多變量行為研究」期刊最有影響力的 20 篇文章（MultivariateBehavRes 2010-2023）\n\n\n1 min\n\n\n\nMay 16, 2024\n\n\n\n\n\n\n\n\n\n\n\n\n「教育與行為統計學」期刊最有影響力的 20 篇文章（JEducBehavStat 2010-2023）\n\n\n1 min\n\n\n\nMay 16, 2024\n\n\n\n\n\n\n\n\nNo matching items"
+    "text": "Order By\n       Default\n         \n          Title\n        \n         \n          Date - Oldest\n        \n         \n          Date - Newest\n        \n     \n  \n    \n      \n      \n    \n\n\n\n\n\n\n\n\n「劍橋新版數學心理學手冊」與「牛津心理學量化方法手冊」的內容\n\n\n4 min\n\n\n\n\n\n\n\n\n\n\n\n貝氏學習資源推薦\n\n\n1 min\n\n\n\n\n\n\n\n\n\n\n\n新手正確使用 R 的方式：打開 Google Colab\n\n\n4 min\n\n\n\nDec 13, 2024\n\n\n\n\n\n\n\n\n\n\n\n\nChapter 10\n\n\n2 min\n\n\n\nMay 29, 2024\n\n\n\n\n\n\n\n\n\n\n\n\n「多變量行為研究」期刊最有影響力的 20 篇文章（MultivariateBehavRes 2010-2023）\n\n\n1 min\n\n\n\nMay 16, 2024\n\n\n\n\n\n\n\n\n\n\n\n\n「教育與行為統計學」期刊最有影響力的 20 篇文章（JEducBehavStat 2010-2023）\n\n\n1 min\n\n\n\nMay 16, 2024\n\n\n\n\n\n\n\n\nNo matching items"
   },
   {
     "objectID": "posts/note0322.html",
@@ -305,19 +305,19 @@
     "href": "index.html#school.",
     "title": "JIE-WEN TSAI.",
     "section": "School.",
-    "text": "School.\n\nEducation, National ChengChi University, Taiwan."
+    "text": "School.\n\nEducation, National ChengChi University, Taiwan. 🇹🇼"
   },
   {
     "objectID": "posts_zh/rightwayforlearningr.html",
     "href": "posts_zh/rightwayforlearningr.html",
-    "title": "對於新手來說正確學習 R 的方式：Google Colab 的使用與設定",
+    "title": "新手正確使用 R 的方式：打開 Google Colab",
     "section": "",
     "text": "R 語言在台灣的教育與心理學領域逐漸普及（終於），但許多初學者常在環境設定時就遇到挫折。從安裝 R、RStudio，到設定套件、讀取資料，這中間的每一步都可能會出現錯誤卡關、以致於妨礙了後續的學習興趣。但對大多數學生來說，他們其實只需要一個能讀取資料、執行統計分析、產出圖表的平台。\n選擇適合的工具可以幫助學習者專注在資料分析本身，而不是陷入繁瑣的環境設定中。 Google Colab 提供了一個「剛好夠用」的替代方案：免安裝、穩定、易於分享，而且完全在瀏覽器中運作。"
   },
   {
     "objectID": "posts_zh/rightwayforlearningr.html#開啟-google-colab",
     "href": "posts_zh/rightwayforlearningr.html#開啟-google-colab",
-    "title": "對於新手來說正確學習 R 的方式：Google Colab 的使用與設定",
+    "title": "新手正確使用 R 的方式：打開 Google Colab",
     "section": "開啟 Google Colab",
     "text": "開啟 Google Colab\n\n搜尋 Colab，建立一個新的筆記本 (New Notebook)。只要有 Google 帳號，就可以開始使用。點這裡可使用 –&gt; Google Colab\n在選單上的編輯 (Edit)／筆記本設定 (Notebook Settings) 中，選取 R 並儲存。這樣就有一個雲端的 R 語言 session。\n接下來我們可以檢查一下雲端主機的環境，在程式區塊中輸入 sessionInfo() 會出現如下內容：\n\nR version 4.4.2 (2024-10-31)\nPlatform: x86_64-pc-linux-gnu\nRunning under: Ubuntu 22.04.3 LTS\n\nMatrix products: default\nBLAS:   /usr/lib/x86_64-linux-gnu/openblas-pthread/libblas.so.3 \nLAPACK: /usr/lib/x86_64-linux-gnu/openblas-pthread/libopenblasp-r0.3.20.so;  LAPACK version 3.10.0\n\nlocale:\n [1] LC_CTYPE=en_US.UTF-8       LC_NUMERIC=C              \n [3] LC_TIME=en_US.UTF-8        LC_COLLATE=en_US.UTF-8    \n [5] LC_MONETARY=en_US.UTF-8    LC_MESSAGES=en_US.UTF-8   \n [7] LC_PAPER=en_US.UTF-8       LC_NAME=C                 \n [9] LC_ADDRESS=C               LC_TELEPHONE=C            \n[11] LC_MEASUREMENT=en_US.UTF-8 LC_IDENTIFICATION=C       \n\ntime zone: Etc/UTC\ntzcode source: system (glibc)\n\nattached base packages:\n[1] stats     graphics  grDevices utils     datasets  methods   base     \n\nloaded via a namespace (and not attached):\n [1] digest_0.6.37     IRdisplay_1.1     utf8_1.2.4        base64enc_0.1-3  \n [5] fastmap_1.2.0     glue_1.8.0        htmltools_0.5.8.1 repr_1.1.7       \n [9] lifecycle_1.0.4   cli_3.6.3         fansi_1.0.6       vctrs_0.6.5      \n[13] pbdZMQ_0.3-13     compiler_4.4.2    tools_4.4.2       evaluate_1.0.1   \n[17] pillar_1.9.0      crayon_1.5.3      rlang_1.1.4       jsonlite_1.8.9   \n[21] IRkernel_1.3.2    uuid_1.2-1      \n上述這些內容提供我們幾項重要資訊：\n\n目前的 R 版本（4.4.2 版）\n雲端主機的系統環境：x86_64-pc-linux-gnu，作業系統是 Ubuntu 22.04.3 LTS。 –&gt; 這代表我們可以使用 linux 指令操作這台機器。\n矩陣計算工具等等。\n最後面則是目前 session 中已經安裝的套件。目前基本上是 R-Base 的套件。如果有新的套件透過 library() 載入，也會出現在這邊。\n\n\n例如：輸入 library(tidyverse) （這個不用重新 install，讚！）並執行。\n再重新執行 sessionInfo()，你就可以看到有額外的套件載入進來。\n\nother attached packages:\n[1] lubridate_1.9.4 forcats_1.0.0   stringr_1.5.1   dplyr_1.1.4    \n[5] purrr_1.0.2     readr_2.1.5     tidyr_1.3.1     tibble_3.2.1   \n[9] ggplot2_3.5.1   tidyverse_2.0.0"
   },
@@ -331,14 +331,14 @@
   {
     "objectID": "posts_zh/rightwayforlearningr.html#安裝套件",
     "href": "posts_zh/rightwayforlearningr.html#安裝套件",
-    "title": "對於新手來說正確學習 R 的方式：Google Colab 的使用與設定",
+    "title": "新手正確使用 R 的方式：打開 Google Colab",
     "section": "安裝套件",
     "text": "安裝套件\n以上的資訊應該都算是常識。接下來是重點。\n使用 R 就是因為上面有很多統計套件可以用。 但是，在 Colab 上使用 install.packages() 指令，通常會非常非常慢。 前面提到過，這些雲端主機通常是用 Linux 系統，因此，直接用 Linux 指令來安裝會更快。 在 Linux 上面安裝 R 套件的方式（這只限於 CRAN 上註冊的套件）如下：\nsudo apt install --no-install-recommends r-cran-[套件名稱]\n（這邊的 --no-install-recommends 應該是可以省略的。這是讓電腦不要安裝那些多餘的（推薦的）東西。）\n另外，在 Colab 上用 R，需要使用 system() 包起來。例如：\n\nsystem(\"sudo apt-get update\")\nsystem(\"sudo apt install --no-install-recommends r-cran-mirt\")\n\n因此，以常用的安裝 lavaan 套件為例，就可以使用\n## 在 Colab 上適用的方法。\nsystem('sudo apt install --no-install-recommends r-cran-lavaan') \n\n## 正確的方法，但較慢。\ninstall.packages('lavaan')\n注意的是，這邊的套件名稱通常都是全小寫。在 R 裡面安裝套件要區分大小寫，例如 install.packages('R2jags') 才能正確安裝套件。但是用 Linux 指令，則要寫成 r-cran-r2jags。（但是你要讀進 R 環境還是要使用原本的 library(R2jags) ！）\n你也可以使用一個簡單的函數來幫助安裝（複製貼上到你的 Colab 程式區塊執行即可使用）：\n## Function to help install packages in colab.\ninstall_packages &lt;- \\(package){\n    system(paste0(\"sudo apt install --no-install-recommends r-cran-\", tolower(package)))\n}\n這樣一來，你就可以用和原本類似的方式來安裝套件（大小寫可以和原本一致），例如 install_packages('R2jags')。不妨試試看！\n目前測試，貝氏統計的幾個套件都可以成功安裝使用：cmdstanr, rstan, brms 都下載成功了。 心理學常用的套件應該都沒問題：\n## CTT\ninstall_packages('psych')\n\n## IRT\ninstall_packages('mirt')\ninstall_packages('TAM')\ninstall_packages('GDINA')\n\n## SEM\ninstall_packages('lavaan')\ninstall_packages('OpenMx')\ninstall_packages('blavaan')\n\n## Multilevel analysis\ninstall_packages('lme4')\ninstall_packages('brms')\ninstall_packages('rstanarm')\n\n## Bayesian data analysis\ninstall_packages('rstan')\ninstall_packages('cmdsatnr')\ninstall_packages('R2jags')\ninstall_packages('nimble)\n另外，如果要使用 jags 的同學，在 Colab 中使用以下指令：\n## 安裝 jags 的方式：\nsystem('sudo apt-get install jags')"
   },
   {
     "objectID": "posts_zh/rightwayforlearningr.html#資料的輸入輸出",
     "href": "posts_zh/rightwayforlearningr.html#資料的輸入輸出",
-    "title": "對於新手來說正確學習 R 的方式：Google Colab 的使用與設定",
+    "title": "新手正確使用 R 的方式：打開 Google Colab",
     "section": "資料的輸入、輸出。",
     "text": "資料的輸入、輸出。\n可以使用左邊的檔案夾(File)區塊。只要把你的主機上的檔案拉進去。 讀取的時候，在檔案上選擇「複製路徑」 (copy path)，即可成功。\n\n例如：拉進一個檔案 pisa.csv\n讀取，用 read.csv('/content/pisa.csv') 你就可以看到檔案成功讀取。"
   },
@@ -359,7 +359,7 @@
   {
     "objectID": "posts_zh/rightwayforlearningr.html#workflow.",
     "href": "posts_zh/rightwayforlearningr.html#workflow.",
-    "title": "對於新手來說正確學習 R 的方式：Google Colab 的使用與設定",
+    "title": "新手正確使用 R 的方式：打開 Google Colab",
     "section": "⭐ Workflow.",
     "text": "⭐ Workflow.\n以下幫大家整理成使用流程： （tidyverse 已經有了，可以直接 library() 使用。）\n## 1. 更新環境、安裝 jags 等。\nsystem(\"sudo apt-get update\")\nsystem('sudo apt-get install jags')\n\n## 2. 套用安裝函數，簡化操作。\ninstall_packages &lt;- \\(package){\n    result &lt;- system(\n        paste0(\"sudo apt install --no-install-recommends r-cran-\", tolower(package)),\n        ignore.stderr = FALSE,\n        wait = TRUE\n    )\n    # 檢查執行結果\n    if (result != 0) {\n        stop(paste0(\n           \"Installation failed! Possible reasons:\\n\",\n           \"1. Invalid package name\\n\", \n           \"2. Package not available in CRAN repository\\n\",\n           \"3. System permission issues\\n\"\n        ))\n    } else {\n        message(paste0(\"Successfully installed package: \", package))\n    }\n}\n\n## 3. 安裝所需程式。\ninstall_packages('R2jags')\n\n## 4. 載入所需程式。\nlibrary(R2jags)\n以上內容提供給大家參考， 祝大家學習、研究順利。"
   }

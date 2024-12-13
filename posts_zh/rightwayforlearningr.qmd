@@ -1,5 +1,5 @@
 ---
-title: "對於新手來說正確學習 R 的方式：Google Colab 的使用與設定"
+title: "新手正確使用 R 的方式：打開 Google Colab"
 author: JW Tsai
 date: 2024-12-13
 ---

@@ -21,9 +21,9 @@ A ninja of educational measurement.
 
 ## Interesting.
 
--   Psychometrics. [Read more](https://CRAN.R-project.org/view=Psychometrics).
--   Bayesian data analysis. [Read more](https://CRAN.R-project.org/view=Bayesian).
+-   Psychometrics. [Read CRAN](https://CRAN.R-project.org/view=Psychometrics).
+-   Bayesian data analysis. [Read CRAN](https://CRAN.R-project.org/view=Bayesian).
 
 ## School.
 
--   Education, National ChengChi University, Taiwan.
+-   Education, National ChengChi University, Taiwan. 🇹🇼
