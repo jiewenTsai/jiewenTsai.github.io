@@ -6,20 +6,15 @@ date: 2024-12-13
 
 R 語言在台灣的教育與心理學領域逐漸普及（終於），但許多初學者常在環境設定時就遇到挫折。從安裝 R、RStudio，到設定套件、讀取資料，這中間的每一步都可能會出現錯誤卡關、以致於妨礙了後續的學習興趣。但對大多數學生來說，他們其實只需要一個能讀取資料、執行統計分析、產出圖表的平台。
 
-選擇適合的工具可以幫助學習者專注在資料分析本身，而不是陷入繁瑣的環境設定中。
-`Google Colab` 提供了一個「剛好夠用」的替代方案：免安裝、穩定、易於分享，而且完全在瀏覽器中運作。
-
-
-
+選擇適合的工具可以幫助學習者專注在資料分析本身，而不是陷入繁瑣的環境設定中。 `Google Colab` 提供了一個「剛好夠用」的替代方案：免安裝、穩定、易於分享，而且完全在瀏覽器中運作。
 
 ## 開啟 Google Colab
 
-- 搜尋 Colab，建立一個新的筆記本 (New Notebook)。只要有 Google 帳號，就可以開始使用。點這裡可使用 --> 
-[Google Colab](https://colab.google/)
-- 在選單上的編輯 (Edit)／筆記本設定 (Notebook Settings) 中，選取 R 並儲存。這樣就有一個雲端的 R 語言 session。
-- 接下來我們可以檢查一下雲端主機的環境，在程式區塊中輸入 `sessionInfo()` 會出現如下內容：
+-   搜尋 Colab，建立一個新的筆記本 (New Notebook)。只要有 Google 帳號，就可以開始使用。點這裡可使用 --\> [Google Colab](https://colab.google/)
+-   在選單上的編輯 (Edit)／筆記本設定 (Notebook Settings) 中，選取 R 並儲存。這樣就有一個雲端的 R 語言 session。
+-   接下來我們可以檢查一下雲端主機的環境，在程式區塊中輸入 `sessionInfo()` 會出現如下內容：
 
-```
+```         
 R version 4.4.2 (2024-10-31)
 Platform: x86_64-pc-linux-gnu
 Running under: Ubuntu 22.04.3 LTS
@@ -53,38 +48,33 @@ loaded via a namespace (and not attached):
 
 上述這些內容提供我們幾項重要資訊：
 
-1. 目前的 R 版本（4.4.2 版）
-2. 雲端主機的系統環境：x86_64-pc-linux-gnu，作業系統是 Ubuntu 22.04.3 LTS。 --> 這代表我們可以使用 linux 指令操作這台機器。
-3. 矩陣計算工具等等。
-4. 最後面則是目前 session 中已經安裝的套件。目前基本上是 Base-R 的套件。如果有新的套件透過 `library()` 載入，也會出現在這邊。
+1.  目前的 R 版本（4.4.2 版）
+2.  雲端主機的系統環境：x86_64-pc-linux-gnu，作業系統是 Ubuntu 22.04.3 LTS。 --\> 這代表我們可以使用 linux 指令操作這台機器。
+3.  矩陣計算工具等等。
+4.  最後面則是目前 session 中已經安裝的套件。目前基本上是 Base-R 的套件。如果有新的套件透過 `library()` 載入，也會出現在這邊。
 
-  - 例如：輸入 `library(tidyverse)` （這個不用重新 install，讚！）並執行。
-  - 再重新執行 `sessionInfo()`，你就可以看到有額外的套件載入進來。
-  ```
-  other attached packages:
- [1] lubridate_1.9.4 forcats_1.0.0   stringr_1.5.1   dplyr_1.1.4    
- [5] purrr_1.0.2     readr_2.1.5     tidyr_1.3.1     tibble_3.2.1   
- [9] ggplot2_3.5.1   tidyverse_2.0.0
-  ```
-  
+-   例如：輸入 `library(tidyverse)` （這個不用重新 install，讚！）並執行。
+-   再重新執行 `sessionInfo()`，你就可以看到有額外的套件載入進來。
+
+```         
+other attached packages:
+[1] lubridate_1.9.4 forcats_1.0.0   stringr_1.5.1   dplyr_1.1.4    
+[5] purrr_1.0.2     readr_2.1.5     tidyr_1.3.1     tibble_3.2.1   
+[9] ggplot2_3.5.1   tidyverse_2.0.0
+```
+
 ## 資料的輸入、輸出。
 
-可以使用左邊的檔案夾(File)區塊。只要把你的主機上的檔案拉進去。
-讀取的時候，在檔案上選擇「複製路徑」 (copy path)，即可成功。
+可以使用左邊的檔案夾(File)區塊。只要把你的主機上的檔案拉進去。 讀取的時候，在檔案上選擇「複製路徑」 (copy path)，即可成功。
 
-  - 例如：拉進一個檔案 `pisa.csv`
-  - 讀取，用 `read.csv('/content/pisa.csv')` 你就可以看到檔案成功讀取。
-  
+-   例如：拉進一個檔案 `pisa.csv`
+-   讀取，用 `read.csv('/content/pisa.csv')` 你就可以看到檔案成功讀取。
 
 ## 安裝套件
 
 以上的資訊應該都算是常識。接下來是重點。
 
-使用 R 就是因為上面有很多統計套件可以用。
-但是，在 Colab 上使用 `install.packages()` 指令，通常會非常非常慢。
-前面提到過，這些雲端主機通常是用 Linux 系統，因此，直接用 Linux 指令來安裝會更快。
-在 Linux 上面安裝 R 套件的方式（這只限於 CRAN 上註冊的套件）如下：
-
+使用 R 就是因為上面有很多統計套件可以用。 但是，在 Colab 上使用 `install.packages()` 指令，通常會非常非常慢。 前面提到過，這些雲端主機通常是用 Linux 系統，因此，直接用 Linux 指令來安裝會更快。 在 Linux 上面安裝 R 套件的方式（這只限於 CRAN 上註冊的套件）如下：
 
 `sudo apt install --no-install-recommends r-cran-[套件名稱]`
 
@@ -92,26 +82,24 @@ loaded via a namespace (and not attached):
 
 另外，在 Colab 上用 R，需要使用 `system()` 包起來。例如：
 
-- `system("sudo apt-get update")`
-- `system("sudo apt install --no-install-recommends r-cran-mirt")`
+-   `system("sudo apt-get update")`
+-   `system("sudo apt install --no-install-recommends r-cran-mirt")`
 
 因此，以常用的安裝 `lavaan` 套件為例，就可以使用
 
-```r
+``` r
 ## 在 Colab 上適用的方法。
 system('sudo apt install --no-install-recommends r-cran-lavaan') 
 
 ## 正確的方法，但較慢。
 install.packages('lavaan')
-
 ```
-
 
 注意的是，這邊的套件名稱通常都是全小寫。在 R 裡面安裝套件要區分大小寫，例如 `install.packages('R2jags')` 才能正確安裝套件。但是用 Linux 指令，則要寫成 `r-cran-r2jags`。（但是你要讀進 R 環境還是要使用原本的 `library(R2jags)` ！）
 
 你也可以使用一個簡單的函數來幫助安裝（複製貼上到你的 Colab 程式區塊執行即可使用）：
 
-```r
+``` r
 ## Function to help install packages in colab.
 install_packages <- \(package){
     system(paste0("sudo apt install --no-install-recommends r-cran-", tolower(package)))
@@ -120,11 +108,9 @@ install_packages <- \(package){
 
 這樣一來，你就可以用和原本類似的方式來安裝套件（大小寫可以和原本一致），例如 `install_packages('R2jags')`。不妨試試看！
 
+目前測試，貝氏統計的幾個套件都可以成功安裝使用：`cmdstanr`, `rstan`, `brms` 都下載成功了。 心理學常用的套件應該都沒問題：
 
-目前測試，貝氏統計的幾個套件都可以成功安裝使用：`cmdstanr`, `rstan`, `brms` 都下載成功了。
-心理學常用的套件應該都沒問題：
-
-```r
+``` r
 ## CTT
 install_packages('psych')
 
@@ -147,26 +133,21 @@ install_packages('rstanarm')
 install_packages('rstan')
 install_packages('cmdsatnr')
 install_packages('R2jags')
+install_packages('nimble)
 ```
-
 
 另外，如果要使用 `jags` 的同學，在 Colab 中使用以下指令：
 
-
-```r
+``` r
 ## 安裝 jags 的方式：
 system('sudo apt-get install jags')
 ```
 
+## ⭐ CTA.
 
+以下幫大家整理成使用流程： （`tidyverse` 已經有了，可以直接 `library()` 使用。）
 
-## ⭐  CTA.
-
-以下幫大家整理成使用流程：
-（`tidyverse` 已經有了，可以直接 `library()` 使用。）
-
-
-```r
+``` r
 ## 1. 更新環境、安裝 jags 等。
 system("sudo apt-get update")
 system('sudo apt-get install jags')
@@ -198,9 +179,4 @@ install_packages('R2jags')
 library(R2jags)
 ```
 
-以上內容提供給大家參考，
-祝大家學習、研究順利。
-
-
-
-
+以上內容提供給大家參考， 祝大家學習、研究順利。
