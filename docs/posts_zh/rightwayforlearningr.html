@@ -163,7 +163,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   <li><a href="#開啟-google-colab" id="toc-開啟-google-colab" class="nav-link active" data-scroll-target="#開啟-google-colab">開啟 Google Colab</a></li>
   <li><a href="#資料的輸入輸出" id="toc-資料的輸入輸出" class="nav-link" data-scroll-target="#資料的輸入輸出">資料的輸入、輸出。</a></li>
   <li><a href="#安裝套件" id="toc-安裝套件" class="nav-link" data-scroll-target="#安裝套件">安裝套件</a></li>
-  <li><a href="#cta." id="toc-cta." class="nav-link" data-scroll-target="#cta.">⭐ CTA.</a></li>
+  <li><a href="#workflow." id="toc-workflow." class="nav-link" data-scroll-target="#workflow.">⭐ Workflow.</a></li>
   </ul>
 </nav>
     </div>
@@ -244,7 +244,7 @@ loaded via a namespace (and not attached):
 <li>目前的 R 版本（4.4.2 版）</li>
 <li>雲端主機的系統環境：x86_64-pc-linux-gnu，作業系統是 Ubuntu 22.04.3 LTS。 –&gt; 這代表我們可以使用 linux 指令操作這台機器。</li>
 <li>矩陣計算工具等等。</li>
-<li>最後面則是目前 session 中已經安裝的套件。目前基本上是 Base-R 的套件。如果有新的套件透過 <code>library()</code> 載入，也會出現在這邊。</li>
+<li>最後面則是目前 session 中已經安裝的套件。目前基本上是 R-Base 的套件。如果有新的套件透過 <code>library()</code> 載入，也會出現在這邊。</li>
 </ol>
 <ul>
 <li>例如：輸入 <code>library(tidyverse)</code> （這個不用重新 install，讚！）並執行。</li>
@@ -315,8 +315,8 @@ loaded via a namespace (and not attached):
 <div class="sourceCode" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="do">## 安裝 jags 的方式：</span></span>
 <span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a><span class="fu">system</span>(<span class="st">'sudo apt-get install jags'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </section>
-<section id="cta." class="level2">
-<h2 class="anchored" data-anchor-id="cta.">⭐ CTA.</h2>
+<section id="workflow." class="level2">
+<h2 class="anchored" data-anchor-id="workflow.">⭐ Workflow.</h2>
 <p>以下幫大家整理成使用流程： （<code>tidyverse</code> 已經有了，可以直接 <code>library()</code> 使用。）</p>
 <div class="sourceCode" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="do">## 1. 更新環境、安裝 jags 等。</span></span>
 <span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a><span class="fu">system</span>(<span class="st">"sudo apt-get update"</span>)</span>

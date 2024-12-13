@@ -51,7 +51,7 @@ loaded via a namespace (and not attached):
 1.  目前的 R 版本（4.4.2 版）
 2.  雲端主機的系統環境：x86_64-pc-linux-gnu，作業系統是 Ubuntu 22.04.3 LTS。 --\> 這代表我們可以使用 linux 指令操作這台機器。
 3.  矩陣計算工具等等。
-4.  最後面則是目前 session 中已經安裝的套件。目前基本上是 Base-R 的套件。如果有新的套件透過 `library()` 載入，也會出現在這邊。
+4.  最後面則是目前 session 中已經安裝的套件。目前基本上是 R-Base 的套件。如果有新的套件透過 `library()` 載入，也會出現在這邊。
 
 -   例如：輸入 `library(tidyverse)` （這個不用重新 install，讚！）並執行。
 -   再重新執行 `sessionInfo()`，你就可以看到有額外的套件載入進來。
@@ -143,7 +143,7 @@ install_packages('nimble)
 system('sudo apt-get install jags')
 ```
 
-## ⭐ CTA.
+## ⭐ Workflow.
 
 以下幫大家整理成使用流程： （`tidyverse` 已經有了，可以直接 `library()` 使用。）
 
